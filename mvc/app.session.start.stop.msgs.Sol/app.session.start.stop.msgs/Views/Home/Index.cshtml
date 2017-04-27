@@ -1,0 +1,19 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/_LayoutPage1.cshtml";
+}
+
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<h2>Check log files in "logs" folder of app root!</h2>
+
+<script>
+    function btnEndSession_click() {
+        jQuery.ajax({
+            url: '@Url.Action("EndSession","Home")'
+        }).done(function() {
+            alert("done");
+        });
+    }
+</script>
+<button onclick="btnEndSession_click()">End Session</button>
