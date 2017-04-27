@@ -1,0 +1,14 @@
+C:\temp\UnityInjectionSampleSol\Some.Library.Gen\bin\Debug\Some.Library.Gen.dll
+C:\temp\UnityInjectionSampleSol\Some.Library.Gen\bin\Debug\Some.Library.Gen.pdb
+C:\temp\UnityInjectionSampleSol\Some.Library.Gen\obj\Debug\Some.Library.Gen.csprojResolveAssemblyReference.cache
+C:\temp\UnityInjectionSampleSol\Some.Library.Gen\obj\Debug\Some.Library.Gen.dll
+C:\temp\UnityInjectionSampleSol\Some.Library.Gen\obj\Debug\Some.Library.Gen.pdb
+C:\temp\UnityInjectionSampleSol\Some.Library.Gen\bin\Debug\Some.Common.dll
+C:\temp\UnityInjectionSampleSol\Some.Library.Gen\bin\Debug\Microsoft.Practices.Unity.dll
+C:\temp\UnityInjectionSampleSol\Some.Library.Gen\bin\Debug\Microsoft.Practices.Unity.Configuration.dll
+C:\temp\UnityInjectionSampleSol\Some.Library.Gen\bin\Debug\Microsoft.Practices.ServiceLocation.dll
+C:\temp\UnityInjectionSampleSol\Some.Library.Gen\bin\Debug\Some.Common.pdb
+C:\temp\UnityInjectionSampleSol\Some.Library.Gen\bin\Debug\Microsoft.Practices.Unity.xml
+C:\temp\UnityInjectionSampleSol\Some.Library.Gen\bin\Debug\Microsoft.Practices.Unity.Configuration.xml
+C:\temp\UnityInjectionSampleSol\Some.Library.Gen\bin\Debug\Microsoft.Practices.ServiceLocation.pdb
+C:\temp\UnityInjectionSampleSol\Some.Library.Gen\bin\Debug\Microsoft.Practices.ServiceLocation.xml
