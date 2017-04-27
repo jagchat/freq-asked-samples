@@ -1,0 +1,7 @@
+C:\temp\UnityInjectionSampleSol\Some.Library.Base\bin\Debug\Some.Library.Base.dll
+C:\temp\UnityInjectionSampleSol\Some.Library.Base\bin\Debug\Some.Library.Base.pdb
+C:\temp\UnityInjectionSampleSol\Some.Library.Base\bin\Debug\Some.Library.Interfaces.dll
+C:\temp\UnityInjectionSampleSol\Some.Library.Base\bin\Debug\Some.Library.Interfaces.pdb
+C:\temp\UnityInjectionSampleSol\Some.Library.Base\obj\Debug\Some.Library.Base.csprojResolveAssemblyReference.cache
+C:\temp\UnityInjectionSampleSol\Some.Library.Base\obj\Debug\Some.Library.Base.dll
+C:\temp\UnityInjectionSampleSol\Some.Library.Base\obj\Debug\Some.Library.Base.pdb

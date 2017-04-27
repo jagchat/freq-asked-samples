@@ -1,0 +1,17 @@
+C:\temp\UnityInjectionSampleSol\UnityInjectionSample\bin\Debug\UnityInjectionSample.exe.config
+C:\temp\UnityInjectionSampleSol\UnityInjectionSample\bin\Debug\UnityInjectionSample.exe
+C:\temp\UnityInjectionSampleSol\UnityInjectionSample\bin\Debug\UnityInjectionSample.pdb
+C:\temp\UnityInjectionSampleSol\UnityInjectionSample\bin\Debug\Microsoft.Practices.ServiceLocation.dll
+C:\temp\UnityInjectionSampleSol\UnityInjectionSample\bin\Debug\Microsoft.Practices.Unity.Configuration.dll
+C:\temp\UnityInjectionSampleSol\UnityInjectionSample\bin\Debug\Microsoft.Practices.Unity.dll
+C:\temp\UnityInjectionSampleSol\UnityInjectionSample\bin\Debug\Some.Library.Interfaces.dll
+C:\temp\UnityInjectionSampleSol\UnityInjectionSample\bin\Debug\Some.Library.Interfaces.pdb
+C:\temp\UnityInjectionSampleSol\UnityInjectionSample\bin\Debug\Microsoft.Practices.ServiceLocation.pdb
+C:\temp\UnityInjectionSampleSol\UnityInjectionSample\bin\Debug\Microsoft.Practices.ServiceLocation.xml
+C:\temp\UnityInjectionSampleSol\UnityInjectionSample\bin\Debug\Microsoft.Practices.Unity.xml
+C:\temp\UnityInjectionSampleSol\UnityInjectionSample\bin\Debug\Microsoft.Practices.Unity.Configuration.xml
+C:\temp\UnityInjectionSampleSol\UnityInjectionSample\obj\Debug\UnityInjectionSample.csprojResolveAssemblyReference.cache
+C:\temp\UnityInjectionSampleSol\UnityInjectionSample\obj\Debug\UnityInjectionSample.exe
+C:\temp\UnityInjectionSampleSol\UnityInjectionSample\obj\Debug\UnityInjectionSample.pdb
+C:\temp\UnityInjectionSampleSol\UnityInjectionSample\bin\Debug\Some.Common.dll
+C:\temp\UnityInjectionSampleSol\UnityInjectionSample\bin\Debug\Some.Common.pdb

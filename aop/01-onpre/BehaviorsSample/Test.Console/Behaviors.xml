@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Behaviors>
+  <!--<Behavior ClassType="Customer">
+    <Methods>
+      <Method 
+        Name="ComputeLabelName" 
+        Assembly="Some.Library.Custom.dll" 
+        Class="Some.Library.Custom.Customer" 
+        Pre="OnPreComputeLabelName" Post="" Override="" />
+    </Methods>
+  </Behavior>-->
+</Behaviors>

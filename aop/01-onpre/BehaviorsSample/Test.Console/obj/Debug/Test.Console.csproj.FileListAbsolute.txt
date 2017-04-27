@@ -1,0 +1,13 @@
+C:\temp\BehaviorsSample\Test.Console\bin\Debug\Behaviors.xml
+C:\temp\BehaviorsSample\Test.Console\bin\Debug\Test.Console.exe.config
+C:\temp\BehaviorsSample\Test.Console\bin\Debug\Test.Console.exe
+C:\temp\BehaviorsSample\Test.Console\bin\Debug\Test.Console.pdb
+C:\temp\BehaviorsSample\Test.Console\bin\Debug\Some.Library.Base.dll
+C:\temp\BehaviorsSample\Test.Console\bin\Debug\Some.Library.Gen.dll
+C:\temp\BehaviorsSample\Test.Console\bin\Debug\Some.Common.dll
+C:\temp\BehaviorsSample\Test.Console\bin\Debug\Some.Library.Base.pdb
+C:\temp\BehaviorsSample\Test.Console\bin\Debug\Some.Library.Gen.pdb
+C:\temp\BehaviorsSample\Test.Console\bin\Debug\Some.Common.pdb
+C:\temp\BehaviorsSample\Test.Console\obj\Debug\Test.Console.csprojResolveAssemblyReference.cache
+C:\temp\BehaviorsSample\Test.Console\obj\Debug\Test.Console.exe
+C:\temp\BehaviorsSample\Test.Console\obj\Debug\Test.Console.pdb

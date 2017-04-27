@@ -1,0 +1,14 @@
+C:\temp\UnityInjectionSampleSol\Some.Library.Gen\bin\Debug\Some.Library.Gen.dll
+C:\temp\UnityInjectionSampleSol\Some.Library.Gen\bin\Debug\Some.Library.Gen.pdb
+C:\temp\UnityInjectionSampleSol\Some.Library.Gen\bin\Debug\Some.Common.dll
+C:\temp\UnityInjectionSampleSol\Some.Library.Gen\bin\Debug\Some.Common.pdb
+C:\temp\UnityInjectionSampleSol\Some.Library.Gen\obj\Debug\Some.Library.Gen.csprojResolveAssemblyReference.cache
+C:\temp\UnityInjectionSampleSol\Some.Library.Gen\obj\Debug\Some.Library.Gen.dll
+C:\temp\UnityInjectionSampleSol\Some.Library.Gen\obj\Debug\Some.Library.Gen.pdb
+C:\temp\BehaviorsSample\Some.Library.Gen\bin\Debug\Some.Library.Gen.dll
+C:\temp\BehaviorsSample\Some.Library.Gen\bin\Debug\Some.Library.Gen.pdb
+C:\temp\BehaviorsSample\Some.Library.Gen\bin\Debug\Some.Common.dll
+C:\temp\BehaviorsSample\Some.Library.Gen\bin\Debug\Some.Common.pdb
+C:\temp\BehaviorsSample\Some.Library.Gen\obj\Debug\Some.Library.Gen.csprojResolveAssemblyReference.cache
+C:\temp\BehaviorsSample\Some.Library.Gen\obj\Debug\Some.Library.Gen.dll
+C:\temp\BehaviorsSample\Some.Library.Gen\obj\Debug\Some.Library.Gen.pdb

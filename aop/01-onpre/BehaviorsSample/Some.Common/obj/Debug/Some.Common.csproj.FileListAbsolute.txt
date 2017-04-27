@@ -1,0 +1,4 @@
+C:\temp\UnityInjectionSampleSol\Some.Common\bin\Debug\Some.Common.dll
+C:\temp\UnityInjectionSampleSol\Some.Common\bin\Debug\Some.Common.pdb
+C:\temp\UnityInjectionSampleSol\Some.Common\obj\Debug\Some.Common.dll
+C:\temp\UnityInjectionSampleSol\Some.Common\obj\Debug\Some.Common.pdb
