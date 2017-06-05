@@ -1,0 +1,3 @@
+echo testing..
+dir
+echo done...

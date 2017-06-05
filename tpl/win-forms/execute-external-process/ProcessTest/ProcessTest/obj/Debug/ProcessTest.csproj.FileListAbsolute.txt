@@ -1,0 +1,9 @@
+C:\temp\ProcessTest\ProcessTest\bin\Debug\ProcessTest.exe.config
+C:\temp\ProcessTest\ProcessTest\bin\Debug\ProcessTest.exe
+C:\temp\ProcessTest\ProcessTest\bin\Debug\ProcessTest.pdb
+C:\temp\ProcessTest\ProcessTest\obj\Debug\ProcessTest.csprojResolveAssemblyReference.cache
+C:\temp\ProcessTest\ProcessTest\obj\Debug\ProcessTest.Form1.resources
+C:\temp\ProcessTest\ProcessTest\obj\Debug\ProcessTest.Properties.Resources.resources
+C:\temp\ProcessTest\ProcessTest\obj\Debug\ProcessTest.csproj.GenerateResource.Cache
+C:\temp\ProcessTest\ProcessTest\obj\Debug\ProcessTest.exe
+C:\temp\ProcessTest\ProcessTest\obj\Debug\ProcessTest.pdb
