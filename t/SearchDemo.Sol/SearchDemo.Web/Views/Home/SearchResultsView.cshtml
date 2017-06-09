@@ -1,0 +1,10 @@
+﻿@model SearchDemo.Web.Models.SearchViewModel
+
+@foreach (var item in @Model.Results)
+{
+    <div class="row" style="margin-bottom: 20px;">
+        <div style="font-size:18pt"><a href="@item.Link">@item.Text</a></div>
+        <div style="font-size: 12pt;color:darkgreen">@item.Link</div>
+        <div>@item.Description</div>
+    </div>
+}
