@@ -1,0 +1,10 @@
+﻿@model SearchDemo.Web.Models.SearchViewModel
+
+@foreach (var item in @Model.Results)
+{
+    <div class="row" style="margin-bottom: 20px;">
+        <div style="font-size:18pt"><a onclick="app.showEmpDetails('@item.Empno')">Name: @item.Ename</a></div>
+        <div style="font-size: 12pt;color:darkgreen" onclick="app.showEmpDetails('@item.Empno')">@Url.Action("Details", "Employee", new RouteValueDictionary(new { empno = @item.Empno }))</div>
+        <div>Employee details - Id: @item.Empno, Name: @item.Ename, Salary: @item.Sal, Deptno: @item.Deptno</div>
+    </div>
+}

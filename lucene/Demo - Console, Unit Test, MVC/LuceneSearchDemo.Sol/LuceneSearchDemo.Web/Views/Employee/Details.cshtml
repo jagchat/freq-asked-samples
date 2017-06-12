@@ -1,0 +1,24 @@
+﻿@model LuceneSearchDemo.Service.Library.Employees.EmployeeSearchResultItem
+<div class="panel-default">
+    <div class="panel-heading">
+        Employee Details
+    </div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-sm-6">Employee Number</div>
+            <div class="col-sm-6">@Model.Empno</div>
+        </div>        
+        <div class="row">
+            <div class="col-sm-6">Name</div>
+            <div class="col-sm-6">@Model.Ename</div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">Salary</div>
+            <div class="col-sm-6">@Model.Sal</div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">Department</div>
+            <div class="col-sm-6">@Model.Deptno</div>
+        </div>
+    </div>
+</div>
