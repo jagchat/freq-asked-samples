@@ -1,0 +1,12 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/_LayoutPage1.cshtml";
+}
+<div style="margin-left:20px">
+    <h2>Chart Demo</h2>
+    <img src='@Url.Action("EmpGraph", "Home")'/>
+    <hr/>
+    <img src='@Url.Action("EmpGraph2", "Home")' />
+    <hr />
+    <img src='@Url.Action("EmpGraph3", "Home")' />
+</div>
