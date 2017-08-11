@@ -1,0 +1,4 @@
+C:\t\MvcAndApiSol\Api\bin\Debug\Api.dll
+C:\t\MvcAndApiSol\Api\bin\Debug\Api.pdb
+C:\t\MvcAndApiSol\Api\obj\Debug\Api.dll
+C:\t\MvcAndApiSol\Api\obj\Debug\Api.pdb

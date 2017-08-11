@@ -1,0 +1,31 @@
+﻿@model Api.Models.CalcOutputViewModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/_LayoutPage1.cshtml";
+}
+
+<h2>Index</h2>
+@using (Html.BeginForm("Index", "Calc"))
+{
+    <text>
+        First number: @Html.TextBoxFor(m => m.x) <br />
+        Second number: @Html.TextBoxFor(m => m.y) <br />
+        <button type="submit">Calculate (full POST)</button><br />
+        Result: @Html.DisplayTextFor(m => m.result)
+    </text>
+}
+<hr />
+<button onclick="getSum()">Calculate with Web API</button><br />
+<div id="resultWebApi"></div>
+<script>
+    function getSum() {
+        $.ajax({
+            url: '/api/calc/sum',
+            method: 'POST',
+            cache: 'false',
+            data: { x: $("#x").val(), y: $("#y").val() }
+        }).done(function(data) {
+            $("#resultWebApi").text("Result = " + data.result);
+        });
+    }
+</script>
