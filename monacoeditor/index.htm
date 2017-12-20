@@ -1,0 +1,39 @@
+<html>
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8" >
+</head>
+<body>
+
+<h2>Monaco Editor Sample</h2>
+<div id="jsContainer" style="width:800px;height:600px;border:1px solid grey"></div>
+<div id="xmlContainer" style="width:800px;height:600px;border:1px solid grey"></div>
+<script src="src/min/vs/loader.js"></script>
+<script>
+	require.config({ paths: { 'vs': 'src/min/vs' }});
+	require(['vs/editor/editor.main'], function() {
+		var editor = monaco.editor.create(document.getElementById('jsContainer'), {
+			value: [
+				'function x() {',
+				'\tconsole.log("Hello world!");',
+				'}'
+			].join('\n'),
+			language: 'javascript'
+		});
+		var editor = monaco.editor.create(document.getElementById('xmlContainer'), {
+			value: [
+				'<Employees>',
+				'\t<Employee>',
+				'\t\t<Empno>1001</Empno>',
+				'\t\t<Ename>Jag</Ename>',
+				'\t\t<Sal>4500</Sal>',
+				'\t\t<Deptno>20</Deptno>',
+				'\t</Employee>',
+				'</Employees>',
+			].join('\n'),
+			language: 'xml'
+		});
+	});
+</script>
+</body>
+</html>
