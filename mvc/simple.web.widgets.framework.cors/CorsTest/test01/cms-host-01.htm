@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  </head>
+  <body>
+		<script src="http://localhost:48724/Content/Scripts/app.host.01.js"></script>	
+		First number: <input type="text" value="3" id="x"/><br/>
+		Second number: <input type="text" value="5" id="y"/><br/>
+		<button onclick="getSumDirect()">Calculate with Web API (direct)</button><br />
+		<button onclick="getInDirect()">Calculate with Web API (indirect - Check console)</button><br />
+		<div id="resultWebApi"></div>
+		<script>			
+			function getSumDirect() {
+				$.ajax({
+					url: 'http://localhost:48724/api/calc/sum',
+					method: 'POST',
+					cache: 'false',
+					data: { x: $("#x").val(), y: $("#y").val() }
+				}).done(function(data) {
+					$("#resultWebApi").text("Result = " + data.result);
+				});
+				
+			}
+			function getInDirect() {
+				app.getSumProxy($("#x").val(), $("#y").val());
+			}
+		</script>
+		
+  </body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+    crossorigin="anonymous"></script>
+  <script src="http://localhost:48724/scripts/cors/sdk01/dist/psfy.externals.js"></script>
+  <script src="http://localhost:48724/scripts/cors/sdk01/dist/psfy.core.js"></script>
+  <style>
+    .box {
+        padding: 15px;
+        border: 3px solid red;
+    }
+</style>
+</head>
+
+<body>
+  <div id="app01container"></div>
+  <script>	
+    psfy.core.app.show({
+      id: 'i1',
+      app: 'app01',
+      target: '#app01container',
+      template: 'app01/dist/template.htm'
+    });
+  </script>
+  
+ <div class="box">test</div>
+  <hr>
+  <div id="app01container2"></div>
+  <script>
+    psfy.core.app.show({
+      id: 'i2',
+      app: 'app01',
+      target: '#app01container2',
+      template: 'app01/dist/template.htm'
+    });
+  </script>
+	
+
+</body>
+
+</html>

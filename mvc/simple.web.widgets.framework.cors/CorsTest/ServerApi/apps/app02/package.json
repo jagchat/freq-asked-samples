@@ -1,0 +1,16 @@
+{
+  "name": "app02",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build:dev": "./node_modules/.bin/webpack --config web.config.js",
+    "build:watch": "./node_modules/.bin/webpack --watch --config web.config.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "copy-webpack-plugin": "^4.5.1",
+    "webpack": "^3.11.0"
+  }
+}

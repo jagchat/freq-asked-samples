@@ -1,0 +1,43 @@
+<div class="container">
+    <div>value of a :
+        <input class="form-control" [(ngModel)]="a" (blur)="applyChanges()" />
+    </div>
+    <div>value of b :
+        <input class="form-control" [(ngModel)]="b" (blur)="applyChanges()" />
+    </div>
+    <hr>
+    <div>Bold :
+        <input [(ngModel)]="isBold" type="checkbox" (change)="setStyle()" />
+    </div>
+    <div>Italic :
+        <input [(ngModel)]="isItalic" type="checkbox" (change)="setStyle()" />
+    </div>
+    <div>
+        Is Bold = {{isBold}}
+        <br> Is Italic = {{isItalic}}
+    </div>
+    <hr>
+    <div>
+        Sum =
+        <!-- <span [class.bold-text]="isBold" [class.italic-text]="isItalic">{{sum}}</span> -->
+
+        <!--or (dash case)-->
+        <!-- <span [style.font-weight]="isBold ? 'bold' : 'normal'" [style.font-style]="isItalic ? 'italic' : 'normal'">{{sum}}</span> -->
+
+        <!--or (camel case)-->
+        <!-- <span [style.fontWeight]="isBold ? 'bold' : 'normal'" [style.fontStyle]="isItalic ? 'italic' : 'normal'">{{sum}}</span> -->
+
+        <!--or (with metrics)-->
+        <!-- <span [style.fontSize.px]="isBold ? 20 : 14" [style.fontWeight]="isBold ? 'bold' : 'normal'" [style.fontStyle]="isItalic ? 'italic' : 'normal'">{{sum}}</span> -->
+        <!-- <span [style.fontSize.em]="isBold ? 2 : 1" [style.fontWeight]="isBold ? 'bold' : 'normal'" [style.fontStyle]="isItalic ? 'italic' : 'normal'">{{sum}}</span> -->
+        <!-- <span [style.fontSize.%]="isBold ? 200 : 50" [style.fontWeight]="isBold ? 'bold' : 'normal'" [style.fontStyle]="isItalic ? 'italic' : 'normal'">{{sum}}</span> -->
+        <!-- <span [style.color]="sum > 100 ? 'red' : 'black'" [class.bold-text]="isBold" [class.italic-text]="isItalic">{{sum}}</span> -->
+
+        <!--using ngStyle-->
+        <!-- <span [ngStyle]="stylesToApply">{{sum}}</span> -->
+
+        <!--using ngClass-->
+        <span [ngClass]="classesToApply">{{sum}}</span>
+
+    </div>
+</div>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Angular 5 Sample</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--bootstrap.css-->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        crossorigin="anonymous">
+    <!--jQuery.js-->
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous"></script>
+    <!--bootstrap.js-->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+
+    <!-- Polyfill(s) for older browsers -->
+    <script src="node_modules/core-js/client/shim.min.js"></script>
+
+    <script src="node_modules/zone.js/dist/zone.js"></script>
+    <script src="node_modules/systemjs/dist/system.src.js"></script>
+
+    <script src="systemjs.config.js"></script>
+    <script>
+        System.import('app').catch(function (err) {
+            console.error(err);
+        });
+    </script>
+	
+  <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+    crossorigin="anonymous"></script>
+  <script src="http://localhost:48724/scripts/cors/sdk01/dist/psfy.externals.js"></script>
+  <script src="http://localhost:48724/scripts/cors/sdk01/dist/psfy.core.js"></script>
+  <style>
+    .box {
+        padding: 15px;
+        border: 3px solid red;
+    }
+</style>	
+</head>
+
+<body>
+    <app>Loading...</app>
+	  <div id="app01container"></div>
+  <script>	
+    psfy.core.app.show({
+      id: 'i1',
+      app: 'app01',
+      target: '#app01container',
+      template: 'app01/dist/template.htm'
+    });
+  </script>
+  
+ <div class="box">test</div>
+  <hr>
+  <div id="app01container2"></div>
+  <script>
+    psfy.core.app.show({
+      id: 'i2',
+      app: 'app01',
+      target: '#app01container2',
+      template: 'app01/dist/template.htm'
+    });
+  </script>
+</body>
+
+</html>
