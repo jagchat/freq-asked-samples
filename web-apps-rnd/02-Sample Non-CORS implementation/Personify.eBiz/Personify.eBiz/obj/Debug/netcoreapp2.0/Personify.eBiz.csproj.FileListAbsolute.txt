@@ -1,0 +1,11 @@
+C:\t\Personify.eBiz\Personify.eBiz\bin\Debug\netcoreapp2.0\Personify.eBiz.deps.json
+C:\t\Personify.eBiz\Personify.eBiz\bin\Debug\netcoreapp2.0\Personify.eBiz.runtimeconfig.json
+C:\t\Personify.eBiz\Personify.eBiz\bin\Debug\netcoreapp2.0\Personify.eBiz.runtimeconfig.dev.json
+C:\t\Personify.eBiz\Personify.eBiz\bin\Debug\netcoreapp2.0\Personify.eBiz.dll
+C:\t\Personify.eBiz\Personify.eBiz\obj\Debug\netcoreapp2.0\Personify.eBiz.csprojAssemblyReference.cache
+C:\t\Personify.eBiz\Personify.eBiz\obj\Debug\netcoreapp2.0\Personify.eBiz.csproj.CoreCompileInputs.cache
+C:\t\Personify.eBiz\Personify.eBiz\obj\Debug\netcoreapp2.0\Personify.eBiz.AssemblyInfoInputs.cache
+C:\t\Personify.eBiz\Personify.eBiz\obj\Debug\netcoreapp2.0\Personify.eBiz.AssemblyInfo.cs
+C:\t\Personify.eBiz\Personify.eBiz\bin\Debug\netcoreapp2.0\Personify.eBiz.pdb
+C:\t\Personify.eBiz\Personify.eBiz\obj\Debug\netcoreapp2.0\Personify.eBiz.dll
+C:\t\Personify.eBiz\Personify.eBiz\obj\Debug\netcoreapp2.0\Personify.eBiz.pdb

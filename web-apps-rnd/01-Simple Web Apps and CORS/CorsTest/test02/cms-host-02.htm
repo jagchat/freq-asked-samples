@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+		<script src='https://code.jquery.com/jquery-3.3.1.min.js'></script>
+		<script src="http://localhost:48724/content/post-robot-dist/post-robot.min.js"></script>
+		<script src="http://localhost:48724/content/scripts/app.host.02.js"></script>
+  </head>
+  <body>
+		<div id="messages"></div>
+
+		<button onclick="sendMessage()">post</button>
+		<script>
+			function sendMessage() {            
+				app.portal.send({ message: Math.random().toString() }).then(function (event) {
+					var el = document.getElementById('messages');
+					el.innerHTML += '\n' + event.data.message;
+				});
+			}
+		</script>
+  </body>
+</html>
+
+

@@ -1,0 +1,49 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Run TSC",
+            "type": "shell",
+            "command": "./node_modules/.bin/tsc",
+            "windows": {
+                "command": ".\\node_modules\\.bin\\tsc"
+            },
+            "args": [
+                "-p",
+                "."
+            ],
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            },
+            "problemMatcher": [
+                "$tsc",
+                "$tsc-watch"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "label": "Run HTTP Server",
+            "type": "shell",
+            "command": ".\\node_modules\\.bin\\http-server",
+            "args": [
+                "-p",
+                "8123"
+            ],
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            },
+            "problemMatcher": []
+        }
+    ]
+}

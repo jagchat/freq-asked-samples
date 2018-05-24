@@ -1,0 +1,21 @@
+{
+  "name": "psfy-core",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build:dev": "./node_modules/.bin/webpack --config web.config.js",
+    "build:watch": "./node_modules/.bin/webpack --watch --config web.config.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "jquery": "^3.3.1",
+    "lodash": "^4.17.10",
+    "post-robot": "^8.0.26"
+  },
+  "devDependencies": {
+    "copy-webpack-plugin": "^4.5.1",
+    "webpack": "^3.11.0"
+  }
+}

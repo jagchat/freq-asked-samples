@@ -1,0 +1,13 @@
+<div class="app02">
+    First number:
+    <!-- one way binding-->
+    <!--<input type="text" :value="x" />-->
+    <!-- two way binding-->
+    <input type="text" v-model.value="x" />
+
+    <br/> Second number:
+    <input type="text" v-model.value="y" />
+    <br/>
+    <button id="btnSum" v-on:click="doSum">Show Sum</button>
+    <div>{{resultMsg}}</div>
+</div>

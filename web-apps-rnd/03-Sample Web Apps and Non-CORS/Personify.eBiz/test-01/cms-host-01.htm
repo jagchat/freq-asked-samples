@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+	<script src="http://localhost:12602/apps/psfy-core/dist/psfy.externals.js"></script>
+	<script src="http://localhost:12602/apps/psfy-core/dist/psfy.core.js"></script>
+	<script src="http://localhost:12602/apps/psfy-core/dist/psfy.host.js"></script>
+
+	<script src="http://localhost:12602/apps/app01/dist/app01.js"></script>
+	<div id="app01-i1"></div>
+	<script>
+		(new psfy.app01()).show({
+			id: 'app01-i1',
+			target: '#app01-i1'
+		});
+	</script>
+
+	<script src="http://localhost:12602/apps/app02/dist/app02.js"></script>
+	<div id="app02-i1"></div>
+	<script>
+		(new psfy.app02()).show({
+			id: 'app02-i1',
+			target: '#app02-i1'
+		});
+	</script>
+
+
+	<!-- <script>
+		psfy.host.ready(function () {
+
+			//sample GET operation to eBiz server
+			psfy.host.ajax.get({
+				url: '/test/square/10'
+			}).done(function (o) {
+				console.log(o);
+			});
+
+			//sample POST operation to eBiz server
+			psfy.host.ajax.post({
+				url: '/test/sum',
+				data: {
+					a: 10,
+					b: 20
+				}
+			}).done(function (o) {
+				console.log(o);
+			});
+
+		});
+	</script> -->
+
+</body>
+
+</html>

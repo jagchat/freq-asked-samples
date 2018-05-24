@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>app01</title>
+</head>
+
+<body>
+  <script src="http://localhost:12602/apps/psfy-core/dist/psfy.externals.js"></script>
+  <script src="http://localhost:12602/apps/psfy-core/dist/psfy.core.js"></script>
+  <script src="http://localhost:12602/apps/psfy-core/dist/psfy.host.js"></script>
+
+  <script src="/dist/app01.js"></script>
+
+  <div id="app01-i1"></div>
+  <script>
+    (new psfy.app01()).show({
+      id: 'app01-i1',
+      target: '#app01-i1'
+    });
+
+  </script>
+
+</body>
+
+</html>

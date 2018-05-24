@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+		<script src='https://code.jquery.com/jquery-3.3.1.min.js'></script>
+		<script src="http://localhost:48724/content/post-robot-dist/post-robot.min.js"></script>
+		<script src="http://localhost:48724/content/scripts/app.host.03.js"></script>
+  </head>
+  <body>
+		First number: <input type="text" value="3" id="x"/><br/>
+		Second number: <input type="text" value="5" id="y"/><br/>
+		<button onclick="getSumDirect()">Calculate with Web API (direct)</button><br />
+		<button onclick="getInDirect()">Calculate with Web API (indirect - Check console)</button><br />
+		
+		<script>
+		
+			function getSumDirect() {
+				$.ajax({
+					url: 'http://localhost:48724/api/calc/sum',
+					method: 'POST',
+					cache: 'false',
+					data: { x: $("#x").val(), y: $("#y").val() }
+				}).done(function(data) {
+					$("#resultWebApi").text("Result = " + data.result);
+				});				
+			}
+			
+			function getInDirect() {            
+				//app.portal.send({ a:10, b:20 }).then(function (event) {
+				//	console.log("cms-host-03 - data available through subscriber");
+				//});
+				
+				app.portal.send({ a:$("#x").val(), b:$("#y").val() });
+			}
+		</script>
+		
+  </body>
+</html>
+
+
