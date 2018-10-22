@@ -5,4 +5,6 @@
 
 ## Steps
 
-#1 ![Alt text](_readme_images/dev/01.png?raw=true "Step 1")
+### Step 1:
+
+![Alt text](_readme_images/dev/01.png?raw=true "Step 1")
