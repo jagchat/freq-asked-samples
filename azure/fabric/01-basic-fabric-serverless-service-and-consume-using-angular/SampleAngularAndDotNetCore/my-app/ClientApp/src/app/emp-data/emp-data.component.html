@@ -1,0 +1,24 @@
+<h1>Employees List</h1>
+
+<p>This component demonstrates fetching data from the server.</p>
+
+<p *ngIf="!employees"><em>Loading...</em></p>
+
+<table class='table table-striped' *ngIf="employees">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Name</th>
+      <th>Salary</th>
+      <th>Dept</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let emp of employees">
+      <td>{{ emp.empno }}</td>
+      <td>{{ emp.ename }}</td>
+      <td>{{ emp.sal }}</td>
+      <td>{{ emp.deptno }}</td>
+    </tr>
+  </tbody>
+</table>
