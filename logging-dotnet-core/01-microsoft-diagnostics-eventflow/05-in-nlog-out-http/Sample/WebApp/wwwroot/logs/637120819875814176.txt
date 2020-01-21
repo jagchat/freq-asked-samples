@@ -1,0 +1,1 @@
+[{"Timestamp":"2019-12-16T14:33:06.7037184+00:00","ProviderName":"ConsoleApp1.Program","Level":5,"Keywords":0,"Payload":{"Message":"this is a trace message"}},{"Timestamp":"2019-12-16T14:33:06.7257188+00:00","ProviderName":"ConsoleApp1.Program","Level":5,"Keywords":0,"Payload":{"Message":"this is a debug message"}}]

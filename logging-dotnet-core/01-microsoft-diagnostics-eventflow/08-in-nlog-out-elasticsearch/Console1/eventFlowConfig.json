@@ -1,0 +1,15 @@
+{
+  "inputs": [
+    {
+      "type": "NLog"
+    }
+  ],
+  "outputs": [
+    {
+      "type": "ElasticSearch",
+      "indexNamePrefix": "app2",
+      "serviceUri": "http://<elasticserver>:9200"
+    }
+  ],
+  "schemaVersion": "2016-08-11"
+}

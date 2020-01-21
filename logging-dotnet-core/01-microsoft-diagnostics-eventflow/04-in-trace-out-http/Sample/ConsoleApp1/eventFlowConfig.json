@@ -1,0 +1,19 @@
+{
+  "inputs": [
+    {
+      "type": "Trace",
+      "traceLevel": "Warning" //Critical, Error, Warning, Information, Verbose, All
+    }
+  ],
+  "outputs": [
+    {
+      "type": "Http",
+      "serviceUri": "http://localhost:9498/Log/Write",
+      "format": "Json" //,
+      //"httpContentType": "application/x-custom-type",
+      //"basicAuthenticationUserName": "<user>",
+      //"basicAuthenticationUserPassword": "<MyPassword>"
+    }
+  ],
+  "schemaVersion": "2016-08-11"
+}

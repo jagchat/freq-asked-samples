@@ -1,0 +1,36 @@
+﻿{
+  "inputs": [
+    {
+      "type": "MoreNLog"
+    }
+  ],
+  "outputs": [
+    {
+      "type": "ElasticSearch",
+      "indexNamePrefix": "app3",
+      "serviceUri": "http://<elasticserver>:9200"
+    }
+  ],
+
+  "schemaVersion": "2016-08-11",
+
+  "extensions": [
+    {
+      "category": "inputFactory",
+      "type": "MoreNLog",
+      "qualifiedTypeName": "Microsoft.Diagnostics.EventFlow.Inputs.MoreNLogInputFactory, Microsoft.Diagnostics.EventFlow.Inputs.MoreNLog"
+    }
+  ],
+
+  "healthReporter": {
+    "type": "CsvHealthReporter",
+    "logFileFolder": ".",
+    "logFilePrefix": "HealthReport",
+    "minReportLevel": "Message",
+    "throttlingPeriodMsec": "1000",
+    "singleLogFileMaximumSizeInMBytes": "8192000",
+    "logRetentionInDays": "30",
+    "ensureOutputCanBeSaved": "false",
+    "assumeSharedLogFolder": "false"
+  }
+}

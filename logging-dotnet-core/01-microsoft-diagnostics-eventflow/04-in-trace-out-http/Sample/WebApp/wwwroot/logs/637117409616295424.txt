@@ -1,0 +1,1 @@
+[{"Timestamp":"2019-12-12T15:49:20.4785796+00:00","ProviderName":"ConsoleApp1","Level":3,"Keywords":0,"Payload":{"Message":"EventFlow is working!","EventId":0}}]

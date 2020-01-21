@@ -1,0 +1,16 @@
+{
+  "inputs": [
+    {
+      "type": "Trace",
+      "traceLevel": "Warning" //Critical, Error, Warning, Information, Verbose, All
+    }
+  ],
+  "outputs": [
+    {
+      "type": "ElasticSearch",
+      "indexNamePrefix": "app1",
+      "serviceUri": "http://<elasticserver>:9200"
+    }
+  ],
+  "schemaVersion": "2016-08-11"
+}
