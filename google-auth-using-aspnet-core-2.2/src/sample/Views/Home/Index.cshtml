@@ -1,0 +1,40 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+    var currentUrl = "/";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    @if (!string.IsNullOrEmpty(User.Identity.Name))
+    {
+        <div class="text-left">
+            <h2>Hi @User.Identity.Name,</h2>
+            <table class="table text-left">
+                <thead>
+                    <tr>
+                        <th scope="col">Type</th>
+                        <th scope="col">Value</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    @foreach (var userClaim in User.Claims)
+                    {
+                        <tr>
+                            <td>@userClaim.Type</td>
+                            <td>@userClaim.Value</td>
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+            <button class="btn btn-primary" onclick="location.href='@Url.Action("Logout", "Account", new {  returnUrl = currentUrl })'">Logout</button>
+        </div>
+    }
+    else
+    {
+        <button class="btn btn-primary" onclick="location.href='@Url.Action("Login", "Account", new {  returnUrl = currentUrl })'">Login</button>
+    }
+
+</div>
