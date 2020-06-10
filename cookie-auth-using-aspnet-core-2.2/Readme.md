@@ -2,7 +2,6 @@
 
  - Demonstrates on developing a basic ASP.NET Core 2.2 app with Cookie Authentication
  - The app does not use ASP.NET Core Identity or EF/Db and is a straight forward/basic way of integrating Cookie Authentication
- - App demonstrates the following:
  
  
 
