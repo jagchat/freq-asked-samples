@@ -1,0 +1,37 @@
+﻿@model LoginViewModel
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+@if (!User.Identity.IsAuthenticated)
+{
+    <div class="text-left">
+        <h1 class="display-4">Login</h1>
+        <div class="row">
+            <div class="col-md-5">
+                <form method="post">
+                    <p>Sign into the app with the <b>Email</b> address <code>jag@email.com</code>  <i>(for "admin")</i> or <code>scott@email.com</code> <i>(for "member")</i> and any password.</p>
+                    <hr>
+                    <div asp-validation-summary="All" class="text-danger">@Model.ErrorInfo</div>
+                    <div class="form-group">
+                        <label asp-for="@Model.Email"></label>
+                        <input asp-for="@Model.Email" class="form-control">
+                        <span asp-validation-for="@Model.Email" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="@Model.Password"></label>
+                        <input asp-for="@Model.Password" class="form-control">
+                        <span asp-validation-for="@Model.Password" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary">Log in</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+}
+else
+{
+    <h3 class="display-4">You are already logged in</h3>
+}

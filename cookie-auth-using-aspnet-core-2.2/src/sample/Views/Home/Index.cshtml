@@ -1,0 +1,20 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+    var currentUrl = "/";
+}
+
+<div class="text-center">
+
+    @if (!User.Identity.IsAuthenticated)
+    {
+        <h1 class="display-4">Welcome</h1>
+        <button class="btn btn-primary" onclick="location.href='@Url.Action("Login", "Security", new {  ReturnUrl = currentUrl })'">Login</button>
+    }
+    else
+    {
+        <h1 class="display-4">Hi @User.Identity.Name </h1>
+        <p><a href='@Url.Action("ProtectedInfo", "Home")'>Show Claims (only for logged in users)</a></p>
+        <p><a href='@Url.Action("MemberInfo", "Home")'>Show Member Info (only for members - otherwise denied access)</a></p>
+        <button class="btn btn-primary" onclick="location.href='@Url.Action("Logout", "Security", new {  ReturnUrl = currentUrl })'">Logout</button>
+    }
+</div>

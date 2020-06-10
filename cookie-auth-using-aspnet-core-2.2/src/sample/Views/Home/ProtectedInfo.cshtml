@@ -1,0 +1,27 @@
+﻿@{
+    ViewData["Title"] = "Current claims (Protected Info)";
+}
+<h1>@ViewData["Title"]</h1>
+
+<p>This page should not be seen without user logged in!</p>
+
+<h2>Hi @User.Identity.Name,</h2>
+<table class="table text-left">
+    <thead>
+        <tr>
+            <th scope="col">Type</th>
+            <th scope="col">Value</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var userClaim in User.Claims)
+        {
+            <tr>
+                <td>@userClaim.Type</td>
+                <td>@userClaim.Value</td>
+            </tr>
+        }
+
+    </tbody>
+</table>
