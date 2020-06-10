@@ -5,6 +5,7 @@ to run and debug based on ASP.NET Core MVC Views
 - comment "spa.UseReactDevelopmentServer(npmScript: "start");" in startup.cs (for ASP.NET/iis)
 - run "npm install" and "npm run build" in "ClientApp" folder (for production react app)
 - run and open "http://<yourserver>:<port>/Demo" (for MVC View with embedded MVC app)
+- if the page is empty or react content missing, press Ctrl+F5 in browser (to see react content) - still need to explore on this
 
 to run and debug just React app (without ASP.NET Core MVC Views)
 - uncomment "spa.UseReactDevelopmentServer(npmScript: "start");" (for webpack dev server)
