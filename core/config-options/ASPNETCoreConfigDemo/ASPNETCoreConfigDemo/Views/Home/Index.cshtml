@@ -1,0 +1,26 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+@using Microsoft.Extensions.Configuration
+@using Microsoft.Extensions.Logging;
+@inject IConfiguration Configuration
+@inject ILoggerFactory logFactory
+
+@{
+    var myKeyValue = Configuration["MyKey"]; //from appsettings.json
+    var myUrl = Configuration["MyOptions:MyStartupUrl"]; //from startup.cs
+    var myCustomOption1 = Configuration["MyCustomOption1"]; //from custom config provider
+    var myCustomJsonOption1 = Configuration["My2ndLevelOptionSet:SetOption1"]; //from custom json config provider
+
+    var log = logFactory.CreateLogger("Views.Home.Index.cshtml");
+    log.LogInformation($"Views.Home.Index => {myCustomJsonOption1}");
+}
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <p>MyKey: @myKeyValue</p>
+    <p>MyOptions:MyStartupUrl: @myUrl</p>
+    <p>MyCustomOption1: @myCustomOption1</p>
+    <p>MyCustomJsonOption1: @myCustomJsonOption1</p>
+</div>
