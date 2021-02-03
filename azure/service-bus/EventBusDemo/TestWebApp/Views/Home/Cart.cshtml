@@ -1,0 +1,20 @@
+﻿@model List<TestWebApp.Helpers.Models.CartItemModel>
+
+@{
+    ViewData["Title"] = "Cart";
+}
+<h1>@ViewData["Title"]</h1>
+
+<h3>Cart Item Count: @Model?.Count()</h3>
+<hr />
+@foreach (var item in Model)
+{
+    <div class="card" style="width: 18rem;">
+        <div class="card-body">
+            <h5 class="card-title">Product @item.ProductId</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        </div>
+    </div>
+}
+
+

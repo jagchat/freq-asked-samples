@@ -1,0 +1,45 @@
+﻿@{
+    ViewData["Title"] = "Products List";
+}
+<h1>@ViewData["Title"]</h1>
+
+<div class="card" style="width: 18rem;">
+    <div class="card-body">
+        <h5 class="card-title">Product 12</h5>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        <a href="#" class="btn btn-primary" onclick="AddToCart('12')">Add to Cart</a>
+    </div>
+</div>
+
+<div class="card" style="width: 18rem;">
+    <div class="card-body">
+        <h5 class="card-title">Product 27</h5>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        <a href="#" class="btn btn-primary" onclick="AddToCart('27')">Add to Cart</a>
+    </div>
+</div>
+
+<div class="card" style="width: 18rem;">
+    <div class="card-body">
+        <h5 class="card-title">Product 38</h5>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        <a href="#" class="btn btn-primary" onclick="AddToCart('38')">Add to Cart</a>
+    </div>
+</div>
+
+<div id="result"></div>
+
+<script>
+    function AddToCart(productId) {
+        $.ajax({
+            url: "Products",
+            type: "POST",
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            data: JSON.stringify({ "ProductId": productId }),
+            success: function (data) {
+                $("#result").html(data);
+            },
+        });
+    }
+</script>
