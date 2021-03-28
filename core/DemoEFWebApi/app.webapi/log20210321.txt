@@ -1,0 +1,839 @@
+2021-03-21 11:21:10.428 -05:00 [INF] Request starting HTTP/1.1 GET https://localhost:44319/api/employees  
+2021-03-21 11:21:10.431 -05:00 [VRB] All hosts are allowed.
+2021-03-21 11:21:10.434 -05:00 [DBG] 1 candidate(s) found for the request path '/api/employees'
+2021-03-21 11:21:10.435 -05:00 [DBG] Endpoint 'app.webapi.Controllers.EmployeesController.Get (app.webapi)' with route pattern 'api/Employees' is valid for the request path '/api/employees'
+2021-03-21 11:21:10.437 -05:00 [DBG] Request matched endpoint 'app.webapi.Controllers.EmployeesController.Get (app.webapi)'
+2021-03-21 11:21:10.439 -05:00 [INF] Executing endpoint 'app.webapi.Controllers.EmployeesController.Get (app.webapi)'
+2021-03-21 11:21:10.442 -05:00 [INF] Route matched with {action = "Get", controller = "Employees"}. Executing controller action with signature System.Collections.Generic.IEnumerable`1[app.data.Employee] Get() on controller app.webapi.Controllers.EmployeesController (app.webapi).
+2021-03-21 11:21:10.443 -05:00 [DBG] Execution plan of authorization filters (in the following order): ["None"]
+2021-03-21 11:21:10.445 -05:00 [DBG] Execution plan of resource filters (in the following order): ["None"]
+2021-03-21 11:21:10.446 -05:00 [DBG] Execution plan of action filters (in the following order): ["Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter (Order: -3000)","Microsoft.AspNetCore.Mvc.Infrastructure.ModelStateInvalidFilter (Order: -2000)"]
+2021-03-21 11:21:10.447 -05:00 [DBG] Execution plan of exception filters (in the following order): ["None"]
+2021-03-21 11:21:10.449 -05:00 [DBG] Execution plan of result filters (in the following order): ["Microsoft.AspNetCore.Mvc.Infrastructure.ClientErrorResultFilter (Order: -2000)"]
+2021-03-21 11:21:10.450 -05:00 [DBG] Executing controller factory for controller app.webapi.Controllers.EmployeesController (app.webapi)
+2021-03-21 11:21:10.452 -05:00 [VRB] EmployeeRepository.constructor: Started..
+2021-03-21 11:21:10.508 -05:00 [DBG] Executed controller factory for controller app.webapi.Controllers.EmployeesController (app.webapi)
+2021-03-21 11:21:10.512 -05:00 [VRB] Action Filter: Before executing OnActionExecuting on filter Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter.
+2021-03-21 11:21:10.514 -05:00 [VRB] Action Filter: After executing OnActionExecuting on filter Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter.
+2021-03-21 11:21:10.517 -05:00 [VRB] Action Filter: Before executing OnActionExecuting on filter Microsoft.AspNetCore.Mvc.Infrastructure.ModelStateInvalidFilter.
+2021-03-21 11:21:10.519 -05:00 [VRB] Action Filter: After executing OnActionExecuting on filter Microsoft.AspNetCore.Mvc.Infrastructure.ModelStateInvalidFilter.
+2021-03-21 11:21:10.535 -05:00 [INF] Executing action method app.webapi.Controllers.EmployeesController.Get (app.webapi) - Validation state: "Valid"
+2021-03-21 11:21:10.538 -05:00 [VRB] EmployeesController.Get: Started..
+2021-03-21 11:21:10.541 -05:00 [VRB] EmployeeRepository.GetAll: Started..
+2021-03-21 11:21:10.639 -05:00 [DBG] An additional 'IServiceProvider' was created for internal use by Entity Framework. An existing service provider was not used due to the following configuration changes: configuration added for 'Core:UseMemoryCache', configuration added for 'Core:EnableSensitiveDataLogging', configuration added for 'Core:EnableDetailedErrors', configuration added for 'Core:ConfigureWarnings', configuration added for 'SqlServer:UseRowNumberForPaging'.
+2021-03-21 11:21:10.844 -05:00 [VRB] SampleDbContext.OnModelCreating: Started...
+2021-03-21 11:21:10.934 -05:00 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data, this mode should only be enabled during development.
+2021-03-21 11:21:10.989 -05:00 [INF] Entity Framework Core 3.1.10 initialized 'SampleDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: SensitiveDataLoggingEnabled MaxBatchSize=150 
+2021-03-21 11:21:11.110 -05:00 [DBG] queryContext => new QueryingEnumerable<Employee>(
+    (RelationalQueryContext)queryContext, 
+    RelationalCommandCache, 
+    null, 
+    null, 
+    Func<QueryContext, DbDataReader, ResultContext, int[], ResultCoordinator, Employee>, 
+    app.data.SampleDbContext, 
+    null
+)
+2021-03-21 11:21:11.134 -05:00 [DBG] Creating DbCommand for 'ExecuteReader'.
+2021-03-21 11:21:11.168 -05:00 [DBG] Created DbCommand for 'ExecuteReader' (31ms).
+2021-03-21 11:21:11.174 -05:00 [DBG] Opening connection to database 'SampleDb' on server '.'.
+2021-03-21 11:21:11.422 -05:00 [DBG] Opened connection to database 'SampleDb' on server '.'.
+2021-03-21 11:21:11.432 -05:00 [DBG] Executing DbCommand [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [e].[Empno], [e].[Deptno], [e].[Ename], [e].[Sal]
+FROM [Emp] AS [e]
+2021-03-21 11:21:11.461 -05:00 [INF] Executed DbCommand (30ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [e].[Empno], [e].[Deptno], [e].[Ename], [e].[Sal]
+FROM [Emp] AS [e]
+2021-03-21 11:21:11.498 -05:00 [DBG] Context 'SampleDbContext' started tracking 'Employee' entity with key '{Empno: 1001}'.
+2021-03-21 11:21:11.517 -05:00 [DBG] Context 'SampleDbContext' started tracking 'Employee' entity with key '{Empno: 1002}'.
+2021-03-21 11:21:11.520 -05:00 [DBG] Context 'SampleDbContext' started tracking 'Employee' entity with key '{Empno: 1003}'.
+2021-03-21 11:21:11.523 -05:00 [DBG] Context 'SampleDbContext' started tracking 'Employee' entity with key '{Empno: 1004}'.
+2021-03-21 11:21:11.525 -05:00 [DBG] Context 'SampleDbContext' started tracking 'Employee' entity with key '{Empno: 1005}'.
+2021-03-21 11:21:11.527 -05:00 [DBG] Context 'SampleDbContext' started tracking 'Employee' entity with key '{Empno: 1006}'.
+2021-03-21 11:21:11.533 -05:00 [DBG] A data reader was disposed.
+2021-03-21 11:21:11.537 -05:00 [DBG] Closing connection to database 'SampleDb' on server '.'.
+2021-03-21 11:21:11.543 -05:00 [DBG] Closed connection to database 'SampleDb' on server '.'.
+2021-03-21 11:21:11.546 -05:00 [INF] Executed action method app.webapi.Controllers.EmployeesController.Get (app.webapi), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 1007.9403ms.
+2021-03-21 11:21:11.548 -05:00 [VRB] Action Filter: Before executing OnActionExecuted on filter Microsoft.AspNetCore.Mvc.Infrastructure.ModelStateInvalidFilter.
+2021-03-21 11:21:11.550 -05:00 [VRB] Action Filter: After executing OnActionExecuted on filter Microsoft.AspNetCore.Mvc.Infrastructure.ModelStateInvalidFilter.
+2021-03-21 11:21:11.552 -05:00 [VRB] Action Filter: Before executing OnActionExecuted on filter Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter.
+2021-03-21 11:21:11.553 -05:00 [VRB] Action Filter: After executing OnActionExecuted on filter Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter.
+2021-03-21 11:21:11.555 -05:00 [VRB] Result Filter: Before executing OnResultExecuting on filter Microsoft.AspNetCore.Mvc.Infrastructure.ClientErrorResultFilter.
+2021-03-21 11:21:11.556 -05:00 [VRB] Result Filter: After executing OnResultExecuting on filter Microsoft.AspNetCore.Mvc.Infrastructure.ClientErrorResultFilter.
+2021-03-21 11:21:11.558 -05:00 [VRB] Before executing action result Microsoft.AspNetCore.Mvc.ObjectResult.
+2021-03-21 11:21:11.559 -05:00 [DBG] List of registered output formatters, in the following order: ["Microsoft.AspNetCore.Mvc.Formatters.HttpNoContentOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.StringOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.StreamOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonOutputFormatter"]
+2021-03-21 11:21:11.561 -05:00 [DBG] No information found on request to perform content negotiation.
+2021-03-21 11:21:11.563 -05:00 [DBG] Attempting to select an output formatter without using a content type as no explicit content types were specified for the response.
+2021-03-21 11:21:11.564 -05:00 [DBG] Attempting to select the first formatter in the output formatters list which can write the result.
+2021-03-21 11:21:11.566 -05:00 [DBG] Selected output formatter 'Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonOutputFormatter' and content type 'application/json' to write the response.
+2021-03-21 11:21:11.567 -05:00 [INF] Executing ObjectResult, writing value of type 'System.Collections.Generic.List`1[[app.data.Employee, app.data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2021-03-21 11:21:11.573 -05:00 [VRB] After executing action result Microsoft.AspNetCore.Mvc.ObjectResult.
+2021-03-21 11:21:11.575 -05:00 [VRB] Result Filter: Before executing OnResultExecuted on filter Microsoft.AspNetCore.Mvc.Infrastructure.ClientErrorResultFilter.
+2021-03-21 11:21:11.579 -05:00 [VRB] Result Filter: After executing OnResultExecuted on filter Microsoft.AspNetCore.Mvc.Infrastructure.ClientErrorResultFilter.
+2021-03-21 11:21:11.581 -05:00 [INF] Executed action app.webapi.Controllers.EmployeesController.Get (app.webapi) in 1130.5311ms
+2021-03-21 11:21:11.583 -05:00 [INF] Executed endpoint 'app.webapi.Controllers.EmployeesController.Get (app.webapi)'
+2021-03-21 11:21:11.585 -05:00 [INF] Request finished in 1157.1909ms 200 application/json; charset=utf-8
+2021-03-21 19:43:15.780 -05:00 [INF] Starting host..
+2021-03-21 19:43:17.501 -05:00 [DBG] Hosting starting
+2021-03-21 19:43:17.740 -05:00 [DBG] Loaded hosting startup assembly app.webapi
+2021-03-21 19:43:17.757 -05:00 [INF] Application started. Press Ctrl+C to shut down.
+2021-03-21 19:43:17.759 -05:00 [INF] Hosting environment: Development
+2021-03-21 19:43:17.761 -05:00 [INF] Content root path: c:\temp\DemoEFWebApi\app.webapi
+2021-03-21 19:43:17.763 -05:00 [DBG] Hosting started
+2021-03-21 19:43:17.790 -05:00 [INF] Request starting HTTP/2.0 GET https://localhost:44319/weatherforecast  
+2021-03-21 19:43:17.798 -05:00 [DBG] Wildcard detected, all requests with hosts will be allowed.
+2021-03-21 19:43:17.801 -05:00 [VRB] All hosts are allowed.
+2021-03-21 19:43:17.836 -05:00 [DBG] 1 candidate(s) found for the request path '/weatherforecast'
+2021-03-21 19:43:17.846 -05:00 [DBG] Endpoint 'app.webapi.Controllers.WeatherForecastController.Get (app.webapi)' with route pattern 'WeatherForecast' is valid for the request path '/weatherforecast'
+2021-03-21 19:43:17.853 -05:00 [DBG] Request matched endpoint 'app.webapi.Controllers.WeatherForecastController.Get (app.webapi)'
+2021-03-21 19:43:17.858 -05:00 [INF] Executing endpoint 'app.webapi.Controllers.WeatherForecastController.Get (app.webapi)'
+2021-03-21 19:43:17.868 -05:00 [DBG] Registered model binder providers, in the following order: ["Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BinderTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ServicesModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BodyModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.HeaderModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FloatingPointTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.EnumTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.SimpleTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CancellationTokenModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ByteArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormFileModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormCollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.KeyValuePairModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.DictionaryModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ComplexTypeModelBinderProvider"]
+2021-03-21 19:43:17.903 -05:00 [INF] Route matched with {action = "Get", controller = "WeatherForecast"}. Executing controller action with signature System.Collections.Generic.IEnumerable`1[app.webapi.WeatherForecast] Get() on controller app.webapi.Controllers.WeatherForecastController (app.webapi).
+2021-03-21 19:43:17.911 -05:00 [DBG] Execution plan of authorization filters (in the following order): ["None"]
+2021-03-21 19:43:17.914 -05:00 [DBG] Execution plan of resource filters (in the following order): ["None"]
+2021-03-21 19:43:17.917 -05:00 [DBG] Execution plan of action filters (in the following order): ["Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter (Order: -3000)","Microsoft.AspNetCore.Mvc.Infrastructure.ModelStateInvalidFilter (Order: -2000)"]
+2021-03-21 19:43:17.919 -05:00 [DBG] Execution plan of exception filters (in the following order): ["None"]
+2021-03-21 19:43:17.921 -05:00 [DBG] Execution plan of result filters (in the following order): ["Microsoft.AspNetCore.Mvc.Infrastructure.ClientErrorResultFilter (Order: -2000)"]
+2021-03-21 19:43:17.923 -05:00 [DBG] Executing controller factory for controller app.webapi.Controllers.WeatherForecastController (app.webapi)
+2021-03-21 19:43:17.925 -05:00 [VRB] WeatherForecastController.constructor: Started..
+2021-03-21 19:43:17.926 -05:00 [DBG] Executed controller factory for controller app.webapi.Controllers.WeatherForecastController (app.webapi)
+2021-03-21 19:43:17.928 -05:00 [VRB] Action Filter: Before executing OnActionExecuting on filter Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter.
+2021-03-21 19:43:17.930 -05:00 [VRB] Action Filter: After executing OnActionExecuting on filter Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter.
+2021-03-21 19:43:17.931 -05:00 [VRB] Action Filter: Before executing OnActionExecuting on filter Microsoft.AspNetCore.Mvc.Infrastructure.ModelStateInvalidFilter.
+2021-03-21 19:43:17.932 -05:00 [VRB] Action Filter: After executing OnActionExecuting on filter Microsoft.AspNetCore.Mvc.Infrastructure.ModelStateInvalidFilter.
+2021-03-21 19:43:18.010 -05:00 [INF] Executing action method app.webapi.Controllers.WeatherForecastController.Get (app.webapi) - Validation state: "Valid"
+2021-03-21 19:43:18.014 -05:00 [VRB] WeatherForecastController.Get: Started..
+2021-03-21 19:43:18.021 -05:00 [INF] Executed action method app.webapi.Controllers.WeatherForecastController.Get (app.webapi), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 4.6248ms.
+2021-03-21 19:43:18.024 -05:00 [VRB] Action Filter: Before executing OnActionExecuted on filter Microsoft.AspNetCore.Mvc.Infrastructure.ModelStateInvalidFilter.
+2021-03-21 19:43:18.026 -05:00 [VRB] Action Filter: After executing OnActionExecuted on filter Microsoft.AspNetCore.Mvc.Infrastructure.ModelStateInvalidFilter.
+2021-03-21 19:43:18.029 -05:00 [VRB] Action Filter: Before executing OnActionExecuted on filter Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter.
+2021-03-21 19:43:18.031 -05:00 [VRB] Action Filter: After executing OnActionExecuted on filter Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter.
+2021-03-21 19:43:18.035 -05:00 [VRB] Result Filter: Before executing OnResultExecuting on filter Microsoft.AspNetCore.Mvc.Infrastructure.ClientErrorResultFilter.
+2021-03-21 19:43:18.037 -05:00 [VRB] Result Filter: After executing OnResultExecuting on filter Microsoft.AspNetCore.Mvc.Infrastructure.ClientErrorResultFilter.
+2021-03-21 19:43:18.039 -05:00 [VRB] Before executing action result Microsoft.AspNetCore.Mvc.ObjectResult.
+2021-03-21 19:43:18.042 -05:00 [DBG] List of registered output formatters, in the following order: ["Microsoft.AspNetCore.Mvc.Formatters.HttpNoContentOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.StringOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.StreamOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonOutputFormatter"]
+2021-03-21 19:43:18.046 -05:00 [DBG] No information found on request to perform content negotiation.
+2021-03-21 19:43:18.048 -05:00 [DBG] Attempting to select an output formatter without using a content type as no explicit content types were specified for the response.
+2021-03-21 19:43:18.050 -05:00 [DBG] Attempting to select the first formatter in the output formatters list which can write the result.
+2021-03-21 19:43:18.053 -05:00 [DBG] Selected output formatter 'Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonOutputFormatter' and content type 'application/json' to write the response.
+2021-03-21 19:43:18.056 -05:00 [INF] Executing ObjectResult, writing value of type 'app.webapi.WeatherForecast[]'.
+2021-03-21 19:43:18.087 -05:00 [VRB] After executing action result Microsoft.AspNetCore.Mvc.ObjectResult.
+2021-03-21 19:43:18.090 -05:00 [VRB] Result Filter: Before executing OnResultExecuted on filter Microsoft.AspNetCore.Mvc.Infrastructure.ClientErrorResultFilter.
+2021-03-21 19:43:18.092 -05:00 [VRB] Result Filter: After executing OnResultExecuted on filter Microsoft.AspNetCore.Mvc.Infrastructure.ClientErrorResultFilter.
+2021-03-21 19:43:18.100 -05:00 [INF] Executed action app.webapi.Controllers.WeatherForecastController.Get (app.webapi) in 172.9603ms
+2021-03-21 19:43:18.103 -05:00 [INF] Executed endpoint 'app.webapi.Controllers.WeatherForecastController.Get (app.webapi)'
+2021-03-21 19:43:18.108 -05:00 [INF] Request finished in 319.613ms 200 application/json; charset=utf-8
+2021-03-21 19:43:45.709 -05:00 [INF] Request starting HTTP/2.0 GET https://localhost:44319/api/employees  
+2021-03-21 19:43:45.712 -05:00 [VRB] All hosts are allowed.
+2021-03-21 19:43:45.716 -05:00 [DBG] 1 candidate(s) found for the request path '/api/employees'
+2021-03-21 19:43:45.719 -05:00 [DBG] Endpoint 'app.webapi.Controllers.EmployeesController.Get (app.webapi)' with route pattern 'api/Employees' is valid for the request path '/api/employees'
+2021-03-21 19:43:45.722 -05:00 [DBG] Request matched endpoint 'app.webapi.Controllers.EmployeesController.Get (app.webapi)'
+2021-03-21 19:43:45.724 -05:00 [INF] Executing endpoint 'app.webapi.Controllers.EmployeesController.Get (app.webapi)'
+2021-03-21 19:43:45.730 -05:00 [INF] Route matched with {action = "Get", controller = "Employees"}. Executing controller action with signature System.Collections.Generic.IEnumerable`1[app.data.Employee] Get() on controller app.webapi.Controllers.EmployeesController (app.webapi).
+2021-03-21 19:43:45.733 -05:00 [DBG] Execution plan of authorization filters (in the following order): ["None"]
+2021-03-21 19:43:45.735 -05:00 [DBG] Execution plan of resource filters (in the following order): ["None"]
+2021-03-21 19:43:45.738 -05:00 [DBG] Execution plan of action filters (in the following order): ["Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter (Order: -3000)","Microsoft.AspNetCore.Mvc.Infrastructure.ModelStateInvalidFilter (Order: -2000)"]
+2021-03-21 19:43:45.741 -05:00 [DBG] Execution plan of exception filters (in the following order): ["None"]
+2021-03-21 19:43:45.743 -05:00 [DBG] Execution plan of result filters (in the following order): ["Microsoft.AspNetCore.Mvc.Infrastructure.ClientErrorResultFilter (Order: -2000)"]
+2021-03-21 19:43:45.746 -05:00 [DBG] Executing controller factory for controller app.webapi.Controllers.EmployeesController (app.webapi)
+2021-03-21 19:43:45.749 -05:00 [VRB] EmployeeRepository.constructor: Started..
+2021-03-21 19:43:45.808 -05:00 [DBG] Executed controller factory for controller app.webapi.Controllers.EmployeesController (app.webapi)
+2021-03-21 19:43:45.811 -05:00 [VRB] Action Filter: Before executing OnActionExecuting on filter Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter.
+2021-03-21 19:43:45.815 -05:00 [VRB] Action Filter: After executing OnActionExecuting on filter Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter.
+2021-03-21 19:43:45.818 -05:00 [VRB] Action Filter: Before executing OnActionExecuting on filter Microsoft.AspNetCore.Mvc.Infrastructure.ModelStateInvalidFilter.
+2021-03-21 19:43:45.821 -05:00 [VRB] Action Filter: After executing OnActionExecuting on filter Microsoft.AspNetCore.Mvc.Infrastructure.ModelStateInvalidFilter.
+2021-03-21 19:43:45.838 -05:00 [INF] Executing action method app.webapi.Controllers.EmployeesController.Get (app.webapi) - Validation state: "Valid"
+2021-03-21 19:43:45.840 -05:00 [VRB] EmployeesController.Get: Started..
+2021-03-21 19:43:45.843 -05:00 [VRB] EmployeeRepository.GetAll: Started..
+2021-03-21 19:43:45.938 -05:00 [DBG] An additional 'IServiceProvider' was created for internal use by Entity Framework. An existing service provider was not used due to the following configuration changes: configuration added for 'Core:UseMemoryCache', configuration added for 'Core:EnableSensitiveDataLogging', configuration added for 'Core:EnableDetailedErrors', configuration added for 'Core:ConfigureWarnings', configuration added for 'SqlServer:UseRowNumberForPaging'.
+2021-03-21 19:43:46.145 -05:00 [VRB] SampleDbContext.OnModelCreating: Started...
+2021-03-21 19:43:46.226 -05:00 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data, this mode should only be enabled during development.
+2021-03-21 19:43:46.278 -05:00 [INF] Entity Framework Core 3.1.10 initialized 'SampleDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: SensitiveDataLoggingEnabled MaxBatchSize=150 
+2021-03-21 19:43:46.408 -05:00 [DBG] queryContext => new QueryingEnumerable<Employee>(
+    (RelationalQueryContext)queryContext, 
+    RelationalCommandCache, 
+    null, 
+    null, 
+    Func<QueryContext, DbDataReader, ResultContext, int[], ResultCoordinator, Employee>, 
+    app.data.SampleDbContext, 
+    null
+)
+2021-03-21 19:43:46.432 -05:00 [DBG] Creating DbCommand for 'ExecuteReader'.
+2021-03-21 19:43:46.464 -05:00 [DBG] Created DbCommand for 'ExecuteReader' (29ms).
+2021-03-21 19:43:46.470 -05:00 [DBG] Opening connection to database 'SampleDb' on server '.'.
+2021-03-21 19:43:46.723 -05:00 [DBG] Opened connection to database 'SampleDb' on server '.'.
+2021-03-21 19:43:46.731 -05:00 [DBG] Executing DbCommand [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [e].[Empno], [e].[Deptno], [e].[Ename], [e].[Sal]
+FROM [Emp] AS [e]
+2021-03-21 19:43:46.760 -05:00 [INF] Executed DbCommand (29ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [e].[Empno], [e].[Deptno], [e].[Ename], [e].[Sal]
+FROM [Emp] AS [e]
+2021-03-21 19:43:46.795 -05:00 [DBG] Context 'SampleDbContext' started tracking 'Employee' entity with key '{Empno: 1001}'.
+2021-03-21 19:43:46.817 -05:00 [DBG] Context 'SampleDbContext' started tracking 'Employee' entity with key '{Empno: 1002}'.
+2021-03-21 19:43:46.819 -05:00 [DBG] Context 'SampleDbContext' started tracking 'Employee' entity with key '{Empno: 1003}'.
+2021-03-21 19:43:46.821 -05:00 [DBG] Context 'SampleDbContext' started tracking 'Employee' entity with key '{Empno: 1004}'.
+2021-03-21 19:43:46.822 -05:00 [DBG] Context 'SampleDbContext' started tracking 'Employee' entity with key '{Empno: 1005}'.
+2021-03-21 19:43:46.824 -05:00 [DBG] Context 'SampleDbContext' started tracking 'Employee' entity with key '{Empno: 1006}'.
+2021-03-21 19:43:46.830 -05:00 [DBG] A data reader was disposed.
+2021-03-21 19:43:46.834 -05:00 [DBG] Closing connection to database 'SampleDb' on server '.'.
+2021-03-21 19:43:46.841 -05:00 [DBG] Closed connection to database 'SampleDb' on server '.'.
+2021-03-21 19:43:46.843 -05:00 [INF] Executed action method app.webapi.Controllers.EmployeesController.Get (app.webapi), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 1003.105ms.
+2021-03-21 19:43:46.846 -05:00 [VRB] Action Filter: Before executing OnActionExecuted on filter Microsoft.AspNetCore.Mvc.Infrastructure.ModelStateInvalidFilter.
+2021-03-21 19:43:46.848 -05:00 [VRB] Action Filter: After executing OnActionExecuted on filter Microsoft.AspNetCore.Mvc.Infrastructure.ModelStateInvalidFilter.
+2021-03-21 19:43:46.849 -05:00 [VRB] Action Filter: Before executing OnActionExecuted on filter Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter.
+2021-03-21 19:43:46.851 -05:00 [VRB] Action Filter: After executing OnActionExecuted on filter Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter.
+2021-03-21 19:43:46.852 -05:00 [VRB] Result Filter: Before executing OnResultExecuting on filter Microsoft.AspNetCore.Mvc.Infrastructure.ClientErrorResultFilter.
+2021-03-21 19:43:46.854 -05:00 [VRB] Result Filter: After executing OnResultExecuting on filter Microsoft.AspNetCore.Mvc.Infrastructure.ClientErrorResultFilter.
+2021-03-21 19:43:46.855 -05:00 [VRB] Before executing action result Microsoft.AspNetCore.Mvc.ObjectResult.
+2021-03-21 19:43:46.857 -05:00 [DBG] List of registered output formatters, in the following order: ["Microsoft.AspNetCore.Mvc.Formatters.HttpNoContentOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.StringOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.StreamOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonOutputFormatter"]
+2021-03-21 19:43:46.858 -05:00 [DBG] No information found on request to perform content negotiation.
+2021-03-21 19:43:46.860 -05:00 [DBG] Attempting to select an output formatter without using a content type as no explicit content types were specified for the response.
+2021-03-21 19:43:46.861 -05:00 [DBG] Attempting to select the first formatter in the output formatters list which can write the result.
+2021-03-21 19:43:46.863 -05:00 [DBG] Selected output formatter 'Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonOutputFormatter' and content type 'application/json' to write the response.
+2021-03-21 19:43:46.864 -05:00 [INF] Executing ObjectResult, writing value of type 'System.Collections.Generic.List`1[[app.data.Employee, app.data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2021-03-21 19:43:46.869 -05:00 [VRB] After executing action result Microsoft.AspNetCore.Mvc.ObjectResult.
+2021-03-21 19:43:46.872 -05:00 [VRB] Result Filter: Before executing OnResultExecuted on filter Microsoft.AspNetCore.Mvc.Infrastructure.ClientErrorResultFilter.
+2021-03-21 19:43:46.875 -05:00 [VRB] Result Filter: After executing OnResultExecuted on filter Microsoft.AspNetCore.Mvc.Infrastructure.ClientErrorResultFilter.
+2021-03-21 19:43:46.878 -05:00 [INF] Executed action app.webapi.Controllers.EmployeesController.Get (app.webapi) in 1132.1311ms
+2021-03-21 19:43:46.880 -05:00 [INF] Executed endpoint 'app.webapi.Controllers.EmployeesController.Get (app.webapi)'
+2021-03-21 19:43:46.882 -05:00 [INF] Request finished in 1172.9743ms 200 application/json; charset=utf-8
+2021-03-21 19:45:09.881 -05:00 [INF] Request starting HTTP/2.0 GET https://localhost:44319/api/employees  
+2021-03-21 19:45:09.884 -05:00 [VRB] All hosts are allowed.
+2021-03-21 19:45:09.887 -05:00 [DBG] 1 candidate(s) found for the request path '/api/employees'
+2021-03-21 19:45:09.890 -05:00 [DBG] Endpoint 'app.webapi.Controllers.EmployeesController.Get (app.webapi)' with route pattern 'api/Employees' is valid for the request path '/api/employees'
+2021-03-21 19:45:09.894 -05:00 [DBG] Request matched endpoint 'app.webapi.Controllers.EmployeesController.Get (app.webapi)'
+2021-03-21 19:45:09.897 -05:00 [INF] Executing endpoint 'app.webapi.Controllers.EmployeesController.Get (app.webapi)'
+2021-03-21 19:45:09.900 -05:00 [INF] Route matched with {action = "Get", controller = "Employees"}. Executing controller action with signature System.Collections.Generic.IEnumerable`1[app.data.Employee] Get() on controller app.webapi.Controllers.EmployeesController (app.webapi).
+2021-03-21 19:45:09.903 -05:00 [DBG] Execution plan of authorization filters (in the following order): ["None"]
+2021-03-21 19:45:09.906 -05:00 [DBG] Execution plan of resource filters (in the following order): ["None"]
+2021-03-21 19:45:09.908 -05:00 [DBG] Execution plan of action filters (in the following order): ["Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter (Order: -3000)","Microsoft.AspNetCore.Mvc.Infrastructure.ModelStateInvalidFilter (Order: -2000)"]
+2021-03-21 19:45:09.911 -05:00 [DBG] Execution plan of exception filters (in the following order): ["None"]
+2021-03-21 19:45:09.914 -05:00 [DBG] Execution plan of result filters (in the following order): ["Microsoft.AspNetCore.Mvc.Infrastructure.ClientErrorResultFilter (Order: -2000)"]
+2021-03-21 19:45:09.917 -05:00 [DBG] Executing controller factory for controller app.webapi.Controllers.EmployeesController (app.webapi)
+2021-03-21 19:45:09.920 -05:00 [VRB] EmployeeRepository.constructor: Started..
+2021-03-21 19:45:09.931 -05:00 [DBG] Executed controller factory for controller app.webapi.Controllers.EmployeesController (app.webapi)
+2021-03-21 19:45:09.933 -05:00 [VRB] Action Filter: Before executing OnActionExecuting on filter Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter.
+2021-03-21 19:45:09.935 -05:00 [VRB] Action Filter: After executing OnActionExecuting on filter Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter.
+2021-03-21 19:45:09.937 -05:00 [VRB] Action Filter: Before executing OnActionExecuting on filter Microsoft.AspNetCore.Mvc.Infrastructure.ModelStateInvalidFilter.
+2021-03-21 19:45:09.940 -05:00 [VRB] Action Filter: After executing OnActionExecuting on filter Microsoft.AspNetCore.Mvc.Infrastructure.ModelStateInvalidFilter.
+2021-03-21 19:45:09.963 -05:00 [INF] Executing action method app.webapi.Controllers.EmployeesController.Get (app.webapi) - Validation state: "Valid"
+2021-03-21 19:45:09.965 -05:00 [VRB] EmployeesController.Get: Started..
+2021-03-21 19:45:09.967 -05:00 [VRB] EmployeeRepository.GetAll: Started..
+2021-03-21 19:45:10.000 -05:00 [INF] Entity Framework Core 3.1.10 initialized 'SampleDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: SensitiveDataLoggingEnabled MaxBatchSize=150 
+2021-03-21 19:45:10.003 -05:00 [DBG] Creating DbCommand for 'ExecuteReader'.
+2021-03-21 19:45:10.005 -05:00 [DBG] Created DbCommand for 'ExecuteReader' (1ms).
+2021-03-21 19:45:10.006 -05:00 [DBG] Opening connection to database 'SampleDb' on server '.'.
+2021-03-21 19:45:10.008 -05:00 [DBG] Opened connection to database 'SampleDb' on server '.'.
+2021-03-21 19:45:10.010 -05:00 [DBG] Executing DbCommand [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [e].[Empno], [e].[Deptno], [e].[Ename], [e].[Sal]
+FROM [Emp] AS [e]
+2021-03-21 19:45:10.017 -05:00 [INF] Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [e].[Empno], [e].[Deptno], [e].[Ename], [e].[Sal]
+FROM [Emp] AS [e]
+2021-03-21 19:45:10.019 -05:00 [DBG] Context 'SampleDbContext' started tracking 'Employee' entity with key '{Empno: 1001}'.
+2021-03-21 19:45:10.021 -05:00 [DBG] Context 'SampleDbContext' started tracking 'Employee' entity with key '{Empno: 1002}'.
+2021-03-21 19:45:10.022 -05:00 [DBG] Context 'SampleDbContext' started tracking 'Employee' entity with key '{Empno: 1003}'.
+2021-03-21 19:45:10.024 -05:00 [DBG] Context 'SampleDbContext' started tracking 'Employee' entity with key '{Empno: 1004}'.
+2021-03-21 19:45:10.026 -05:00 [DBG] Context 'SampleDbContext' started tracking 'Employee' entity with key '{Empno: 1005}'.
+2021-03-21 19:45:10.028 -05:00 [DBG] Context 'SampleDbContext' started tracking 'Employee' entity with key '{Empno: 1006}'.
+2021-03-21 19:45:10.029 -05:00 [DBG] A data reader was disposed.
+2021-03-21 19:45:10.031 -05:00 [DBG] Closing connection to database 'SampleDb' on server '.'.
+2021-03-21 19:45:10.033 -05:00 [DBG] Closed connection to database 'SampleDb' on server '.'.
+2021-03-21 19:45:10.034 -05:00 [INF] Executed action method app.webapi.Controllers.EmployeesController.Get (app.webapi), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 69.2182ms.
+2021-03-21 19:45:10.036 -05:00 [VRB] Action Filter: Before executing OnActionExecuted on filter Microsoft.AspNetCore.Mvc.Infrastructure.ModelStateInvalidFilter.
+2021-03-21 19:45:10.037 -05:00 [VRB] Action Filter: After executing OnActionExecuted on filter Microsoft.AspNetCore.Mvc.Infrastructure.ModelStateInvalidFilter.
+2021-03-21 19:45:10.038 -05:00 [VRB] Action Filter: Before executing OnActionExecuted on filter Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter.
+2021-03-21 19:45:10.040 -05:00 [VRB] Action Filter: After executing OnActionExecuted on filter Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter.
+2021-03-21 19:45:10.041 -05:00 [VRB] Result Filter: Before executing OnResultExecuting on filter Microsoft.AspNetCore.Mvc.Infrastructure.ClientErrorResultFilter.
+2021-03-21 19:45:10.043 -05:00 [VRB] Result Filter: After executing OnResultExecuting on filter Microsoft.AspNetCore.Mvc.Infrastructure.ClientErrorResultFilter.
+2021-03-21 19:45:10.045 -05:00 [VRB] Before executing action result Microsoft.AspNetCore.Mvc.ObjectResult.
+2021-03-21 19:45:10.046 -05:00 [DBG] List of registered output formatters, in the following order: ["Microsoft.AspNetCore.Mvc.Formatters.HttpNoContentOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.StringOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.StreamOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonOutputFormatter"]
+2021-03-21 19:45:10.048 -05:00 [DBG] No information found on request to perform content negotiation.
+2021-03-21 19:45:10.049 -05:00 [DBG] Attempting to select an output formatter without using a content type as no explicit content types were specified for the response.
+2021-03-21 19:45:10.051 -05:00 [DBG] Attempting to select the first formatter in the output formatters list which can write the result.
+2021-03-21 19:45:10.052 -05:00 [DBG] Selected output formatter 'Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonOutputFormatter' and content type 'application/json' to write the response.
+2021-03-21 19:45:10.053 -05:00 [INF] Executing ObjectResult, writing value of type 'System.Collections.Generic.List`1[[app.data.Employee, app.data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2021-03-21 19:45:10.056 -05:00 [VRB] After executing action result Microsoft.AspNetCore.Mvc.ObjectResult.
+2021-03-21 19:45:10.058 -05:00 [VRB] Result Filter: Before executing OnResultExecuted on filter Microsoft.AspNetCore.Mvc.Infrastructure.ClientErrorResultFilter.
+2021-03-21 19:45:10.060 -05:00 [VRB] Result Filter: After executing OnResultExecuted on filter Microsoft.AspNetCore.Mvc.Infrastructure.ClientErrorResultFilter.
+2021-03-21 19:45:10.063 -05:00 [INF] Executed action app.webapi.Controllers.EmployeesController.Get (app.webapi) in 145.4473ms
+2021-03-21 19:45:10.064 -05:00 [INF] Executed endpoint 'app.webapi.Controllers.EmployeesController.Get (app.webapi)'
+2021-03-21 19:45:10.066 -05:00 [INF] Request finished in 185.7538ms 200 application/json; charset=utf-8
+2021-03-21 19:45:10.108 -05:00 [DBG] Connection ID "18302628904424177668" disconnecting.
+2021-03-21 19:45:21.190 -05:00 [INF] Request starting HTTP/2.0 GET https://localhost:44319/api/employees  
+2021-03-21 19:45:21.193 -05:00 [VRB] All hosts are allowed.
+2021-03-21 19:45:21.196 -05:00 [DBG] 1 candidate(s) found for the request path '/api/employees'
+2021-03-21 19:45:21.198 -05:00 [DBG] Endpoint 'app.webapi.Controllers.EmployeesController.Get (app.webapi)' with route pattern 'api/Employees' is valid for the request path '/api/employees'
+2021-03-21 19:45:21.201 -05:00 [DBG] Request matched endpoint 'app.webapi.Controllers.EmployeesController.Get (app.webapi)'
+2021-03-21 19:45:21.204 -05:00 [INF] Executing endpoint 'app.webapi.Controllers.EmployeesController.Get (app.webapi)'
+2021-03-21 19:45:21.207 -05:00 [INF] Route matched with {action = "Get", controller = "Employees"}. Executing controller action with signature System.Collections.Generic.IEnumerable`1[app.data.Employee] Get() on controller app.webapi.Controllers.EmployeesController (app.webapi).
+2021-03-21 19:45:21.209 -05:00 [DBG] Execution plan of authorization filters (in the following order): ["None"]
+2021-03-21 19:45:21.212 -05:00 [DBG] Execution plan of resource filters (in the following order): ["None"]
+2021-03-21 19:45:21.214 -05:00 [DBG] Execution plan of action filters (in the following order): ["Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter (Order: -3000)","Microsoft.AspNetCore.Mvc.Infrastructure.ModelStateInvalidFilter (Order: -2000)"]
+2021-03-21 19:45:21.216 -05:00 [DBG] Execution plan of exception filters (in the following order): ["None"]
+2021-03-21 19:45:21.218 -05:00 [DBG] Execution plan of result filters (in the following order): ["Microsoft.AspNetCore.Mvc.Infrastructure.ClientErrorResultFilter (Order: -2000)"]
+2021-03-21 19:45:21.222 -05:00 [DBG] Executing controller factory for controller app.webapi.Controllers.EmployeesController (app.webapi)
+2021-03-21 19:45:21.226 -05:00 [VRB] EmployeeRepository.constructor: Started..
+2021-03-21 19:45:21.230 -05:00 [DBG] Executed controller factory for controller app.webapi.Controllers.EmployeesController (app.webapi)
+2021-03-21 19:45:21.233 -05:00 [VRB] Action Filter: Before executing OnActionExecuting on filter Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter.
+2021-03-21 19:45:21.235 -05:00 [VRB] Action Filter: After executing OnActionExecuting on filter Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter.
+2021-03-21 19:45:21.238 -05:00 [VRB] Action Filter: Before executing OnActionExecuting on filter Microsoft.AspNetCore.Mvc.Infrastructure.ModelStateInvalidFilter.
+2021-03-21 19:45:21.240 -05:00 [VRB] Action Filter: After executing OnActionExecuting on filter Microsoft.AspNetCore.Mvc.Infrastructure.ModelStateInvalidFilter.
+2021-03-21 19:45:21.264 -05:00 [INF] Executing action method app.webapi.Controllers.EmployeesController.Get (app.webapi) - Validation state: "Valid"
+2021-03-21 19:45:21.267 -05:00 [VRB] EmployeesController.Get: Started..
+2021-03-21 19:45:21.269 -05:00 [VRB] EmployeeRepository.GetAll: Started..
+2021-03-21 19:45:21.279 -05:00 [INF] Entity Framework Core 3.1.10 initialized 'SampleDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: SensitiveDataLoggingEnabled MaxBatchSize=150 
+2021-03-21 19:45:21.283 -05:00 [DBG] Creating DbCommand for 'ExecuteReader'.
+2021-03-21 19:45:21.286 -05:00 [DBG] Created DbCommand for 'ExecuteReader' (2ms).
+2021-03-21 19:45:21.289 -05:00 [DBG] Opening connection to database 'SampleDb' on server '.'.
+2021-03-21 19:45:21.293 -05:00 [DBG] Opened connection to database 'SampleDb' on server '.'.
+2021-03-21 19:45:21.295 -05:00 [DBG] Executing DbCommand [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [e].[Empno], [e].[Deptno], [e].[Ename], [e].[Sal]
+FROM [Emp] AS [e]
+2021-03-21 19:45:21.300 -05:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [e].[Empno], [e].[Deptno], [e].[Ename], [e].[Sal]
+FROM [Emp] AS [e]
+2021-03-21 19:45:21.303 -05:00 [DBG] Context 'SampleDbContext' started tracking 'Employee' entity with key '{Empno: 1001}'.
+2021-03-21 19:45:21.306 -05:00 [DBG] Context 'SampleDbContext' started tracking 'Employee' entity with key '{Empno: 1002}'.
+2021-03-21 19:45:21.309 -05:00 [DBG] Context 'SampleDbContext' started tracking 'Employee' entity with key '{Empno: 1003}'.
+2021-03-21 19:45:21.312 -05:00 [DBG] Context 'SampleDbContext' started tracking 'Employee' entity with key '{Empno: 1004}'.
+2021-03-21 19:45:21.315 -05:00 [DBG] Context 'SampleDbContext' started tracking 'Employee' entity with key '{Empno: 1005}'.
+2021-03-21 19:45:21.317 -05:00 [DBG] Context 'SampleDbContext' started tracking 'Employee' entity with key '{Empno: 1006}'.
+2021-03-21 19:45:21.320 -05:00 [DBG] A data reader was disposed.
+2021-03-21 19:45:21.322 -05:00 [DBG] Closing connection to database 'SampleDb' on server '.'.
+2021-03-21 19:45:21.324 -05:00 [DBG] Closed connection to database 'SampleDb' on server '.'.
+2021-03-21 19:45:21.326 -05:00 [INF] Executed action method app.webapi.Controllers.EmployeesController.Get (app.webapi), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 58.9899ms.
+2021-03-21 19:45:21.328 -05:00 [VRB] Action Filter: Before executing OnActionExecuted on filter Microsoft.AspNetCore.Mvc.Infrastructure.ModelStateInvalidFilter.
+2021-03-21 19:45:21.330 -05:00 [VRB] Action Filter: After executing OnActionExecuted on filter Microsoft.AspNetCore.Mvc.Infrastructure.ModelStateInvalidFilter.
+2021-03-21 19:45:21.332 -05:00 [VRB] Action Filter: Before executing OnActionExecuted on filter Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter.
+2021-03-21 19:45:21.333 -05:00 [VRB] Action Filter: After executing OnActionExecuted on filter Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter.
+2021-03-21 19:45:21.335 -05:00 [VRB] Result Filter: Before executing OnResultExecuting on filter Microsoft.AspNetCore.Mvc.Infrastructure.ClientErrorResultFilter.
+2021-03-21 19:45:21.337 -05:00 [VRB] Result Filter: After executing OnResultExecuting on filter Microsoft.AspNetCore.Mvc.Infrastructure.ClientErrorResultFilter.
+2021-03-21 19:45:21.339 -05:00 [VRB] Before executing action result Microsoft.AspNetCore.Mvc.ObjectResult.
+2021-03-21 19:45:21.341 -05:00 [DBG] List of registered output formatters, in the following order: ["Microsoft.AspNetCore.Mvc.Formatters.HttpNoContentOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.StringOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.StreamOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonOutputFormatter"]
+2021-03-21 19:45:21.343 -05:00 [DBG] No information found on request to perform content negotiation.
+2021-03-21 19:45:21.344 -05:00 [DBG] Attempting to select an output formatter without using a content type as no explicit content types were specified for the response.
+2021-03-21 19:45:21.346 -05:00 [DBG] Attempting to select the first formatter in the output formatters list which can write the result.
+2021-03-21 19:45:21.347 -05:00 [DBG] Selected output formatter 'Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonOutputFormatter' and content type 'application/json' to write the response.
+2021-03-21 19:45:21.350 -05:00 [INF] Executing ObjectResult, writing value of type 'System.Collections.Generic.List`1[[app.data.Employee, app.data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2021-03-21 19:45:21.353 -05:00 [VRB] After executing action result Microsoft.AspNetCore.Mvc.ObjectResult.
+2021-03-21 19:45:21.355 -05:00 [VRB] Result Filter: Before executing OnResultExecuted on filter Microsoft.AspNetCore.Mvc.Infrastructure.ClientErrorResultFilter.
+2021-03-21 19:45:21.358 -05:00 [DBG] Connection ID "18086456130900328451" disconnecting.
+2021-03-21 19:45:21.359 -05:00 [VRB] Result Filter: After executing OnResultExecuted on filter Microsoft.AspNetCore.Mvc.Infrastructure.ClientErrorResultFilter.
+2021-03-21 19:45:21.362 -05:00 [INF] Executed action app.webapi.Controllers.EmployeesController.Get (app.webapi) in 140.3783ms
+2021-03-21 19:45:21.364 -05:00 [INF] Executed endpoint 'app.webapi.Controllers.EmployeesController.Get (app.webapi)'
+2021-03-21 19:45:21.366 -05:00 [INF] Request finished in 175.9688ms 200 application/json; charset=utf-8
+2021-03-21 19:45:27.428 -05:00 [INF] Request starting HTTP/2.0 GET https://localhost:44319/api/employees  
+2021-03-21 19:45:27.432 -05:00 [VRB] All hosts are allowed.
+2021-03-21 19:45:27.435 -05:00 [DBG] 1 candidate(s) found for the request path '/api/employees'
+2021-03-21 19:45:27.437 -05:00 [DBG] Endpoint 'app.webapi.Controllers.EmployeesController.Get (app.webapi)' with route pattern 'api/Employees' is valid for the request path '/api/employees'
+2021-03-21 19:45:27.439 -05:00 [DBG] Request matched endpoint 'app.webapi.Controllers.EmployeesController.Get (app.webapi)'
+2021-03-21 19:45:27.441 -05:00 [INF] Executing endpoint 'app.webapi.Controllers.EmployeesController.Get (app.webapi)'
+2021-03-21 19:45:27.444 -05:00 [INF] Route matched with {action = "Get", controller = "Employees"}. Executing controller action with signature System.Collections.Generic.IEnumerable`1[app.data.Employee] Get() on controller app.webapi.Controllers.EmployeesController (app.webapi).
+2021-03-21 19:45:27.449 -05:00 [DBG] Execution plan of authorization filters (in the following order): ["None"]
+2021-03-21 19:45:27.452 -05:00 [DBG] Execution plan of resource filters (in the following order): ["None"]
+2021-03-21 19:45:27.455 -05:00 [DBG] Execution plan of action filters (in the following order): ["Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter (Order: -3000)","Microsoft.AspNetCore.Mvc.Infrastructure.ModelStateInvalidFilter (Order: -2000)"]
+2021-03-21 19:45:27.457 -05:00 [DBG] Execution plan of exception filters (in the following order): ["None"]
+2021-03-21 19:45:27.460 -05:00 [DBG] Execution plan of result filters (in the following order): ["Microsoft.AspNetCore.Mvc.Infrastructure.ClientErrorResultFilter (Order: -2000)"]
+2021-03-21 19:45:27.463 -05:00 [DBG] Executing controller factory for controller app.webapi.Controllers.EmployeesController (app.webapi)
+2021-03-21 19:45:27.466 -05:00 [VRB] EmployeeRepository.constructor: Started..
+2021-03-21 19:45:27.470 -05:00 [DBG] Executed controller factory for controller app.webapi.Controllers.EmployeesController (app.webapi)
+2021-03-21 19:45:27.473 -05:00 [VRB] Action Filter: Before executing OnActionExecuting on filter Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter.
+2021-03-21 19:45:27.483 -05:00 [VRB] Action Filter: After executing OnActionExecuting on filter Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter.
+2021-03-21 19:45:27.486 -05:00 [VRB] Action Filter: Before executing OnActionExecuting on filter Microsoft.AspNetCore.Mvc.Infrastructure.ModelStateInvalidFilter.
+2021-03-21 19:45:27.489 -05:00 [VRB] Action Filter: After executing OnActionExecuting on filter Microsoft.AspNetCore.Mvc.Infrastructure.ModelStateInvalidFilter.
+2021-03-21 19:45:27.512 -05:00 [INF] Executing action method app.webapi.Controllers.EmployeesController.Get (app.webapi) - Validation state: "Valid"
+2021-03-21 19:45:27.514 -05:00 [VRB] EmployeesController.Get: Started..
+2021-03-21 19:45:27.516 -05:00 [VRB] EmployeeRepository.GetAll: Started..
+2021-03-21 19:45:27.519 -05:00 [INF] Entity Framework Core 3.1.10 initialized 'SampleDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: SensitiveDataLoggingEnabled MaxBatchSize=150 
+2021-03-21 19:45:27.522 -05:00 [DBG] Creating DbCommand for 'ExecuteReader'.
+2021-03-21 19:45:27.524 -05:00 [DBG] Created DbCommand for 'ExecuteReader' (2ms).
+2021-03-21 19:45:27.526 -05:00 [DBG] Opening connection to database 'SampleDb' on server '.'.
+2021-03-21 19:45:27.528 -05:00 [DBG] Opened connection to database 'SampleDb' on server '.'.
+2021-03-21 19:45:27.530 -05:00 [DBG] Executing DbCommand [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [e].[Empno], [e].[Deptno], [e].[Ename], [e].[Sal]
+FROM [Emp] AS [e]
+2021-03-21 19:45:27.535 -05:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [e].[Empno], [e].[Deptno], [e].[Ename], [e].[Sal]
+FROM [Emp] AS [e]
+2021-03-21 19:45:27.537 -05:00 [DBG] Context 'SampleDbContext' started tracking 'Employee' entity with key '{Empno: 1001}'.
+2021-03-21 19:45:27.539 -05:00 [DBG] Context 'SampleDbContext' started tracking 'Employee' entity with key '{Empno: 1002}'.
+2021-03-21 19:45:27.541 -05:00 [DBG] Context 'SampleDbContext' started tracking 'Employee' entity with key '{Empno: 1003}'.
+2021-03-21 19:45:27.542 -05:00 [DBG] Context 'SampleDbContext' started tracking 'Employee' entity with key '{Empno: 1004}'.
+2021-03-21 19:45:27.544 -05:00 [DBG] Context 'SampleDbContext' started tracking 'Employee' entity with key '{Empno: 1005}'.
+2021-03-21 19:45:27.546 -05:00 [DBG] Context 'SampleDbContext' started tracking 'Employee' entity with key '{Empno: 1006}'.
+2021-03-21 19:45:27.548 -05:00 [DBG] A data reader was disposed.
+2021-03-21 19:45:27.550 -05:00 [DBG] Closing connection to database 'SampleDb' on server '.'.
+2021-03-21 19:45:27.553 -05:00 [DBG] Closed connection to database 'SampleDb' on server '.'.
+2021-03-21 19:45:27.556 -05:00 [INF] Executed action method app.webapi.Controllers.EmployeesController.Get (app.webapi), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 42.2485ms.
+2021-03-21 19:45:27.559 -05:00 [VRB] Action Filter: Before executing OnActionExecuted on filter Microsoft.AspNetCore.Mvc.Infrastructure.ModelStateInvalidFilter.
+2021-03-21 19:45:27.562 -05:00 [VRB] Action Filter: After executing OnActionExecuted on filter Microsoft.AspNetCore.Mvc.Infrastructure.ModelStateInvalidFilter.
+2021-03-21 19:45:27.564 -05:00 [VRB] Action Filter: Before executing OnActionExecuted on filter Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter.
+2021-03-21 19:45:27.568 -05:00 [VRB] Action Filter: After executing OnActionExecuted on filter Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter.
+2021-03-21 19:45:27.571 -05:00 [VRB] Result Filter: Before executing OnResultExecuting on filter Microsoft.AspNetCore.Mvc.Infrastructure.ClientErrorResultFilter.
+2021-03-21 19:45:27.575 -05:00 [VRB] Result Filter: After executing OnResultExecuting on filter Microsoft.AspNetCore.Mvc.Infrastructure.ClientErrorResultFilter.
+2021-03-21 19:45:27.579 -05:00 [VRB] Before executing action result Microsoft.AspNetCore.Mvc.ObjectResult.
+2021-03-21 19:45:27.583 -05:00 [DBG] List of registered output formatters, in the following order: ["Microsoft.AspNetCore.Mvc.Formatters.HttpNoContentOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.StringOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.StreamOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonOutputFormatter"]
+2021-03-21 19:45:27.587 -05:00 [DBG] No information found on request to perform content negotiation.
+2021-03-21 19:45:27.589 -05:00 [DBG] Attempting to select an output formatter without using a content type as no explicit content types were specified for the response.
+2021-03-21 19:45:27.592 -05:00 [DBG] Attempting to select the first formatter in the output formatters list which can write the result.
+2021-03-21 19:45:27.595 -05:00 [DBG] Selected output formatter 'Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonOutputFormatter' and content type 'application/json' to write the response.
+2021-03-21 19:45:27.597 -05:00 [INF] Executing ObjectResult, writing value of type 'System.Collections.Generic.List`1[[app.data.Employee, app.data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2021-03-21 19:45:27.602 -05:00 [VRB] After executing action result Microsoft.AspNetCore.Mvc.ObjectResult.
+2021-03-21 19:45:27.611 -05:00 [VRB] Result Filter: Before executing OnResultExecuted on filter Microsoft.AspNetCore.Mvc.Infrastructure.ClientErrorResultFilter.
+2021-03-21 19:45:27.613 -05:00 [DBG] Connection ID "18086456130900328453" disconnecting.
+2021-03-21 19:45:27.613 -05:00 [VRB] Result Filter: After executing OnResultExecuted on filter Microsoft.AspNetCore.Mvc.Infrastructure.ClientErrorResultFilter.
+2021-03-21 19:45:27.618 -05:00 [INF] Executed action app.webapi.Controllers.EmployeesController.Get (app.webapi) in 155.023ms
+2021-03-21 19:45:27.620 -05:00 [INF] Executed endpoint 'app.webapi.Controllers.EmployeesController.Get (app.webapi)'
+2021-03-21 19:45:27.622 -05:00 [INF] Request finished in 194.4803ms 200 application/json; charset=utf-8
+2021-03-21 19:55:10.222 -05:00 [INF] Starting host..
+2021-03-21 19:55:12.009 -05:00 [DBG] Hosting starting
+2021-03-21 19:55:12.236 -05:00 [DBG] Loaded hosting startup assembly app.webapi
+2021-03-21 19:55:12.271 -05:00 [INF] Application started. Press Ctrl+C to shut down.
+2021-03-21 19:55:12.273 -05:00 [INF] Hosting environment: Development
+2021-03-21 19:55:12.275 -05:00 [INF] Content root path: c:\temp\DemoEFWebApi\app.webapi
+2021-03-21 19:55:12.276 -05:00 [DBG] Hosting started
+2021-03-21 19:55:12.309 -05:00 [INF] Request starting HTTP/2.0 GET https://localhost:44319/weatherforecast  
+2021-03-21 19:55:12.322 -05:00 [DBG] Wildcard detected, all requests with hosts will be allowed.
+2021-03-21 19:55:12.325 -05:00 [VRB] All hosts are allowed.
+2021-03-21 19:55:12.366 -05:00 [DBG] 1 candidate(s) found for the request path '/weatherforecast'
+2021-03-21 19:55:12.372 -05:00 [DBG] Endpoint 'app.webapi.Controllers.WeatherForecastController.Get (app.webapi)' with route pattern 'WeatherForecast' is valid for the request path '/weatherforecast'
+2021-03-21 19:55:12.383 -05:00 [DBG] Request matched endpoint 'app.webapi.Controllers.WeatherForecastController.Get (app.webapi)'
+2021-03-21 19:55:12.389 -05:00 [INF] Executing endpoint 'app.webapi.Controllers.WeatherForecastController.Get (app.webapi)'
+2021-03-21 19:55:12.400 -05:00 [DBG] Registered model binder providers, in the following order: ["Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BinderTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ServicesModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BodyModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.HeaderModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FloatingPointTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.EnumTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.SimpleTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CancellationTokenModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ByteArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormFileModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormCollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.KeyValuePairModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.DictionaryModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ComplexTypeModelBinderProvider"]
+2021-03-21 19:55:12.453 -05:00 [INF] Route matched with {action = "Get", controller = "WeatherForecast"}. Executing controller action with signature System.Collections.Generic.IEnumerable`1[app.webapi.WeatherForecast] Get() on controller app.webapi.Controllers.WeatherForecastController (app.webapi).
+2021-03-21 19:55:12.461 -05:00 [DBG] Execution plan of authorization filters (in the following order): ["None"]
+2021-03-21 19:55:12.463 -05:00 [DBG] Execution plan of resource filters (in the following order): ["None"]
+2021-03-21 19:55:12.465 -05:00 [DBG] Execution plan of action filters (in the following order): ["Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter (Order: -3000)","Microsoft.AspNetCore.Mvc.Infrastructure.ModelStateInvalidFilter (Order: -2000)"]
+2021-03-21 19:55:12.466 -05:00 [DBG] Execution plan of exception filters (in the following order): ["None"]
+2021-03-21 19:55:12.470 -05:00 [DBG] Execution plan of result filters (in the following order): ["Microsoft.AspNetCore.Mvc.Infrastructure.ClientErrorResultFilter (Order: -2000)"]
+2021-03-21 19:55:12.475 -05:00 [DBG] Executing controller factory for controller app.webapi.Controllers.WeatherForecastController (app.webapi)
+2021-03-21 19:55:12.478 -05:00 [VRB] WeatherForecastController.constructor: Started..
+2021-03-21 19:55:12.479 -05:00 [DBG] Executed controller factory for controller app.webapi.Controllers.WeatherForecastController (app.webapi)
+2021-03-21 19:55:12.481 -05:00 [VRB] Action Filter: Before executing OnActionExecuting on filter Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter.
+2021-03-21 19:55:12.482 -05:00 [VRB] Action Filter: After executing OnActionExecuting on filter Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter.
+2021-03-21 19:55:12.484 -05:00 [VRB] Action Filter: Before executing OnActionExecuting on filter Microsoft.AspNetCore.Mvc.Infrastructure.ModelStateInvalidFilter.
+2021-03-21 19:55:12.485 -05:00 [VRB] Action Filter: After executing OnActionExecuting on filter Microsoft.AspNetCore.Mvc.Infrastructure.ModelStateInvalidFilter.
+2021-03-21 19:55:12.586 -05:00 [INF] Executing action method app.webapi.Controllers.WeatherForecastController.Get (app.webapi) - Validation state: "Valid"
+2021-03-21 19:55:12.589 -05:00 [VRB] WeatherForecastController.Get: Started..
+2021-03-21 19:55:12.598 -05:00 [INF] Executed action method app.webapi.Controllers.WeatherForecastController.Get (app.webapi), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 3.5857ms.
+2021-03-21 19:55:12.603 -05:00 [VRB] Action Filter: Before executing OnActionExecuted on filter Microsoft.AspNetCore.Mvc.Infrastructure.ModelStateInvalidFilter.
+2021-03-21 19:55:12.606 -05:00 [VRB] Action Filter: After executing OnActionExecuted on filter Microsoft.AspNetCore.Mvc.Infrastructure.ModelStateInvalidFilter.
+2021-03-21 19:55:12.608 -05:00 [VRB] Action Filter: Before executing OnActionExecuted on filter Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter.
+2021-03-21 19:55:12.610 -05:00 [VRB] Action Filter: After executing OnActionExecuted on filter Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter.
+2021-03-21 19:55:12.612 -05:00 [VRB] Result Filter: Before executing OnResultExecuting on filter Microsoft.AspNetCore.Mvc.Infrastructure.ClientErrorResultFilter.
+2021-03-21 19:55:12.613 -05:00 [VRB] Result Filter: After executing OnResultExecuting on filter Microsoft.AspNetCore.Mvc.Infrastructure.ClientErrorResultFilter.
+2021-03-21 19:55:12.616 -05:00 [VRB] Before executing action result Microsoft.AspNetCore.Mvc.ObjectResult.
+2021-03-21 19:55:12.620 -05:00 [DBG] List of registered output formatters, in the following order: ["Microsoft.AspNetCore.Mvc.Formatters.HttpNoContentOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.StringOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.StreamOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonOutputFormatter"]
+2021-03-21 19:55:12.627 -05:00 [DBG] No information found on request to perform content negotiation.
+2021-03-21 19:55:12.631 -05:00 [DBG] Attempting to select an output formatter without using a content type as no explicit content types were specified for the response.
+2021-03-21 19:55:12.637 -05:00 [DBG] Attempting to select the first formatter in the output formatters list which can write the result.
+2021-03-21 19:55:12.640 -05:00 [DBG] Selected output formatter 'Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonOutputFormatter' and content type 'application/json' to write the response.
+2021-03-21 19:55:12.643 -05:00 [INF] Executing ObjectResult, writing value of type 'app.webapi.WeatherForecast[]'.
+2021-03-21 19:55:12.675 -05:00 [VRB] After executing action result Microsoft.AspNetCore.Mvc.ObjectResult.
+2021-03-21 19:55:12.677 -05:00 [VRB] Result Filter: Before executing OnResultExecuted on filter Microsoft.AspNetCore.Mvc.Infrastructure.ClientErrorResultFilter.
+2021-03-21 19:55:12.679 -05:00 [VRB] Result Filter: After executing OnResultExecuted on filter Microsoft.AspNetCore.Mvc.Infrastructure.ClientErrorResultFilter.
+2021-03-21 19:55:12.688 -05:00 [INF] Executed action app.webapi.Controllers.WeatherForecastController.Get (app.webapi) in 209.0611ms
+2021-03-21 19:55:12.692 -05:00 [INF] Executed endpoint 'app.webapi.Controllers.WeatherForecastController.Get (app.webapi)'
+2021-03-21 19:55:12.699 -05:00 [INF] Request finished in 390.1565ms 200 application/json; charset=utf-8
+2021-03-21 19:55:12.812 -05:00 [INF] Request starting HTTP/2.0 GET https://localhost:44319/favicon.ico  
+2021-03-21 19:55:12.816 -05:00 [VRB] All hosts are allowed.
+2021-03-21 19:55:12.822 -05:00 [DBG] No candidates found for the request path '/favicon.ico'
+2021-03-21 19:55:12.826 -05:00 [DBG] Request did not match any endpoints
+2021-03-21 19:55:12.829 -05:00 [INF] Request finished in 17.4915ms 404 
+2021-03-21 19:55:16.183 -05:00 [INF] Request starting HTTP/2.0 GET https://localhost:44319/api/employees  
+2021-03-21 19:55:16.185 -05:00 [VRB] All hosts are allowed.
+2021-03-21 19:55:16.190 -05:00 [DBG] 1 candidate(s) found for the request path '/api/employees'
+2021-03-21 19:55:16.193 -05:00 [DBG] Endpoint 'app.webapi.Controllers.EmployeesController.Get (app.webapi)' with route pattern 'api/Employees' is valid for the request path '/api/employees'
+2021-03-21 19:55:16.195 -05:00 [DBG] Request matched endpoint 'app.webapi.Controllers.EmployeesController.Get (app.webapi)'
+2021-03-21 19:55:16.198 -05:00 [INF] Executing endpoint 'app.webapi.Controllers.EmployeesController.Get (app.webapi)'
+2021-03-21 19:55:16.204 -05:00 [INF] Route matched with {action = "Get", controller = "Employees"}. Executing controller action with signature System.Collections.Generic.IEnumerable`1[app.data.Employee] Get() on controller app.webapi.Controllers.EmployeesController (app.webapi).
+2021-03-21 19:55:16.208 -05:00 [DBG] Execution plan of authorization filters (in the following order): ["None"]
+2021-03-21 19:55:16.216 -05:00 [DBG] Execution plan of resource filters (in the following order): ["None"]
+2021-03-21 19:55:16.222 -05:00 [DBG] Execution plan of action filters (in the following order): ["Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter (Order: -3000)","Microsoft.AspNetCore.Mvc.Infrastructure.ModelStateInvalidFilter (Order: -2000)"]
+2021-03-21 19:55:16.231 -05:00 [DBG] Execution plan of exception filters (in the following order): ["None"]
+2021-03-21 19:55:16.237 -05:00 [DBG] Execution plan of result filters (in the following order): ["Microsoft.AspNetCore.Mvc.Infrastructure.ClientErrorResultFilter (Order: -2000)"]
+2021-03-21 19:55:16.241 -05:00 [DBG] Executing controller factory for controller app.webapi.Controllers.EmployeesController (app.webapi)
+2021-03-21 19:55:16.244 -05:00 [VRB] EmployeeRepository.constructor: Started..
+2021-03-21 19:55:16.342 -05:00 [DBG] Executed controller factory for controller app.webapi.Controllers.EmployeesController (app.webapi)
+2021-03-21 19:55:16.345 -05:00 [VRB] Action Filter: Before executing OnActionExecuting on filter Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter.
+2021-03-21 19:55:16.348 -05:00 [VRB] Action Filter: After executing OnActionExecuting on filter Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter.
+2021-03-21 19:55:16.351 -05:00 [VRB] Action Filter: Before executing OnActionExecuting on filter Microsoft.AspNetCore.Mvc.Infrastructure.ModelStateInvalidFilter.
+2021-03-21 19:55:16.353 -05:00 [VRB] Action Filter: After executing OnActionExecuting on filter Microsoft.AspNetCore.Mvc.Infrastructure.ModelStateInvalidFilter.
+2021-03-21 19:55:16.372 -05:00 [INF] Executing action method app.webapi.Controllers.EmployeesController.Get (app.webapi) - Validation state: "Valid"
+2021-03-21 19:55:16.375 -05:00 [VRB] EmployeesController.Get: Started..
+2021-03-21 19:55:16.379 -05:00 [VRB] EmployeeRepository.GetAll: Started..
+2021-03-21 19:55:16.460 -05:00 [DBG] An additional 'IServiceProvider' was created for internal use by Entity Framework. An existing service provider was not used due to the following configuration changes: configuration added for 'Core:UseMemoryCache', configuration added for 'Core:EnableSensitiveDataLogging', configuration added for 'Core:EnableDetailedErrors', configuration added for 'Core:ConfigureWarnings', configuration added for 'SqlServer:UseRowNumberForPaging'.
+2021-03-21 19:55:16.668 -05:00 [VRB] SampleDbContext.OnModelCreating: Started...
+2021-03-21 19:55:16.755 -05:00 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data, this mode should only be enabled during development.
+2021-03-21 19:55:16.814 -05:00 [INF] Entity Framework Core 3.1.10 initialized 'SampleDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: SensitiveDataLoggingEnabled MaxBatchSize=150 
+2021-03-21 19:55:16.934 -05:00 [DBG] queryContext => new QueryingEnumerable<Employee>(
+    (RelationalQueryContext)queryContext, 
+    RelationalCommandCache, 
+    null, 
+    null, 
+    Func<QueryContext, DbDataReader, ResultContext, int[], ResultCoordinator, Employee>, 
+    app.data.SampleDbContext, 
+    null
+)
+2021-03-21 19:55:16.955 -05:00 [DBG] Creating DbCommand for 'ExecuteReader'.
+2021-03-21 19:55:16.990 -05:00 [DBG] Created DbCommand for 'ExecuteReader' (30ms).
+2021-03-21 19:55:16.995 -05:00 [DBG] Opening connection to database 'SampleDb' on server '.'.
+2021-03-21 19:55:17.225 -05:00 [DBG] Opened connection to database 'SampleDb' on server '.'.
+2021-03-21 19:55:17.234 -05:00 [DBG] Executing DbCommand [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [e].[Empno], [e].[Deptno], [e].[Ename], [e].[Sal]
+FROM [Emp] AS [e]
+2021-03-21 19:55:17.263 -05:00 [INF] Executed DbCommand (30ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [e].[Empno], [e].[Deptno], [e].[Ename], [e].[Sal]
+FROM [Emp] AS [e]
+2021-03-21 19:55:17.302 -05:00 [DBG] Context 'SampleDbContext' started tracking 'Employee' entity with key '{Empno: 1001}'.
+2021-03-21 19:55:17.322 -05:00 [DBG] Context 'SampleDbContext' started tracking 'Employee' entity with key '{Empno: 1002}'.
+2021-03-21 19:55:17.325 -05:00 [DBG] Context 'SampleDbContext' started tracking 'Employee' entity with key '{Empno: 1003}'.
+2021-03-21 19:55:17.328 -05:00 [DBG] Context 'SampleDbContext' started tracking 'Employee' entity with key '{Empno: 1004}'.
+2021-03-21 19:55:17.331 -05:00 [DBG] Context 'SampleDbContext' started tracking 'Employee' entity with key '{Empno: 1005}'.
+2021-03-21 19:55:17.332 -05:00 [DBG] Context 'SampleDbContext' started tracking 'Employee' entity with key '{Empno: 1006}'.
+2021-03-21 19:55:17.338 -05:00 [DBG] A data reader was disposed.
+2021-03-21 19:55:17.342 -05:00 [DBG] Closing connection to database 'SampleDb' on server '.'.
+2021-03-21 19:55:17.349 -05:00 [DBG] Closed connection to database 'SampleDb' on server '.'.
+2021-03-21 19:55:17.352 -05:00 [INF] Executed action method app.webapi.Controllers.EmployeesController.Get (app.webapi), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 977.7609ms.
+2021-03-21 19:55:17.355 -05:00 [VRB] Action Filter: Before executing OnActionExecuted on filter Microsoft.AspNetCore.Mvc.Infrastructure.ModelStateInvalidFilter.
+2021-03-21 19:55:17.358 -05:00 [VRB] Action Filter: After executing OnActionExecuted on filter Microsoft.AspNetCore.Mvc.Infrastructure.ModelStateInvalidFilter.
+2021-03-21 19:55:17.360 -05:00 [VRB] Action Filter: Before executing OnActionExecuted on filter Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter.
+2021-03-21 19:55:17.362 -05:00 [VRB] Action Filter: After executing OnActionExecuted on filter Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter.
+2021-03-21 19:55:17.364 -05:00 [VRB] Result Filter: Before executing OnResultExecuting on filter Microsoft.AspNetCore.Mvc.Infrastructure.ClientErrorResultFilter.
+2021-03-21 19:55:17.366 -05:00 [VRB] Result Filter: After executing OnResultExecuting on filter Microsoft.AspNetCore.Mvc.Infrastructure.ClientErrorResultFilter.
+2021-03-21 19:55:17.367 -05:00 [VRB] Before executing action result Microsoft.AspNetCore.Mvc.ObjectResult.
+2021-03-21 19:55:17.370 -05:00 [DBG] List of registered output formatters, in the following order: ["Microsoft.AspNetCore.Mvc.Formatters.HttpNoContentOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.StringOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.StreamOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonOutputFormatter"]
+2021-03-21 19:55:17.371 -05:00 [DBG] No information found on request to perform content negotiation.
+2021-03-21 19:55:17.373 -05:00 [DBG] Attempting to select an output formatter without using a content type as no explicit content types were specified for the response.
+2021-03-21 19:55:17.375 -05:00 [DBG] Attempting to select the first formatter in the output formatters list which can write the result.
+2021-03-21 19:55:17.376 -05:00 [DBG] Selected output formatter 'Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonOutputFormatter' and content type 'application/json' to write the response.
+2021-03-21 19:55:17.377 -05:00 [INF] Executing ObjectResult, writing value of type 'System.Collections.Generic.List`1[[app.data.Employee, app.data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2021-03-21 19:55:17.383 -05:00 [VRB] After executing action result Microsoft.AspNetCore.Mvc.ObjectResult.
+2021-03-21 19:55:17.385 -05:00 [VRB] Result Filter: Before executing OnResultExecuted on filter Microsoft.AspNetCore.Mvc.Infrastructure.ClientErrorResultFilter.
+2021-03-21 19:55:17.387 -05:00 [VRB] Result Filter: After executing OnResultExecuted on filter Microsoft.AspNetCore.Mvc.Infrastructure.ClientErrorResultFilter.
+2021-03-21 19:55:17.390 -05:00 [INF] Executed action app.webapi.Controllers.EmployeesController.Get (app.webapi) in 1148.4235ms
+2021-03-21 19:55:17.401 -05:00 [DBG] Connection ID "18086456130900328457" disconnecting.
+2021-03-21 19:55:17.402 -05:00 [INF] Executed endpoint 'app.webapi.Controllers.EmployeesController.Get (app.webapi)'
+2021-03-21 19:55:17.406 -05:00 [INF] Request finished in 1223.8087ms 200 application/json; charset=utf-8
+2021-03-21 19:55:29.618 -05:00 [INF] Request starting HTTP/2.0 GET https://localhost:44319/api/employees  
+2021-03-21 19:55:29.621 -05:00 [VRB] All hosts are allowed.
+2021-03-21 19:55:29.624 -05:00 [DBG] 1 candidate(s) found for the request path '/api/employees'
+2021-03-21 19:55:29.627 -05:00 [DBG] Endpoint 'app.webapi.Controllers.EmployeesController.Get (app.webapi)' with route pattern 'api/Employees' is valid for the request path '/api/employees'
+2021-03-21 19:55:29.630 -05:00 [DBG] Request matched endpoint 'app.webapi.Controllers.EmployeesController.Get (app.webapi)'
+2021-03-21 19:55:29.633 -05:00 [INF] Executing endpoint 'app.webapi.Controllers.EmployeesController.Get (app.webapi)'
+2021-03-21 19:55:29.636 -05:00 [INF] Route matched with {action = "Get", controller = "Employees"}. Executing controller action with signature System.Collections.Generic.IEnumerable`1[app.data.Employee] Get() on controller app.webapi.Controllers.EmployeesController (app.webapi).
+2021-03-21 19:55:29.639 -05:00 [DBG] Execution plan of authorization filters (in the following order): ["None"]
+2021-03-21 19:55:29.641 -05:00 [DBG] Execution plan of resource filters (in the following order): ["None"]
+2021-03-21 19:55:29.644 -05:00 [DBG] Execution plan of action filters (in the following order): ["Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter (Order: -3000)","Microsoft.AspNetCore.Mvc.Infrastructure.ModelStateInvalidFilter (Order: -2000)"]
+2021-03-21 19:55:29.646 -05:00 [DBG] Execution plan of exception filters (in the following order): ["None"]
+2021-03-21 19:55:29.648 -05:00 [DBG] Execution plan of result filters (in the following order): ["Microsoft.AspNetCore.Mvc.Infrastructure.ClientErrorResultFilter (Order: -2000)"]
+2021-03-21 19:55:29.650 -05:00 [DBG] Executing controller factory for controller app.webapi.Controllers.EmployeesController (app.webapi)
+2021-03-21 19:55:29.651 -05:00 [VRB] EmployeeRepository.constructor: Started..
+2021-03-21 19:55:29.653 -05:00 [DBG] Executed controller factory for controller app.webapi.Controllers.EmployeesController (app.webapi)
+2021-03-21 19:55:29.657 -05:00 [VRB] Action Filter: Before executing OnActionExecuting on filter Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter.
+2021-03-21 19:55:29.660 -05:00 [VRB] Action Filter: After executing OnActionExecuting on filter Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter.
+2021-03-21 19:55:29.664 -05:00 [VRB] Action Filter: Before executing OnActionExecuting on filter Microsoft.AspNetCore.Mvc.Infrastructure.ModelStateInvalidFilter.
+2021-03-21 19:55:29.667 -05:00 [VRB] Action Filter: After executing OnActionExecuting on filter Microsoft.AspNetCore.Mvc.Infrastructure.ModelStateInvalidFilter.
+2021-03-21 19:55:29.692 -05:00 [INF] Executing action method app.webapi.Controllers.EmployeesController.Get (app.webapi) - Validation state: "Valid"
+2021-03-21 19:55:29.694 -05:00 [VRB] EmployeesController.Get: Started..
+2021-03-21 19:55:29.696 -05:00 [VRB] EmployeeRepository.GetAll: Started..
+2021-03-21 19:55:29.727 -05:00 [INF] Entity Framework Core 3.1.10 initialized 'SampleDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: SensitiveDataLoggingEnabled MaxBatchSize=150 
+2021-03-21 19:55:29.730 -05:00 [DBG] Creating DbCommand for 'ExecuteReader'.
+2021-03-21 19:55:29.732 -05:00 [DBG] Created DbCommand for 'ExecuteReader' (2ms).
+2021-03-21 19:55:29.733 -05:00 [DBG] Opening connection to database 'SampleDb' on server '.'.
+2021-03-21 19:55:29.736 -05:00 [DBG] Opened connection to database 'SampleDb' on server '.'.
+2021-03-21 19:55:29.738 -05:00 [DBG] Executing DbCommand [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [e].[Empno], [e].[Deptno], [e].[Ename], [e].[Sal]
+FROM [Emp] AS [e]
+2021-03-21 19:55:29.746 -05:00 [INF] Executed DbCommand (8ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [e].[Empno], [e].[Deptno], [e].[Ename], [e].[Sal]
+FROM [Emp] AS [e]
+2021-03-21 19:55:29.749 -05:00 [DBG] Context 'SampleDbContext' started tracking 'Employee' entity with key '{Empno: 1001}'.
+2021-03-21 19:55:29.753 -05:00 [DBG] Context 'SampleDbContext' started tracking 'Employee' entity with key '{Empno: 1002}'.
+2021-03-21 19:55:29.756 -05:00 [DBG] Context 'SampleDbContext' started tracking 'Employee' entity with key '{Empno: 1003}'.
+2021-03-21 19:55:29.759 -05:00 [DBG] Context 'SampleDbContext' started tracking 'Employee' entity with key '{Empno: 1004}'.
+2021-03-21 19:55:29.762 -05:00 [DBG] Context 'SampleDbContext' started tracking 'Employee' entity with key '{Empno: 1005}'.
+2021-03-21 19:55:29.766 -05:00 [DBG] Context 'SampleDbContext' started tracking 'Employee' entity with key '{Empno: 1006}'.
+2021-03-21 19:55:29.770 -05:00 [DBG] A data reader was disposed.
+2021-03-21 19:55:29.775 -05:00 [DBG] Closing connection to database 'SampleDb' on server '.'.
+2021-03-21 19:55:29.787 -05:00 [DBG] Closed connection to database 'SampleDb' on server '.'.
+2021-03-21 19:55:29.793 -05:00 [INF] Executed action method app.webapi.Controllers.EmployeesController.Get (app.webapi), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 98.9199ms.
+2021-03-21 19:55:29.795 -05:00 [VRB] Action Filter: Before executing OnActionExecuted on filter Microsoft.AspNetCore.Mvc.Infrastructure.ModelStateInvalidFilter.
+2021-03-21 19:55:29.797 -05:00 [VRB] Action Filter: After executing OnActionExecuted on filter Microsoft.AspNetCore.Mvc.Infrastructure.ModelStateInvalidFilter.
+2021-03-21 19:55:29.800 -05:00 [VRB] Action Filter: Before executing OnActionExecuted on filter Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter.
+2021-03-21 19:55:29.802 -05:00 [VRB] Action Filter: After executing OnActionExecuted on filter Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter.
+2021-03-21 19:55:29.804 -05:00 [VRB] Result Filter: Before executing OnResultExecuting on filter Microsoft.AspNetCore.Mvc.Infrastructure.ClientErrorResultFilter.
+2021-03-21 19:55:29.805 -05:00 [VRB] Result Filter: After executing OnResultExecuting on filter Microsoft.AspNetCore.Mvc.Infrastructure.ClientErrorResultFilter.
+2021-03-21 19:55:29.808 -05:00 [VRB] Before executing action result Microsoft.AspNetCore.Mvc.ObjectResult.
+2021-03-21 19:55:29.810 -05:00 [DBG] List of registered output formatters, in the following order: ["Microsoft.AspNetCore.Mvc.Formatters.HttpNoContentOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.StringOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.StreamOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonOutputFormatter"]
+2021-03-21 19:55:29.813 -05:00 [DBG] No information found on request to perform content negotiation.
+2021-03-21 19:55:29.815 -05:00 [DBG] Attempting to select an output formatter without using a content type as no explicit content types were specified for the response.
+2021-03-21 19:55:29.817 -05:00 [DBG] Attempting to select the first formatter in the output formatters list which can write the result.
+2021-03-21 19:55:29.818 -05:00 [DBG] Selected output formatter 'Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonOutputFormatter' and content type 'application/json' to write the response.
+2021-03-21 19:55:29.821 -05:00 [INF] Executing ObjectResult, writing value of type 'System.Collections.Generic.List`1[[app.data.Employee, app.data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2021-03-21 19:55:29.824 -05:00 [VRB] After executing action result Microsoft.AspNetCore.Mvc.ObjectResult.
+2021-03-21 19:55:29.827 -05:00 [VRB] Result Filter: Before executing OnResultExecuted on filter Microsoft.AspNetCore.Mvc.Infrastructure.ClientErrorResultFilter.
+2021-03-21 19:55:29.829 -05:00 [DBG] Connection ID "18374686494167138312" disconnecting.
+2021-03-21 19:55:29.830 -05:00 [VRB] Result Filter: After executing OnResultExecuted on filter Microsoft.AspNetCore.Mvc.Infrastructure.ClientErrorResultFilter.
+2021-03-21 19:55:29.834 -05:00 [INF] Executed action app.webapi.Controllers.EmployeesController.Get (app.webapi) in 184.2351ms
+2021-03-21 19:55:29.837 -05:00 [INF] Executed endpoint 'app.webapi.Controllers.EmployeesController.Get (app.webapi)'
+2021-03-21 19:55:29.839 -05:00 [INF] Request finished in 221.4297ms 200 application/json; charset=utf-8
+2021-03-21 19:56:53.776 -05:00 [INF] Starting host..
+2021-03-21 19:56:55.421 -05:00 [DBG] Hosting starting
+2021-03-21 19:56:55.685 -05:00 [DBG] Loaded hosting startup assembly app.webapi
+2021-03-21 19:56:55.702 -05:00 [INF] Application started. Press Ctrl+C to shut down.
+2021-03-21 19:56:55.703 -05:00 [INF] Hosting environment: Development
+2021-03-21 19:56:55.705 -05:00 [INF] Content root path: c:\temp\DemoEFWebApi\app.webapi
+2021-03-21 19:56:55.707 -05:00 [DBG] Hosting started
+2021-03-21 19:56:55.735 -05:00 [INF] Request starting HTTP/2.0 GET https://localhost:44319/weatherforecast  
+2021-03-21 19:56:55.745 -05:00 [DBG] Wildcard detected, all requests with hosts will be allowed.
+2021-03-21 19:56:55.748 -05:00 [VRB] All hosts are allowed.
+2021-03-21 19:56:55.797 -05:00 [DBG] 1 candidate(s) found for the request path '/weatherforecast'
+2021-03-21 19:56:55.804 -05:00 [DBG] Endpoint 'app.webapi.Controllers.WeatherForecastController.Get (app.webapi)' with route pattern 'WeatherForecast' is valid for the request path '/weatherforecast'
+2021-03-21 19:56:55.814 -05:00 [DBG] Request matched endpoint 'app.webapi.Controllers.WeatherForecastController.Get (app.webapi)'
+2021-03-21 19:56:55.821 -05:00 [INF] Executing endpoint 'app.webapi.Controllers.WeatherForecastController.Get (app.webapi)'
+2021-03-21 19:56:55.830 -05:00 [DBG] Registered model binder providers, in the following order: ["Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BinderTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ServicesModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BodyModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.HeaderModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FloatingPointTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.EnumTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.SimpleTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CancellationTokenModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ByteArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormFileModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormCollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.KeyValuePairModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.DictionaryModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ComplexTypeModelBinderProvider"]
+2021-03-21 19:56:55.849 -05:00 [INF] Route matched with {action = "Get", controller = "WeatherForecast"}. Executing controller action with signature System.Collections.Generic.IEnumerable`1[app.webapi.WeatherForecast] Get() on controller app.webapi.Controllers.WeatherForecastController (app.webapi).
+2021-03-21 19:56:55.856 -05:00 [DBG] Execution plan of authorization filters (in the following order): ["None"]
+2021-03-21 19:56:55.858 -05:00 [DBG] Execution plan of resource filters (in the following order): ["None"]
+2021-03-21 19:56:55.860 -05:00 [DBG] Execution plan of action filters (in the following order): ["Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter (Order: -3000)","Microsoft.AspNetCore.Mvc.Infrastructure.ModelStateInvalidFilter (Order: -2000)"]
+2021-03-21 19:56:55.862 -05:00 [DBG] Execution plan of exception filters (in the following order): ["None"]
+2021-03-21 19:56:55.863 -05:00 [DBG] Execution plan of result filters (in the following order): ["Microsoft.AspNetCore.Mvc.Infrastructure.ClientErrorResultFilter (Order: -2000)"]
+2021-03-21 19:56:55.865 -05:00 [DBG] Executing controller factory for controller app.webapi.Controllers.WeatherForecastController (app.webapi)
+2021-03-21 19:56:55.867 -05:00 [VRB] WeatherForecastController.constructor: Started..
+2021-03-21 19:56:55.869 -05:00 [DBG] Executed controller factory for controller app.webapi.Controllers.WeatherForecastController (app.webapi)
+2021-03-21 19:56:55.871 -05:00 [VRB] Action Filter: Before executing OnActionExecuting on filter Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter.
+2021-03-21 19:56:55.873 -05:00 [VRB] Action Filter: After executing OnActionExecuting on filter Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter.
+2021-03-21 19:56:55.877 -05:00 [VRB] Action Filter: Before executing OnActionExecuting on filter Microsoft.AspNetCore.Mvc.Infrastructure.ModelStateInvalidFilter.
+2021-03-21 19:56:55.880 -05:00 [VRB] Action Filter: After executing OnActionExecuting on filter Microsoft.AspNetCore.Mvc.Infrastructure.ModelStateInvalidFilter.
+2021-03-21 19:56:55.964 -05:00 [INF] Executing action method app.webapi.Controllers.WeatherForecastController.Get (app.webapi) - Validation state: "Valid"
+2021-03-21 19:56:55.968 -05:00 [VRB] WeatherForecastController.Get: Started..
+2021-03-21 19:56:55.979 -05:00 [INF] Executed action method app.webapi.Controllers.WeatherForecastController.Get (app.webapi), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 7.784ms.
+2021-03-21 19:56:55.982 -05:00 [VRB] Action Filter: Before executing OnActionExecuted on filter Microsoft.AspNetCore.Mvc.Infrastructure.ModelStateInvalidFilter.
+2021-03-21 19:56:55.985 -05:00 [VRB] Action Filter: After executing OnActionExecuted on filter Microsoft.AspNetCore.Mvc.Infrastructure.ModelStateInvalidFilter.
+2021-03-21 19:56:55.987 -05:00 [VRB] Action Filter: Before executing OnActionExecuted on filter Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter.
+2021-03-21 19:56:55.989 -05:00 [VRB] Action Filter: After executing OnActionExecuted on filter Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter.
+2021-03-21 19:56:55.993 -05:00 [VRB] Result Filter: Before executing OnResultExecuting on filter Microsoft.AspNetCore.Mvc.Infrastructure.ClientErrorResultFilter.
+2021-03-21 19:56:55.997 -05:00 [VRB] Result Filter: After executing OnResultExecuting on filter Microsoft.AspNetCore.Mvc.Infrastructure.ClientErrorResultFilter.
+2021-03-21 19:56:56.005 -05:00 [VRB] Before executing action result Microsoft.AspNetCore.Mvc.ObjectResult.
+2021-03-21 19:56:56.010 -05:00 [DBG] List of registered output formatters, in the following order: ["Microsoft.AspNetCore.Mvc.Formatters.HttpNoContentOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.StringOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.StreamOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonOutputFormatter"]
+2021-03-21 19:56:56.015 -05:00 [DBG] No information found on request to perform content negotiation.
+2021-03-21 19:56:56.017 -05:00 [DBG] Attempting to select an output formatter without using a content type as no explicit content types were specified for the response.
+2021-03-21 19:56:56.020 -05:00 [DBG] Attempting to select the first formatter in the output formatters list which can write the result.
+2021-03-21 19:56:56.023 -05:00 [DBG] Selected output formatter 'Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonOutputFormatter' and content type 'application/json' to write the response.
+2021-03-21 19:56:56.024 -05:00 [INF] Executing ObjectResult, writing value of type 'app.webapi.WeatherForecast[]'.
+2021-03-21 19:56:56.057 -05:00 [VRB] After executing action result Microsoft.AspNetCore.Mvc.ObjectResult.
+2021-03-21 19:56:56.059 -05:00 [VRB] Result Filter: Before executing OnResultExecuted on filter Microsoft.AspNetCore.Mvc.Infrastructure.ClientErrorResultFilter.
+2021-03-21 19:56:56.061 -05:00 [VRB] Result Filter: After executing OnResultExecuted on filter Microsoft.AspNetCore.Mvc.Infrastructure.ClientErrorResultFilter.
+2021-03-21 19:56:56.072 -05:00 [INF] Executed action app.webapi.Controllers.WeatherForecastController.Get (app.webapi) in 200.6959ms
+2021-03-21 19:56:56.075 -05:00 [INF] Executed endpoint 'app.webapi.Controllers.WeatherForecastController.Get (app.webapi)'
+2021-03-21 19:56:56.080 -05:00 [INF] Request finished in 346.9582ms 200 application/json; charset=utf-8
+2021-03-21 19:56:56.192 -05:00 [INF] Request starting HTTP/2.0 GET https://localhost:44319/favicon.ico  
+2021-03-21 19:56:56.195 -05:00 [VRB] All hosts are allowed.
+2021-03-21 19:56:56.198 -05:00 [DBG] No candidates found for the request path '/favicon.ico'
+2021-03-21 19:56:56.199 -05:00 [DBG] Request did not match any endpoints
+2021-03-21 19:56:56.202 -05:00 [INF] Request finished in 10.2904ms 404 
+2021-03-21 19:57:04.868 -05:00 [INF] Request starting HTTP/2.0 GET https://localhost:44319/api/employees  
+2021-03-21 19:57:04.870 -05:00 [VRB] All hosts are allowed.
+2021-03-21 19:57:04.876 -05:00 [DBG] The request has an origin header: 'http://localhost:4200'.
+2021-03-21 19:57:04.879 -05:00 [INF] CORS policy execution successful.
+2021-03-21 19:57:04.901 -05:00 [DBG] 1 candidate(s) found for the request path '/api/employees'
+2021-03-21 19:57:04.905 -05:00 [DBG] Endpoint 'app.webapi.Controllers.EmployeesController.Get (app.webapi)' with route pattern 'api/Employees' is valid for the request path '/api/employees'
+2021-03-21 19:57:04.908 -05:00 [DBG] Request matched endpoint 'app.webapi.Controllers.EmployeesController.Get (app.webapi)'
+2021-03-21 19:57:04.912 -05:00 [INF] Executing endpoint 'app.webapi.Controllers.EmployeesController.Get (app.webapi)'
+2021-03-21 19:57:04.918 -05:00 [INF] Route matched with {action = "Get", controller = "Employees"}. Executing controller action with signature System.Collections.Generic.IEnumerable`1[app.data.Employee] Get() on controller app.webapi.Controllers.EmployeesController (app.webapi).
+2021-03-21 19:57:04.921 -05:00 [DBG] Execution plan of authorization filters (in the following order): ["None"]
+2021-03-21 19:57:04.923 -05:00 [DBG] Execution plan of resource filters (in the following order): ["None"]
+2021-03-21 19:57:04.926 -05:00 [DBG] Execution plan of action filters (in the following order): ["Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter (Order: -3000)","Microsoft.AspNetCore.Mvc.Infrastructure.ModelStateInvalidFilter (Order: -2000)"]
+2021-03-21 19:57:04.928 -05:00 [DBG] Execution plan of exception filters (in the following order): ["None"]
+2021-03-21 19:57:04.933 -05:00 [DBG] Execution plan of result filters (in the following order): ["Microsoft.AspNetCore.Mvc.Infrastructure.ClientErrorResultFilter (Order: -2000)"]
+2021-03-21 19:57:04.938 -05:00 [DBG] Executing controller factory for controller app.webapi.Controllers.EmployeesController (app.webapi)
+2021-03-21 19:57:04.944 -05:00 [VRB] EmployeeRepository.constructor: Started..
+2021-03-21 19:57:05.044 -05:00 [DBG] Executed controller factory for controller app.webapi.Controllers.EmployeesController (app.webapi)
+2021-03-21 19:57:05.046 -05:00 [VRB] Action Filter: Before executing OnActionExecuting on filter Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter.
+2021-03-21 19:57:05.048 -05:00 [VRB] Action Filter: After executing OnActionExecuting on filter Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter.
+2021-03-21 19:57:05.050 -05:00 [VRB] Action Filter: Before executing OnActionExecuting on filter Microsoft.AspNetCore.Mvc.Infrastructure.ModelStateInvalidFilter.
+2021-03-21 19:57:05.052 -05:00 [VRB] Action Filter: After executing OnActionExecuting on filter Microsoft.AspNetCore.Mvc.Infrastructure.ModelStateInvalidFilter.
+2021-03-21 19:57:05.075 -05:00 [INF] Executing action method app.webapi.Controllers.EmployeesController.Get (app.webapi) - Validation state: "Valid"
+2021-03-21 19:57:05.078 -05:00 [VRB] EmployeesController.Get: Started..
+2021-03-21 19:57:05.080 -05:00 [VRB] EmployeeRepository.GetAll: Started..
+2021-03-21 19:57:05.172 -05:00 [DBG] An additional 'IServiceProvider' was created for internal use by Entity Framework. An existing service provider was not used due to the following configuration changes: configuration added for 'Core:UseMemoryCache', configuration added for 'Core:EnableSensitiveDataLogging', configuration added for 'Core:EnableDetailedErrors', configuration added for 'Core:ConfigureWarnings', configuration added for 'SqlServer:UseRowNumberForPaging'.
+2021-03-21 19:57:05.423 -05:00 [VRB] SampleDbContext.OnModelCreating: Started...
+2021-03-21 19:57:05.504 -05:00 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data, this mode should only be enabled during development.
+2021-03-21 19:57:05.556 -05:00 [INF] Entity Framework Core 3.1.10 initialized 'SampleDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: SensitiveDataLoggingEnabled MaxBatchSize=150 
+2021-03-21 19:57:05.678 -05:00 [DBG] queryContext => new QueryingEnumerable<Employee>(
+    (RelationalQueryContext)queryContext, 
+    RelationalCommandCache, 
+    null, 
+    null, 
+    Func<QueryContext, DbDataReader, ResultContext, int[], ResultCoordinator, Employee>, 
+    app.data.SampleDbContext, 
+    null
+)
+2021-03-21 19:57:05.702 -05:00 [DBG] Creating DbCommand for 'ExecuteReader'.
+2021-03-21 19:57:05.739 -05:00 [DBG] Created DbCommand for 'ExecuteReader' (34ms).
+2021-03-21 19:57:05.745 -05:00 [DBG] Opening connection to database 'SampleDb' on server '.'.
+2021-03-21 19:57:05.983 -05:00 [DBG] Opened connection to database 'SampleDb' on server '.'.
+2021-03-21 19:57:05.991 -05:00 [DBG] Executing DbCommand [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [e].[Empno], [e].[Deptno], [e].[Ename], [e].[Sal]
+FROM [Emp] AS [e]
+2021-03-21 19:57:06.020 -05:00 [INF] Executed DbCommand (31ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [e].[Empno], [e].[Deptno], [e].[Ename], [e].[Sal]
+FROM [Emp] AS [e]
+2021-03-21 19:57:06.056 -05:00 [DBG] Context 'SampleDbContext' started tracking 'Employee' entity with key '{Empno: 1001}'.
+2021-03-21 19:57:06.076 -05:00 [DBG] Context 'SampleDbContext' started tracking 'Employee' entity with key '{Empno: 1002}'.
+2021-03-21 19:57:06.078 -05:00 [DBG] Context 'SampleDbContext' started tracking 'Employee' entity with key '{Empno: 1003}'.
+2021-03-21 19:57:06.080 -05:00 [DBG] Context 'SampleDbContext' started tracking 'Employee' entity with key '{Empno: 1004}'.
+2021-03-21 19:57:06.082 -05:00 [DBG] Context 'SampleDbContext' started tracking 'Employee' entity with key '{Empno: 1005}'.
+2021-03-21 19:57:06.084 -05:00 [DBG] Context 'SampleDbContext' started tracking 'Employee' entity with key '{Empno: 1006}'.
+2021-03-21 19:57:06.089 -05:00 [DBG] A data reader was disposed.
+2021-03-21 19:57:06.093 -05:00 [DBG] Closing connection to database 'SampleDb' on server '.'.
+2021-03-21 19:57:06.100 -05:00 [DBG] Closed connection to database 'SampleDb' on server '.'.
+2021-03-21 19:57:06.103 -05:00 [INF] Executed action method app.webapi.Controllers.EmployeesController.Get (app.webapi), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 1025.7713ms.
+2021-03-21 19:57:06.105 -05:00 [VRB] Action Filter: Before executing OnActionExecuted on filter Microsoft.AspNetCore.Mvc.Infrastructure.ModelStateInvalidFilter.
+2021-03-21 19:57:06.107 -05:00 [VRB] Action Filter: After executing OnActionExecuted on filter Microsoft.AspNetCore.Mvc.Infrastructure.ModelStateInvalidFilter.
+2021-03-21 19:57:06.108 -05:00 [VRB] Action Filter: Before executing OnActionExecuted on filter Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter.
+2021-03-21 19:57:06.109 -05:00 [VRB] Action Filter: After executing OnActionExecuted on filter Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter.
+2021-03-21 19:57:06.111 -05:00 [VRB] Result Filter: Before executing OnResultExecuting on filter Microsoft.AspNetCore.Mvc.Infrastructure.ClientErrorResultFilter.
+2021-03-21 19:57:06.112 -05:00 [VRB] Result Filter: After executing OnResultExecuting on filter Microsoft.AspNetCore.Mvc.Infrastructure.ClientErrorResultFilter.
+2021-03-21 19:57:06.114 -05:00 [VRB] Before executing action result Microsoft.AspNetCore.Mvc.ObjectResult.
+2021-03-21 19:57:06.115 -05:00 [DBG] List of registered output formatters, in the following order: ["Microsoft.AspNetCore.Mvc.Formatters.HttpNoContentOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.StringOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.StreamOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonOutputFormatter"]
+2021-03-21 19:57:06.117 -05:00 [DBG] No information found on request to perform content negotiation.
+2021-03-21 19:57:06.119 -05:00 [DBG] Attempting to select an output formatter without using a content type as no explicit content types were specified for the response.
+2021-03-21 19:57:06.121 -05:00 [DBG] Attempting to select the first formatter in the output formatters list which can write the result.
+2021-03-21 19:57:06.123 -05:00 [DBG] Selected output formatter 'Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonOutputFormatter' and content type 'application/json' to write the response.
+2021-03-21 19:57:06.125 -05:00 [INF] Executing ObjectResult, writing value of type 'System.Collections.Generic.List`1[[app.data.Employee, app.data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2021-03-21 19:57:06.130 -05:00 [VRB] After executing action result Microsoft.AspNetCore.Mvc.ObjectResult.
+2021-03-21 19:57:06.133 -05:00 [VRB] Result Filter: Before executing OnResultExecuted on filter Microsoft.AspNetCore.Mvc.Infrastructure.ClientErrorResultFilter.
+2021-03-21 19:57:06.136 -05:00 [VRB] Result Filter: After executing OnResultExecuted on filter Microsoft.AspNetCore.Mvc.Infrastructure.ClientErrorResultFilter.
+2021-03-21 19:57:06.139 -05:00 [INF] Executed action app.webapi.Controllers.EmployeesController.Get (app.webapi) in 1200.7536ms
+2021-03-21 19:57:06.141 -05:00 [INF] Executed endpoint 'app.webapi.Controllers.EmployeesController.Get (app.webapi)'
+2021-03-21 19:57:06.144 -05:00 [INF] Request finished in 1276.6982ms 200 application/json; charset=utf-8
+2021-03-21 20:00:20.776 -05:00 [INF] Request starting HTTP/2.0 GET https://localhost:44319/api/employees  
+2021-03-21 20:00:20.781 -05:00 [VRB] All hosts are allowed.
+2021-03-21 20:00:20.785 -05:00 [DBG] The request has an origin header: 'http://localhost:4200'.
+2021-03-21 20:00:20.788 -05:00 [INF] CORS policy execution successful.
+2021-03-21 20:00:20.793 -05:00 [DBG] 1 candidate(s) found for the request path '/api/employees'
+2021-03-21 20:00:20.796 -05:00 [DBG] Endpoint 'app.webapi.Controllers.EmployeesController.Get (app.webapi)' with route pattern 'api/Employees' is valid for the request path '/api/employees'
+2021-03-21 20:00:20.800 -05:00 [DBG] Request matched endpoint 'app.webapi.Controllers.EmployeesController.Get (app.webapi)'
+2021-03-21 20:00:20.803 -05:00 [INF] Executing endpoint 'app.webapi.Controllers.EmployeesController.Get (app.webapi)'
+2021-03-21 20:00:20.808 -05:00 [INF] Route matched with {action = "Get", controller = "Employees"}. Executing controller action with signature System.Collections.Generic.IEnumerable`1[app.data.Employee] Get() on controller app.webapi.Controllers.EmployeesController (app.webapi).
+2021-03-21 20:00:20.812 -05:00 [DBG] Execution plan of authorization filters (in the following order): ["None"]
+2021-03-21 20:00:20.815 -05:00 [DBG] Execution plan of resource filters (in the following order): ["None"]
+2021-03-21 20:00:20.818 -05:00 [DBG] Execution plan of action filters (in the following order): ["Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter (Order: -3000)","Microsoft.AspNetCore.Mvc.Infrastructure.ModelStateInvalidFilter (Order: -2000)"]
+2021-03-21 20:00:20.820 -05:00 [DBG] Execution plan of exception filters (in the following order): ["None"]
+2021-03-21 20:00:20.823 -05:00 [DBG] Execution plan of result filters (in the following order): ["Microsoft.AspNetCore.Mvc.Infrastructure.ClientErrorResultFilter (Order: -2000)"]
+2021-03-21 20:00:20.825 -05:00 [DBG] Executing controller factory for controller app.webapi.Controllers.EmployeesController (app.webapi)
+2021-03-21 20:00:20.828 -05:00 [VRB] EmployeeRepository.constructor: Started..
+2021-03-21 20:00:20.831 -05:00 [DBG] Executed controller factory for controller app.webapi.Controllers.EmployeesController (app.webapi)
+2021-03-21 20:00:20.833 -05:00 [VRB] Action Filter: Before executing OnActionExecuting on filter Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter.
+2021-03-21 20:00:20.835 -05:00 [VRB] Action Filter: After executing OnActionExecuting on filter Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter.
+2021-03-21 20:00:20.838 -05:00 [VRB] Action Filter: Before executing OnActionExecuting on filter Microsoft.AspNetCore.Mvc.Infrastructure.ModelStateInvalidFilter.
+2021-03-21 20:00:20.840 -05:00 [VRB] Action Filter: After executing OnActionExecuting on filter Microsoft.AspNetCore.Mvc.Infrastructure.ModelStateInvalidFilter.
+2021-03-21 20:00:20.863 -05:00 [INF] Executing action method app.webapi.Controllers.EmployeesController.Get (app.webapi) - Validation state: "Valid"
+2021-03-21 20:00:20.867 -05:00 [VRB] EmployeesController.Get: Started..
+2021-03-21 20:00:20.871 -05:00 [VRB] EmployeeRepository.GetAll: Started..
+2021-03-21 20:00:20.926 -05:00 [INF] Entity Framework Core 3.1.10 initialized 'SampleDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: SensitiveDataLoggingEnabled MaxBatchSize=150 
+2021-03-21 20:00:20.929 -05:00 [DBG] Creating DbCommand for 'ExecuteReader'.
+2021-03-21 20:00:20.931 -05:00 [DBG] Created DbCommand for 'ExecuteReader' (2ms).
+2021-03-21 20:00:20.933 -05:00 [DBG] Opening connection to database 'SampleDb' on server '.'.
+2021-03-21 20:00:20.938 -05:00 [DBG] Opened connection to database 'SampleDb' on server '.'.
+2021-03-21 20:00:20.941 -05:00 [DBG] Executing DbCommand [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [e].[Empno], [e].[Deptno], [e].[Ename], [e].[Sal]
+FROM [Emp] AS [e]
+2021-03-21 20:00:20.948 -05:00 [INF] Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [e].[Empno], [e].[Deptno], [e].[Ename], [e].[Sal]
+FROM [Emp] AS [e]
+2021-03-21 20:00:20.951 -05:00 [DBG] Context 'SampleDbContext' started tracking 'Employee' entity with key '{Empno: 1001}'.
+2021-03-21 20:00:20.954 -05:00 [DBG] Context 'SampleDbContext' started tracking 'Employee' entity with key '{Empno: 1002}'.
+2021-03-21 20:00:20.956 -05:00 [DBG] Context 'SampleDbContext' started tracking 'Employee' entity with key '{Empno: 1003}'.
+2021-03-21 20:00:20.958 -05:00 [DBG] Context 'SampleDbContext' started tracking 'Employee' entity with key '{Empno: 1004}'.
+2021-03-21 20:00:20.961 -05:00 [DBG] Context 'SampleDbContext' started tracking 'Employee' entity with key '{Empno: 1005}'.
+2021-03-21 20:00:20.964 -05:00 [DBG] Context 'SampleDbContext' started tracking 'Employee' entity with key '{Empno: 1006}'.
+2021-03-21 20:00:20.965 -05:00 [DBG] A data reader was disposed.
+2021-03-21 20:00:20.968 -05:00 [DBG] Closing connection to database 'SampleDb' on server '.'.
+2021-03-21 20:00:20.971 -05:00 [DBG] Closed connection to database 'SampleDb' on server '.'.
+2021-03-21 20:00:20.973 -05:00 [INF] Executed action method app.webapi.Controllers.EmployeesController.Get (app.webapi), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 105.9569ms.
+2021-03-21 20:00:20.975 -05:00 [VRB] Action Filter: Before executing OnActionExecuted on filter Microsoft.AspNetCore.Mvc.Infrastructure.ModelStateInvalidFilter.
+2021-03-21 20:00:20.977 -05:00 [VRB] Action Filter: After executing OnActionExecuted on filter Microsoft.AspNetCore.Mvc.Infrastructure.ModelStateInvalidFilter.
+2021-03-21 20:00:20.979 -05:00 [VRB] Action Filter: Before executing OnActionExecuted on filter Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter.
+2021-03-21 20:00:20.981 -05:00 [VRB] Action Filter: After executing OnActionExecuted on filter Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter.
+2021-03-21 20:00:20.982 -05:00 [VRB] Result Filter: Before executing OnResultExecuting on filter Microsoft.AspNetCore.Mvc.Infrastructure.ClientErrorResultFilter.
+2021-03-21 20:00:20.984 -05:00 [VRB] Result Filter: After executing OnResultExecuting on filter Microsoft.AspNetCore.Mvc.Infrastructure.ClientErrorResultFilter.
+2021-03-21 20:00:20.985 -05:00 [VRB] Before executing action result Microsoft.AspNetCore.Mvc.ObjectResult.
+2021-03-21 20:00:20.987 -05:00 [DBG] List of registered output formatters, in the following order: ["Microsoft.AspNetCore.Mvc.Formatters.HttpNoContentOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.StringOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.StreamOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonOutputFormatter"]
+2021-03-21 20:00:20.988 -05:00 [DBG] No information found on request to perform content negotiation.
+2021-03-21 20:00:20.990 -05:00 [DBG] Attempting to select an output formatter without using a content type as no explicit content types were specified for the response.
+2021-03-21 20:00:20.992 -05:00 [DBG] Attempting to select the first formatter in the output formatters list which can write the result.
+2021-03-21 20:00:20.993 -05:00 [DBG] Selected output formatter 'Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonOutputFormatter' and content type 'application/json' to write the response.
+2021-03-21 20:00:20.995 -05:00 [INF] Executing ObjectResult, writing value of type 'System.Collections.Generic.List`1[[app.data.Employee, app.data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2021-03-21 20:00:20.997 -05:00 [VRB] After executing action result Microsoft.AspNetCore.Mvc.ObjectResult.
+2021-03-21 20:00:21.000 -05:00 [VRB] Result Filter: Before executing OnResultExecuted on filter Microsoft.AspNetCore.Mvc.Infrastructure.ClientErrorResultFilter.
+2021-03-21 20:00:21.003 -05:00 [VRB] Result Filter: After executing OnResultExecuted on filter Microsoft.AspNetCore.Mvc.Infrastructure.ClientErrorResultFilter.
+2021-03-21 20:00:21.005 -05:00 [INF] Executed action app.webapi.Controllers.EmployeesController.Get (app.webapi) in 179.4939ms
+2021-03-21 20:00:21.007 -05:00 [INF] Executed endpoint 'app.webapi.Controllers.EmployeesController.Get (app.webapi)'
+2021-03-21 20:00:21.009 -05:00 [INF] Request finished in 232.7359ms 200 application/json; charset=utf-8
+2021-03-21 20:00:31.762 -05:00 [INF] Request starting HTTP/2.0 GET https://localhost:44319/api/employees  
+2021-03-21 20:00:31.766 -05:00 [VRB] All hosts are allowed.
+2021-03-21 20:00:31.769 -05:00 [DBG] The request has an origin header: 'http://localhost:4200'.
+2021-03-21 20:00:31.771 -05:00 [INF] CORS policy execution successful.
+2021-03-21 20:00:31.773 -05:00 [DBG] 1 candidate(s) found for the request path '/api/employees'
+2021-03-21 20:00:31.776 -05:00 [DBG] Endpoint 'app.webapi.Controllers.EmployeesController.Get (app.webapi)' with route pattern 'api/Employees' is valid for the request path '/api/employees'
+2021-03-21 20:00:31.779 -05:00 [DBG] Request matched endpoint 'app.webapi.Controllers.EmployeesController.Get (app.webapi)'
+2021-03-21 20:00:31.783 -05:00 [INF] Executing endpoint 'app.webapi.Controllers.EmployeesController.Get (app.webapi)'
+2021-03-21 20:00:31.787 -05:00 [INF] Route matched with {action = "Get", controller = "Employees"}. Executing controller action with signature System.Collections.Generic.IEnumerable`1[app.data.Employee] Get() on controller app.webapi.Controllers.EmployeesController (app.webapi).
+2021-03-21 20:00:31.790 -05:00 [DBG] Execution plan of authorization filters (in the following order): ["None"]
+2021-03-21 20:00:31.793 -05:00 [DBG] Execution plan of resource filters (in the following order): ["None"]
+2021-03-21 20:00:31.796 -05:00 [DBG] Execution plan of action filters (in the following order): ["Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter (Order: -3000)","Microsoft.AspNetCore.Mvc.Infrastructure.ModelStateInvalidFilter (Order: -2000)"]
+2021-03-21 20:00:31.798 -05:00 [DBG] Execution plan of exception filters (in the following order): ["None"]
+2021-03-21 20:00:31.801 -05:00 [DBG] Execution plan of result filters (in the following order): ["Microsoft.AspNetCore.Mvc.Infrastructure.ClientErrorResultFilter (Order: -2000)"]
+2021-03-21 20:00:31.804 -05:00 [DBG] Executing controller factory for controller app.webapi.Controllers.EmployeesController (app.webapi)
+2021-03-21 20:00:31.809 -05:00 [VRB] EmployeeRepository.constructor: Started..
+2021-03-21 20:00:31.814 -05:00 [DBG] Executed controller factory for controller app.webapi.Controllers.EmployeesController (app.webapi)
+2021-03-21 20:00:31.817 -05:00 [VRB] Action Filter: Before executing OnActionExecuting on filter Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter.
+2021-03-21 20:00:31.819 -05:00 [VRB] Action Filter: After executing OnActionExecuting on filter Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter.
+2021-03-21 20:00:31.823 -05:00 [VRB] Action Filter: Before executing OnActionExecuting on filter Microsoft.AspNetCore.Mvc.Infrastructure.ModelStateInvalidFilter.
+2021-03-21 20:00:31.825 -05:00 [VRB] Action Filter: After executing OnActionExecuting on filter Microsoft.AspNetCore.Mvc.Infrastructure.ModelStateInvalidFilter.
+2021-03-21 20:00:31.852 -05:00 [INF] Executing action method app.webapi.Controllers.EmployeesController.Get (app.webapi) - Validation state: "Valid"
+2021-03-21 20:00:31.855 -05:00 [VRB] EmployeesController.Get: Started..
+2021-03-21 20:00:31.857 -05:00 [VRB] EmployeeRepository.GetAll: Started..
+2021-03-21 20:00:31.868 -05:00 [INF] Entity Framework Core 3.1.10 initialized 'SampleDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: SensitiveDataLoggingEnabled MaxBatchSize=150 
+2021-03-21 20:00:31.873 -05:00 [DBG] Creating DbCommand for 'ExecuteReader'.
+2021-03-21 20:00:31.877 -05:00 [DBG] Created DbCommand for 'ExecuteReader' (3ms).
+2021-03-21 20:00:31.880 -05:00 [DBG] Opening connection to database 'SampleDb' on server '.'.
+2021-03-21 20:00:31.884 -05:00 [DBG] Opened connection to database 'SampleDb' on server '.'.
+2021-03-21 20:00:31.887 -05:00 [DBG] Executing DbCommand [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [e].[Empno], [e].[Deptno], [e].[Ename], [e].[Sal]
+FROM [Emp] AS [e]
+2021-03-21 20:00:31.894 -05:00 [INF] Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [e].[Empno], [e].[Deptno], [e].[Ename], [e].[Sal]
+FROM [Emp] AS [e]
+2021-03-21 20:00:31.896 -05:00 [DBG] Context 'SampleDbContext' started tracking 'Employee' entity with key '{Empno: 1001}'.
+2021-03-21 20:00:31.899 -05:00 [DBG] Context 'SampleDbContext' started tracking 'Employee' entity with key '{Empno: 1002}'.
+2021-03-21 20:00:31.901 -05:00 [DBG] Context 'SampleDbContext' started tracking 'Employee' entity with key '{Empno: 1003}'.
+2021-03-21 20:00:31.904 -05:00 [DBG] Context 'SampleDbContext' started tracking 'Employee' entity with key '{Empno: 1004}'.
+2021-03-21 20:00:31.907 -05:00 [DBG] Context 'SampleDbContext' started tracking 'Employee' entity with key '{Empno: 1005}'.
+2021-03-21 20:00:31.910 -05:00 [DBG] Context 'SampleDbContext' started tracking 'Employee' entity with key '{Empno: 1006}'.
+2021-03-21 20:00:31.912 -05:00 [DBG] A data reader was disposed.
+2021-03-21 20:00:31.915 -05:00 [DBG] Closing connection to database 'SampleDb' on server '.'.
+2021-03-21 20:00:31.917 -05:00 [DBG] Closed connection to database 'SampleDb' on server '.'.
+2021-03-21 20:00:31.919 -05:00 [INF] Executed action method app.webapi.Controllers.EmployeesController.Get (app.webapi), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 64.1711ms.
+2021-03-21 20:00:31.921 -05:00 [VRB] Action Filter: Before executing OnActionExecuted on filter Microsoft.AspNetCore.Mvc.Infrastructure.ModelStateInvalidFilter.
+2021-03-21 20:00:31.923 -05:00 [VRB] Action Filter: After executing OnActionExecuted on filter Microsoft.AspNetCore.Mvc.Infrastructure.ModelStateInvalidFilter.
+2021-03-21 20:00:31.924 -05:00 [VRB] Action Filter: Before executing OnActionExecuted on filter Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter.
+2021-03-21 20:00:31.926 -05:00 [VRB] Action Filter: After executing OnActionExecuted on filter Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter.
+2021-03-21 20:00:31.928 -05:00 [VRB] Result Filter: Before executing OnResultExecuting on filter Microsoft.AspNetCore.Mvc.Infrastructure.ClientErrorResultFilter.
+2021-03-21 20:00:31.931 -05:00 [VRB] Result Filter: After executing OnResultExecuting on filter Microsoft.AspNetCore.Mvc.Infrastructure.ClientErrorResultFilter.
+2021-03-21 20:00:31.932 -05:00 [VRB] Before executing action result Microsoft.AspNetCore.Mvc.ObjectResult.
+2021-03-21 20:00:31.935 -05:00 [DBG] List of registered output formatters, in the following order: ["Microsoft.AspNetCore.Mvc.Formatters.HttpNoContentOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.StringOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.StreamOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonOutputFormatter"]
+2021-03-21 20:00:31.938 -05:00 [DBG] No information found on request to perform content negotiation.
+2021-03-21 20:00:31.941 -05:00 [DBG] Attempting to select an output formatter without using a content type as no explicit content types were specified for the response.
+2021-03-21 20:00:31.943 -05:00 [DBG] Attempting to select the first formatter in the output formatters list which can write the result.
+2021-03-21 20:00:31.946 -05:00 [DBG] Selected output formatter 'Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonOutputFormatter' and content type 'application/json' to write the response.
+2021-03-21 20:00:31.948 -05:00 [INF] Executing ObjectResult, writing value of type 'System.Collections.Generic.List`1[[app.data.Employee, app.data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2021-03-21 20:00:31.951 -05:00 [VRB] After executing action result Microsoft.AspNetCore.Mvc.ObjectResult.
+2021-03-21 20:00:31.953 -05:00 [VRB] Result Filter: Before executing OnResultExecuted on filter Microsoft.AspNetCore.Mvc.Infrastructure.ClientErrorResultFilter.
+2021-03-21 20:00:31.955 -05:00 [VRB] Result Filter: After executing OnResultExecuted on filter Microsoft.AspNetCore.Mvc.Infrastructure.ClientErrorResultFilter.
+2021-03-21 20:00:31.957 -05:00 [INF] Executed action app.webapi.Controllers.EmployeesController.Get (app.webapi) in 153.0769ms
+2021-03-21 20:00:31.959 -05:00 [INF] Executed endpoint 'app.webapi.Controllers.EmployeesController.Get (app.webapi)'
+2021-03-21 20:00:31.960 -05:00 [INF] Request finished in 198.3822ms 200 application/json; charset=utf-8
