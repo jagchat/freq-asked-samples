@@ -1,9 +1,0 @@
-﻿@{
-    ViewData["Title"] = "Current claims (Protected Info)";
-}
-<h1>@ViewData["Title"]</h1>
-
-<p>This page should only be seen if logged in and with role "Member" (not even "admin") !</p>
-
-<h2>Hi @User.Identity.Name,</h2>
-<p>This is your MemberId: <strong> @User.Claims.First(c => c.Type == "MemberId").Value</strong></p>
