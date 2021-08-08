@@ -44,5 +44,6 @@ namespace app.data
         }
 
         public DbSet<Employee> Employees { get; set; }
+        public DbSet<Dept> Depts { get; set; }
     }
 }

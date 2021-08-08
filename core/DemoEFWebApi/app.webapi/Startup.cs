@@ -55,11 +55,16 @@ namespace app.webapi
 
             ////method 2
             services.AddScoped<EmployeeRepository>(); //check NOTE in EmployeeRepository to use this
+
+            services.AddScoped<DeptRepository>(); //check NOTE in EmployeeRepository to use this
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILogger<Startup> log)
         {
+            log.LogTrace($"Environment (TRACE Test):  {env.EnvironmentName}");
+            log.LogInformation($"Environment {env.EnvironmentName}");
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

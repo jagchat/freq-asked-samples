@@ -1,0 +1,12 @@
+#check .env file for variables/values
+version: "3.9"
+services:
+    web:
+        build:
+            context: ../../app.webapi/
+            dockerfile: ./Dockerfile-Release
+        image: "${IMAGE_NAME}"
+        container_name: "${CONTAINER_NAME}"
+        ports:
+            - "${PORT_MAP}"
+        
