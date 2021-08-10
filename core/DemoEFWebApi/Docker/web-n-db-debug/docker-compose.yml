@@ -1,0 +1,27 @@
+#check .env file for variables/values
+version: "3.9"
+services:
+    web:
+        build:
+            context: ../../app.webapi/
+            dockerfile: ./Dockerfile-Debug
+        image: "${WEB_IMAGE_NAME}"
+        container_name: "${WEB_CONTAINER_NAME}"
+        ports:
+            - "${WEB_PORT_MAP}"
+        environment:
+            ASPNETCORE_ENVIRONMENT: Development
+        depends_on: 
+            - db
+    db:
+        build:
+            context: .
+            dockerfile: ./Dockerfile-mssql
+        image: "${DB_IMAGE_NAME}"
+        container_name: "${DB_CONTAINER_NAME}"
+        ports:
+            - "${DB_PORT_MAP}"
+        volumes:
+            - mssqldata:/var/opt/mssql
+volumes:
+  mssqldata:
