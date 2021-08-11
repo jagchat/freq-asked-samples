@@ -11,4 +11,5 @@ services:
             - "${PORT_MAP}"
         environment:
             ASPNETCORE_ENVIRONMENT: Development
+            #ConnectionStrings__SampleDb: CONNECTION_STRING_NOT_PRESENT_FROM_DOCKER_COMPOSE
         

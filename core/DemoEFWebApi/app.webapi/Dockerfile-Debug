@@ -2,4 +2,5 @@ FROM mcr.microsoft.com/dotnet/aspnet:3.1
 COPY bin/Debug/netcoreapp3.1/publish/ app/
 WORKDIR /app
 ENV ASPNETCORE_ENVIRONMENT Development
+#ENV ConnectionStrings__SampleDb CONNECTION_STRING_NOT_PRESENT_FROM_DOCKER_FILE
 ENTRYPOINT ["dotnet", "app.webapi.dll"]

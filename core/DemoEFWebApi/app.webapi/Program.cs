@@ -46,7 +46,8 @@ namespace app.webapi
             {
                 Log.Verbose("Starting host (TRACE test)..");
                 Log.Information("Starting host..");
-                CreateHostBuilder(args).Build().Run();        
+                Log.Information($"{configuration.GetConnectionString("SampleDb")}"); //Just for Demo.  Bad practice.
+                CreateHostBuilder(args).Build().Run();
             }
             catch (Exception ex)
             {
