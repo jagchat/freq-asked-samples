@@ -1,0 +1,21 @@
+version: "3.9"
+services:
+    web:
+        image: "jagrandd/webapi-sample-db"
+        container_name: "webapi-02"
+        ports:
+            - "3002:80"
+        environment:
+            ASPNETCORE_ENVIRONMENT: Development
+            ConnectionStrings__SampleDb: "Server=db;Database=SampleDb;User Id=sa;Password=eXpress2017;"
+        depends_on: 
+            - db
+    db:
+        image: "jagrandd/mssql-sample-db"
+        container_name: "mssql-02"
+        ports:
+            - "2432:1433"
+        volumes:
+            - mssqldata:/var/opt/mssql
+volumes:
+  mssqldata:
