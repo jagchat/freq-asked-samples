@@ -1,7 +1,7 @@
 # Durtable Task framework Samples
 
-> SQL Server must be made available for 01, 02, 03, 04 samples
-> If Docker is installed, execute powershell scripts (Docker\start-db-step-01, Docker\start-db-step-02)
+> - SQL Server must be made available for 01, 02, 03, 04 samples
+> - If Docker is installed, execute powershell scripts (Docker\start-db-step-01, Docker\start-db-step-02)
 
 ### Samples Info
 
