@@ -1,15 +1,24 @@
 ### Features
 
-- Demonstrates both authentiation / authorization using AWS Cognito
+- Demonstrates both authentiation / authorization using AWS Cognito and ASP.NET Core 5s
 - Uses AWS Cognito UI for sign-in 
 - Uses AWS Cognito User Pool (for users and user groups)
 - Uses AWS Cognito Users for identity
 - Uses AWS Cognito User Groups for roles
 - No AWS libraries used (only uses Microsoft .NET Core libraries and generic OIDC)
-- Sign-in kicks in when accessing any controller/action with "Authorize" attribute
+- "Sign-in" kicks in when accessing any controller/action with "Authorize" attribute
 - Demonstrates on how to fetch tokens (in Startup.cs, for now)
 - Demonstrates Logout from both current app and AWS server-side
 
+### Screenshots
+
+![01](./images/01.png)
+![02](./images/02.png)
+![03](./images/03.png)
+![04](./images/04.png)
+![05](./images/05.png)
+![06](./images/06.png)
+![07](./images/07.png)
 
 ### AWS Cognito config / steps
 
@@ -66,5 +75,3 @@ Created user pool (jag.dev) with following details (deleted user pool / app clie
 - User Group / Roles
   - "dev" assigned to "scott"
   - "seniordev" assigned to "george"
-
-  
