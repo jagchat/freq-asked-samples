@@ -24,10 +24,9 @@
 
 Created user pool (jag.dev) with following details (deleted user pool / app client after this demo)
 
-- Enabled Fed identity providers (skipped, yet to configure)
-  - Facebook, Google, Amazon login, OpenID Connect (OIDC)
-- Can use user name / preferred user name / email for login
-- Optional MFA (using Authenticator apps)
+- Sign-in Options: User Name, Email (no phone)
+  - Can use preferred user name
+- Optional MFA using Authenticator apps
 - Self-service account recovery enabled, delivery method: email only
 - Self-service sign-up enabled
 - Cognito-assisted verification and confirmation enabled 
@@ -68,7 +67,6 @@ Created user pool (jag.dev) with following details (deleted user pool / app clie
   - Identity Providers - Cognito user pool
   - OAuth Grant Type: Authorization code grant, Implicit grant
   - OpenID Connect scopes: OpenID, Phone, Email, Profile (must include OpenID for all)
-  - Allowed sign-out URL: not configured
 - Users 
   - scott/Scott123?
   - george/George123?
