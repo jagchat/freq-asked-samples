@@ -1,0 +1,30 @@
+﻿@using Demo.Data.Models
+@model List<Employee>
+@{
+    ViewData["Title"] = "Employee Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Employee List</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Salary</th>
+                <th scope="col">Dept</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var o in Model)
+            {
+                <tr>
+                    <th scope="row"><a href="~/Employee/@o.Id"> @o.Id</a></th>
+                    <td>@o.Name</td>
+                    <td>@o.Salary</td>
+                    <td>@o.DeptId</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

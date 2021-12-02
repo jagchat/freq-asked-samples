@@ -1,0 +1,31 @@
+﻿@model Newtonsoft.Json.Linq.JArray
+@{
+    ViewData["Title"] = "Audit Trail";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Audit</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Date</th>
+                <th scope="col">Tenant / App</th>
+                <th scope="col">Record Info</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var o in Model)
+            {
+                <tr>
+                    <td>@o.SelectToken("_v.UpdateDate")</td>
+                    <td>@o.SelectToken("_v.TenantInfo.Name") | @o.SelectToken("_v.AppInfo.Name") </td>
+                    <td>
+                        @o.SelectToken("_v.Key") | @o.SelectToken("_v.Value")
+                    </td>
+                    <th scope="row"><a href="~/Audit/@o.SelectToken("_v.TenantInfo.Name")/@o.SelectToken("_v.AppInfo.Name")/@o.SelectToken("_v.Key")/@o.SelectToken("_v.Value")"> More</a></th>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,111 @@
+﻿@using Newtonsoft.Json.Linq
+@using JsonDiffPatchDotNet
+@using JsonDiffPatchDotNet.Formatters.JsonPatch
+@model Newtonsoft.Json.Linq.JArray
+@{
+    ViewData["Title"] = "Audit Trail";
+}
+
+@functions {
+    //public static JToken GetJsonDiff(dynamic left, dynamic right)
+    //{
+    //    var jdp = new JsonDiffPatch();
+    //    var leftToken = JToken.FromObject(left);
+    //    var rightToken = JToken.FromObject(right);
+    //    JToken patch = jdp.Diff(leftToken, rightToken);
+
+    //    return patch;
+    //}
+
+    public static IList<Operation> GetJsonDiffOperations(dynamic left, dynamic right)
+    {
+        var jdp = new JsonDiffPatch();
+        var leftToken = JToken.FromObject(left);
+        var rightToken = JToken.FromObject(right);
+        JToken patch = jdp.Diff(leftToken, rightToken);
+
+        var formatter = new JsonDeltaFormatter();
+        return formatter.Format(patch);
+    }
+}
+
+<div class="text-center">
+    <h1 class="display-4">Audit Details</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Date</th>
+                <th scope="col">Record Info</th>
+                <th scope="col">Audit Trail</th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                int i = 0;
+            }
+            @foreach (var o in Model)
+            {
+                //JToken diff = null;
+                IList<Operation> diffList = null;
+                if (i + 1 < Model.Count)
+                {
+                    //diff = GetJsonDiff(Model[i + 1], Model[i]);
+                    diffList = GetJsonDiffOperations(Model[i + 1], Model[i]);
+                    i++;
+
+                    <tr>
+                        <td>@o.SelectToken("_v.UpdateDate")</td>
+                        <td>
+                            @o.SelectToken("_v.TenantInfo.Name") | @o.SelectToken("_v.AppInfo.Name") | @o.SelectToken("_v.Key") | @o.SelectToken("_v.Value")
+                        </td>
+                        <td>
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Operation</th>
+                                        <th scope="col">Path</th>
+                                        <th scope="col">Old Value</th>
+                                        <th scope="col">New Value</th>
+                                    </tr>
+                                </thead>
+                                @foreach (var diffItem in diffList)
+                                {
+                                    <tr>
+                                        <td>@diffItem.Op</td>
+                                        <td>@diffItem.Path</td>
+                                        <td>@(((JToken)diffItem.Value).Previous)</td>
+                                        <td>@diffItem.Value</td>
+                                    </tr>
+                                }
+                            </table>
+                        </td>
+                    </tr>
+                }
+                else
+                {
+                    <tr>
+                        <td>@o.SelectToken("_v.UpdateDate")</td>
+                        <td>
+                            @o.SelectToken("_v.TenantInfo.Name") | @o.SelectToken("_v.AppInfo.Name") | @o.SelectToken("_v.Key") | @o.SelectToken("_v.Value")
+                        </td>
+                        <td>
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">First Recorded Value</th>                                        
+                                    </tr>
+                                </thead>
+                                <tr>
+                                    <td>
+                                        <textarea cols="40" rows="5" readonly>@o.SelectToken("_v.Data")</textarea>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>
