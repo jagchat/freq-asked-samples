@@ -1,0 +1,57 @@
+<html>
+
+<body>
+    <div id="message"></div>
+    <button id="ToastButton" class="btn btn-primary"><i class="far fa-solid fa-user"></i> Test
+        Toast</button>
+    <button id="ModalButton" class="btn btn-primary">Test Modal</button>
+
+    <br>
+    Meterial icons -
+    <i class="material-icons">donut_small</i>
+    <i class="material-icons-outlined">donut_small</i>
+    <i class="material-icons-two-tone">donut_small</i>
+    <i class="material-icons-round">donut_small</i>
+    <i class="material-icons-sharp">donut_small</i>
+
+    <br>
+    Meterial symbols -
+    <span class="material-symbols-outlined">account_box</span>
+
+
+    <script src="./index.js"></script>
+
+    <!-- Toast Start -->
+    <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+        <div id="ToastMessage" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header">
+                <strong class="me-auto">Bootstrap</strong>
+                <small>11 mins ago</small>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body">
+                Hello, world! This is a toast message.
+            </div>
+        </div>
+    </div>
+    <!-- Toast End -->
+
+    <!-- Modal Start -->
+    <div id="ModalMessage" class="modal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Modal title</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Modal body text goes here.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal End -->
+
+</body>
+
+</html>
