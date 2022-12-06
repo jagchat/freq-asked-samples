@@ -24,7 +24,7 @@
   },
   "devDependencies": {
     "@types/node": "^8.5.2",
-    "http-server": "^0.10.0",
+    "http-server": "^14.1.1",
     "typescript": "^2.6.2"
   }
 }
