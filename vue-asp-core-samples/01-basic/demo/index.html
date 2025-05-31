@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Vue Dev with HMR</title>
+    <script type="module" src="./src/mount.js"></script>
+  </head>
+  <body>
+    <div id="vue-widget"></div>
+
+    <script type="module">
+      import { mountMyWidget } from "./src/mount.js";
+      mountMyWidget(document.getElementById("vue-widget"));
+    </script>
+  </body>
+</html>

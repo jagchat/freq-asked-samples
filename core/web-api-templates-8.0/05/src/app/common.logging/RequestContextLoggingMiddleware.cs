@@ -1,0 +1,40 @@
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Primitives;
+using Serilog.Context;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace common.logging
+{
+    public class RequestContextLoggingMiddleware
+    {
+        private const string CorrelationIdHeaderName = "x-correlation-id";
+        private readonly RequestDelegate _next;
+
+        public RequestContextLoggingMiddleware(RequestDelegate next)
+        {
+            _next = next;
+        }
+
+        public Task Invoke(HttpContext context)
+        {
+            string correlationId = GetCorrelationId(context);
+
+            using (LogContext.PushProperty("CorrelationId", correlationId))
+            {
+                return _next.Invoke(context);
+            }
+        }
+
+        private static string GetCorrelationId(HttpContext context)
+        {
+            context.Request.Headers.TryGetValue(
+                CorrelationIdHeaderName, out StringValues correlationId);
+            return correlationId.FirstOrDefault() ?? context.TraceIdentifier;
+        }
+
+    }
+}

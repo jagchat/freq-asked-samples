@@ -1,0 +1,22 @@
+{
+  "name": "hello-directive",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "dist/hello-directive.umd.js",
+  "module": "dist/hello-directive.js",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build"
+  },
+  "peerDependencies": {
+    "vue": "^3.0.0"
+  },
+  "devDependencies": {
+    "vite": "^5.0.0",
+    "@vitejs/plugin-vue": "^5.0.0",
+    "vue": "^3.0.0"
+  }
+}

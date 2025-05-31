@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Vue Widget in ASP.NET</title>
+</head>
+<body>
+    <div id="vue-widget"></div>
+
+    <script type="importmap">
+        {
+            "imports": {
+                "vue": "https://unpkg.com/vue@3.4.0/dist/vue.esm-browser.prod.js"
+            }
+        }
+    </script>
+    <script type="module" src="/js/assets/mount.js"></script>
+    <script type="module" src="/js/assets/MyWidget.js"></script>
+
+    <script type="module">
+        // Import from the built file
+        import { mountMyWidget } from '/js/assets/mount.js';
+        mountMyWidget(document.getElementById("vue-widget"));
+    </script>
+
+</body>
+</html>
