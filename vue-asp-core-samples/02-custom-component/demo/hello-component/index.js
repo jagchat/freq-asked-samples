@@ -1,9 +1,9 @@
 import hello from "./hello.vue";
 
-const HelloDirective = {
+const HelloComponent = {
   install(app) {
     app.component("hello", hello);
   },
 };
 
-export default HelloDirective;
+export default HelloComponent;

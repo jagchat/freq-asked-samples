@@ -1,7 +1,7 @@
 import { createApp } from "vue";
-import HelloDirective from "../hello-directive/dist/hello-directive.es.js";
+import HelloComponent from "../hello-component/dist/hello-component.es.js";
 import App from "./App.vue";
 
 const app = createApp(App);
-app.use(HelloDirective);
+app.use(HelloComponent);
 app.mount("#app");

@@ -1,9 +1,9 @@
 {
-  "name": "hello-directive",
+  "name": "hello-component",
   "version": "1.0.0",
   "type": "module",
-  "main": "dist/hello-directive.umd.js",
-  "module": "dist/hello-directive.js",
+  "main": "dist/hello-component.umd.js",
+  "module": "dist/hello-component.js",
   "files": [
     "dist"
   ],

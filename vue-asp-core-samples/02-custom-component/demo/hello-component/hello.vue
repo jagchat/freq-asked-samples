@@ -1,6 +1,6 @@
 <template>
   <div>
-    Hello from custom directive!<br />
+    Hello from custom component!<br />
     <strong>ID:</strong> {{ id }}
   </div>
 </template>

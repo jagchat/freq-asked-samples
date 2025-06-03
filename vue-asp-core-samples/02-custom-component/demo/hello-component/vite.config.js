@@ -8,8 +8,8 @@ export default defineConfig({
     sourcemap: true,
     lib: {
       entry: "./index.js",
-      name: "HelloDirective",
-      fileName: "hello-directive",
+      name: "HelloComponent",
+      fileName: "hello-component",
       formats: ["es", "umd"],
     },
     rollupOptions: {
@@ -18,7 +18,7 @@ export default defineConfig({
         globals: {
           vue: "Vue",
         },
-        entryFileNames: "hello-directive.[format].js",
+        entryFileNames: "hello-component.[format].js",
       },
     },
   },
