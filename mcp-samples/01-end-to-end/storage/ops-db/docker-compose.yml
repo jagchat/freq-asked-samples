@@ -1,0 +1,12 @@
+version: "3.7"
+services:
+  demo-ops-db:
+    build:
+      context: ./
+      dockerfile: ./DockerFile
+    image: demo-ops-db
+    environment:
+      - POSTGRES_PASSWORD=test
+    container_name: demo-ops-db-local
+    ports:
+      - "6432:5432"
