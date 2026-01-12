@@ -1,0 +1,25 @@
+{
+  "name": "project-generator-mcp-server",
+  "version": "0.1.0",
+  "description": "MCP server that bridges GitHub Copilot with LangGraph code generation engine",
+  "type": "module",
+  "main": "src/index.mjs",
+  "scripts": {
+    "start": "node src/index.mjs",
+    "dev": "node --watch src/index.mjs"
+  },
+  "keywords": [
+    "mcp",
+    "code-generation",
+    "copilot"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.4",
+    "axios": "^1.13.2"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
