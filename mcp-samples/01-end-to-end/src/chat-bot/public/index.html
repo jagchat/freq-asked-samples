@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MCP Chatbot</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="chat-container">
+      <div class="chat-header">
+        <h1>MCP Chatbot</h1>
+        <div class="status" id="status">Connecting...</div>
+      </div>
+
+      <div class="messages" id="messages">
+        <div class="message assistant">
+          <div class="message-content">
+            Hello! I can help you manage departments, employees, and addresses.
+            What would you like to know?
+          </div>
+        </div>
+      </div>
+
+      <div class="input-container">
+        <input
+          type="text"
+          id="messageInput"
+          placeholder="Type your message..."
+          autocomplete="off"
+        />
+        <button id="sendButton">Send</button>
+      </div>
+    </div>
+
+    <script>
+      const ws = new WebSocket("ws://localhost:3001");
+      const messagesDiv = document.getElementById("messages");
+      const messageInput = document.getElementById("messageInput");
+      const sendButton = document.getElementById("sendButton");
+      const statusDiv = document.getElementById("status");
+
+      ws.onopen = () => {
+        statusDiv.textContent = "Connected";
+        statusDiv.className = "status connected";
+      };
+
+      ws.onclose = () => {
+        statusDiv.textContent = "Disconnected";
+        statusDiv.className = "status disconnected";
+      };
+
+      ws.onerror = () => {
+        statusDiv.textContent = "Error";
+        statusDiv.className = "status disconnected";
+      };
+
+      ws.onmessage = (event) => {
+        const data = JSON.parse(event.data);
+
+        if (data.type === "assistant") {
+          addMessage(data.content, "assistant");
+        } else if (data.type === "error") {
+          addMessage("Error: " + data.content, "error");
+        }
+      };
+
+      function addMessage(content, type) {
+        const messageDiv = document.createElement("div");
+        messageDiv.className = `message ${type}`;
+
+        const contentDiv = document.createElement("div");
+        contentDiv.className = "message-content";
+        contentDiv.textContent = content;
+
+        messageDiv.appendChild(contentDiv);
+        messagesDiv.appendChild(messageDiv);
+        messagesDiv.scrollTop = messagesDiv.scrollHeight;
+      }
+
+      function sendMessage() {
+        const message = messageInput.value.trim();
+        if (!message) return;
+
+        addMessage(message, "user");
+
+        ws.send(
+          JSON.stringify({
+            type: "message",
+            content: message,
+          })
+        );
+
+        messageInput.value = "";
+      }
+
+      sendButton.addEventListener("click", sendMessage);
+
+      messageInput.addEventListener("keypress", (e) => {
+        if (e.key === "Enter") {
+          sendMessage();
+        }
+      });
+
+      // Focus input on load
+      messageInput.focus();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,23 @@
+.hello-wrapper {
+  padding: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  font-family: Arial, sans-serif;
+  color: #333;
+}
+
+.label-id {
+  color: #018250;
+  font-weight: bold;
+}
+
+button {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+}
+
+.label-message {
+  color: #0b78dd;
+  font-weight: bold;
+}

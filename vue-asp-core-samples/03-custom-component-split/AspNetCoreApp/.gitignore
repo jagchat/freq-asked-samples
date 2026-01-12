@@ -1,0 +1,6 @@
+# Custom
+**/packages/
+**/.vs/
+**/logs/
+**/obj/
+**/bin/
