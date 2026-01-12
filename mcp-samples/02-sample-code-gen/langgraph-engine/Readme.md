@@ -193,6 +193,14 @@ langgraph-engine/
 
 All workflow nodes and server integration are complete. The system is ready for end-to-end testing with real LLM code generation.
 
+**7. Token Usage Tracking**
+
+- Tracks tokens across all LLM calls (parse_intent, plan_generation, generate_code)
+- Accumulates input, output, and total tokens throughout the workflow
+- Supports OpenAI, Anthropic, Ollama, and LiteLLM providers
+- Returns token usage in API response and logs
+- All test files updated to display token usage
+
 ## What is State in LangGraph?
 
 Think of **state** as a **data bucket** that gets passed from node to node in the workflow:
@@ -329,7 +337,67 @@ Let's trace a real request through the workflow:
             "content": "public class PaymentRepository { /* full generated code */ }"
         }
     ],
-    "errors": []
+    "errors": [],
+
+    # Token usage tracking
+    "token_usage": {
+        "input_tokens": 3452,
+        "output_tokens": 2148,
+        "total_tokens": 5600
+    }
 
 }
 ```
+
+## Testing
+
+### Test Individual Nodes
+
+Test each workflow node independently:
+
+```powershell
+# Test parse_intent (1 LLM call)
+python test_parse_intent.py
+
+# Test select_examples (no LLM calls)
+python test_select_examples.py
+
+# Test plan_generation (1 LLM call)
+python test_plan_generation.py
+
+# Test generate_code (N LLM calls, one per file)
+python test_generate_code.py
+```
+
+Each test displays token usage when available.
+
+### Test Complete Workflow
+
+```powershell
+# Test end-to-end workflow
+python test_workflow.py
+```
+
+**Example output:**
+```
+Token Usage Summary:
+  Input tokens:  3452
+  Output tokens: 2148
+  Total tokens:  5600
+
+✓ Successfully generated 4 file(s):
+1. src/services/PaymentService.cs
+2. src/repositories/PaymentRepository.cs
+3. src/models/Payment.cs
+4. src/controllers/PaymentController.cs
+```
+
+### Token Usage by Node
+
+| Node | LLM Calls | Typical Tokens | Notes |
+|------|-----------|----------------|-------|
+| parse_intent | 1 | 150-300 | Extracts structured info |
+| select_examples | 0 | 0 | File loading only |
+| plan_generation | 1 | 300-600 | Creates file plan |
+| generate_code | N | 2000-5000+ | Generates actual code |
+| **Total** | 2+N | **2500-6000+** | Varies by file count |

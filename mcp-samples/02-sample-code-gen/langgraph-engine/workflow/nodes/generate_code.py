@@ -55,6 +55,58 @@ logger = logging.getLogger(__name__)
 
 
 # ============================================================================
+# Helper Functions for Token Tracking
+# ============================================================================
+
+def extract_token_usage(response, current_usage: Dict[str, int]) -> Dict[str, int]:
+    """
+    Extract token usage from LLM response and accumulate with current usage.
+
+    Args:
+        response: The raw response from the LLM (AIMessage object)
+        current_usage: Current accumulated token usage dict
+
+    Returns:
+        Dict with input_tokens, output_tokens, and total_tokens
+    """
+    # Get existing token usage
+    existing_input = current_usage.get("input_tokens", 0)
+    existing_output = current_usage.get("output_tokens", 0)
+    existing_total = current_usage.get("total_tokens", 0)
+
+    # Try to extract token usage from response
+    # Different providers return usage in different formats
+    new_input = 0
+    new_output = 0
+
+    # Try usage_metadata (newer LangChain format)
+    if hasattr(response, 'usage_metadata') and response.usage_metadata:
+        usage = response.usage_metadata
+        new_input = usage.get('input_tokens', 0)
+        new_output = usage.get('output_tokens', 0)
+    # Try response_metadata (older format)
+    elif hasattr(response, 'response_metadata') and response.response_metadata:
+        metadata = response.response_metadata
+        # OpenAI format
+        if 'token_usage' in metadata:
+            token_usage = metadata['token_usage']
+            new_input = token_usage.get('prompt_tokens', 0)
+            new_output = token_usage.get('completion_tokens', 0)
+        # Anthropic format
+        elif 'usage' in metadata:
+            usage = metadata['usage']
+            new_input = usage.get('input_tokens', 0)
+            new_output = usage.get('output_tokens', 0)
+
+    # Accumulate and return
+    return {
+        "input_tokens": existing_input + new_input,
+        "output_tokens": existing_output + new_output,
+        "total_tokens": existing_total + new_input + new_output
+    }
+
+
+# ============================================================================
 # Prompt Template
 # ============================================================================
 
@@ -138,7 +190,9 @@ public class PaymentService
 }}}}
 ```
 """),
-    ("human", """Generate code for this file:
+    ("human", """**CRITICAL: Return ONLY the raw code. No explanations. No markdown code blocks like ```csharp or ```python. Just the pure source code that can be saved directly to a file.**
+
+Generate code for this file:
 
 **Target Entity:**
 - Singular: {entity_name}
@@ -157,8 +211,10 @@ public class PaymentService
 Generate the complete code for the new file. Remember:
 - Transform ALL occurrences of the example entity to the target entity
 - Preserve ALL patterns and structure from the example
-- Return ONLY the code (no explanations, no markdown blocks)
+- Return ONLY the raw code (no explanations, no markdown blocks)
 - Make it production-ready
+
+IMPORTANT: Output raw code only, starting immediately with the code itself (e.g., "using System;" or "public class" for C#).
 """)
 ])
 
@@ -295,6 +351,11 @@ def generate_code(state: Dict, llm: BaseChatModel) -> Dict:
         logger.info(f"Generating {len(generation_plan)} file(s)...")
         logger.info(f"Entity: {entity_name} (plural: {entity_name_plural})")
 
+        # Initialize token tracking (get existing usage from state, handle None case)
+        token_usage = state.get("token_usage") or {}
+        if not token_usage:
+            token_usage = {"input_tokens": 0, "output_tokens": 0, "total_tokens": 0}
+
         # Build the prompt chain (we'll invoke it for each file)
         chain = GENERATE_CODE_PROMPT | llm
 
@@ -327,6 +388,9 @@ def generate_code(state: Dict, llm: BaseChatModel) -> Dict:
                     "example_code": example_code
                 })
 
+                # Extract token usage from this generation
+                token_usage = extract_token_usage(result, token_usage)
+
                 # Extract the generated code
                 # The result is an AIMessage object, get its content
                 generated_content = result.content if hasattr(result, 'content') else str(result)
@@ -358,11 +422,17 @@ def generate_code(state: Dict, llm: BaseChatModel) -> Dict:
                 continue
 
         logger.info(f"Successfully generated {len(generated_files)} file(s)")
+
+        # Log token usage
+        if token_usage and token_usage.get('total_tokens', 0) > 0:
+            logger.info(f"Token Usage: {token_usage['total_tokens']} tokens (input: {token_usage['input_tokens']}, output: {token_usage['output_tokens']})")
+
         logger.info("=" * 60)
 
-        # Return the generated files to add to state
+        # Return the generated files and token usage to add to state
         return {
-            "generated_files": generated_files
+            "generated_files": generated_files,
+            "token_usage": token_usage
         }
 
     except Exception as e:

@@ -10,7 +10,7 @@ Workflow flow:
           └─ Updates state ─┴─ Updates state ─┴─ Updates state ──┴─ Updates state ─┘
 """
 
-from typing import TypedDict, Optional, List, Literal
+from typing import TypedDict, Optional, List, Literal, Dict
 
 
 # ============================================================================
@@ -149,6 +149,7 @@ class GeneratorState(TypedDict):
     # -------------------------------------------------------------------------
     generated_files: List[FileOperation]         # The final output: list of files to create/update
     errors: List[str]                            # Any errors encountered during generation
+    token_usage: Optional[Dict[str, int]]        # Token usage tracking: input_tokens, output_tokens, total_tokens
 
 
 # ============================================================================
@@ -213,7 +214,8 @@ def create_initial_state(
 
         # Output (start empty)
         generated_files=[],
-        errors=[]
+        errors=[],
+        token_usage=None
     )
 
 
@@ -241,6 +243,11 @@ def state_summary(state: GeneratorState) -> str:
         f"Files Generated: {len(state.get('generated_files', []))}",
         f"Errors: {len(state.get('errors', []))}",
     ]
+
+    # Add token usage if available
+    token_usage = state.get('token_usage')
+    if token_usage:
+        lines.append(f"Total Tokens Used: {token_usage.get('total_tokens', 0)}")
 
     if state.get('parsed_intent'):
         intent = state['parsed_intent']

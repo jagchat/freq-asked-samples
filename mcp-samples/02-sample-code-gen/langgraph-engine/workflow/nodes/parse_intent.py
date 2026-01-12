@@ -41,6 +41,63 @@ logger = logging.getLogger(__name__)
 
 
 # ============================================================================
+# Helper Functions
+# ============================================================================
+
+def extract_token_usage(response, state: Dict) -> Dict[str, int]:
+    """
+    Extract token usage from LLM response and accumulate with existing usage.
+
+    Args:
+        response: The raw response from the LLM (AIMessage object)
+        state: Current workflow state (to get existing token_usage)
+
+    Returns:
+        Dict with input_tokens, output_tokens, and total_tokens
+    """
+    # Get existing token usage from state (handle None case)
+    existing_usage = state.get("token_usage") or {}
+    existing_input = existing_usage.get("input_tokens", 0)
+    existing_output = existing_usage.get("output_tokens", 0)
+    existing_total = existing_usage.get("total_tokens", 0)
+
+    # Try to extract token usage from response
+    # Different providers return usage in different formats
+    new_input = 0
+    new_output = 0
+
+    # Try usage_metadata (newer LangChain format)
+    if hasattr(response, 'usage_metadata') and response.usage_metadata:
+        usage = response.usage_metadata
+        new_input = usage.get('input_tokens', 0)
+        new_output = usage.get('output_tokens', 0)
+    # Try response_metadata (older format)
+    elif hasattr(response, 'response_metadata') and response.response_metadata:
+        metadata = response.response_metadata
+        # OpenAI format
+        if 'token_usage' in metadata:
+            token_usage = metadata['token_usage']
+            new_input = token_usage.get('prompt_tokens', 0)
+            new_output = token_usage.get('completion_tokens', 0)
+        # Anthropic format
+        elif 'usage' in metadata:
+            usage = metadata['usage']
+            new_input = usage.get('input_tokens', 0)
+            new_output = usage.get('output_tokens', 0)
+
+    # If we found token usage, accumulate and return
+    if new_input > 0 or new_output > 0:
+        return {
+            "input_tokens": existing_input + new_input,
+            "output_tokens": existing_output + new_output,
+            "total_tokens": existing_total + new_input + new_output
+        }
+
+    # If no token usage found, return existing or None
+    return existing_usage if existing_usage else None
+
+
+# ============================================================================
 # Pydantic Models for Structured Output
 # ============================================================================
 
@@ -91,18 +148,22 @@ Examples:
 - "Build a product catalog service"
   → entity_name="Product", operation_type="other"
 """),
-    ("human", """Analyze this request and extract structured information:
+    ("human", """**CRITICAL: You must return ONLY valid JSON. No explanations before or after. No markdown code blocks. Just raw JSON starting with {{ and ending with }}.**
+
+Analyze this request and extract structured information:
 
 Request: {user_request}
 Target Stack: {target_stack}
 
-Return your analysis as JSON with these fields:
+Return your analysis as JSON with these exact fields:
 - entity_name: Singular form (PascalCase)
 - entity_name_plural: Plural form (PascalCase)
 - operation_type: "crud", "read-only", "custom", or "other"
 - additional_context: Brief summary of requirements
 
 {format_instructions}
+
+Remember: Return ONLY the JSON object, nothing else.
 """)
 ])
 
@@ -148,23 +209,36 @@ def parse_intent(state: Dict, llm: BaseChatModel) -> Dict:
         # Create output parser for structured JSON response
         parser = JsonOutputParser(pydantic_object=ParsedIntentOutput)
 
-        # Build the prompt chain
-        chain = PARSE_INTENT_PROMPT | llm | parser
+        # Build the prompt chain (without parser to get raw response with metadata)
+        chain_without_parser = PARSE_INTENT_PROMPT | llm
 
         # Invoke the LLM
-        result = chain.invoke({
+        raw_response = chain_without_parser.invoke({
             "user_request": state["user_request"],
             "target_stack": state["target_stack"],
             "format_instructions": parser.get_format_instructions()
         })
 
+        # Parse the content
+        result = parser.parse(raw_response.content)
+
         logger.info(f"Parsed Intent: {result}")
+
+        # Extract token usage from response
+        token_usage = extract_token_usage(raw_response, state)
+        if token_usage:
+            logger.info(f"Token Usage: {token_usage['total_tokens']} tokens (input: {token_usage['input_tokens']}, output: {token_usage['output_tokens']})")
+
         logger.info("=" * 60)
 
-        # Return the parsed intent to add to state
-        return {
+        # Return the parsed intent and token usage to add to state
+        return_dict = {
             "parsed_intent": result
         }
+        if token_usage:
+            return_dict["token_usage"] = token_usage
+
+        return return_dict
 
     except Exception as e:
         logger.error(f"Error parsing intent: {str(e)}", exc_info=True)

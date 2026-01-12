@@ -155,6 +155,15 @@ namespace YourProject.Services
             print("      " + "-" * 50)
             print()
 
+        # Display token usage if available
+        if "token_usage" in result:
+            usage = result["token_usage"]
+            print(f"  Token Usage:")
+            print(f"    Input tokens:  {usage.get('input_tokens', 0)}")
+            print(f"    Output tokens: {usage.get('output_tokens', 0)}")
+            print(f"    Total tokens:  {usage.get('total_tokens', 0)}")
+            print()
+
     elif "errors" in result:
         print("  ✗ Generation failed!")
         print(f"    Errors: {result['errors']}")

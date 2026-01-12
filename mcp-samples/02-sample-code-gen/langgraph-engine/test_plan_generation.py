@@ -115,6 +115,14 @@ def main():
                 print(f"      {idx}. {file_plan['output_path']}")
                 print(f"         Type: {file_plan['file_type']}")
                 print(f"         Examples: {', '.join(file_plan['relevant_examples'])}")
+
+            # Display token usage if available
+            if "token_usage" in result:
+                usage = result["token_usage"]
+                print(f"\n  Token Usage:")
+                print(f"    Input tokens:  {usage.get('input_tokens', 0)}")
+                print(f"    Output tokens: {usage.get('output_tokens', 0)}")
+                print(f"    Total tokens:  {usage.get('total_tokens', 0)}")
         elif "errors" in result:
             print("  ✗ Planning failed!")
             print(f"    Errors: {result['errors']}")

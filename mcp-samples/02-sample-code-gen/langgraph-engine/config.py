@@ -65,6 +65,12 @@ class Settings(BaseSettings):
     litellm_model: str = "gpt-4"
     litellm_base_url: str | None = None  # Optional: custom proxy URL
 
+    # AWS Configuration (for Bedrock via LiteLLM)
+    aws_region_name: str | None = None
+    aws_profile: str | None = None
+    aws_access_key_id: str | None = None
+    aws_secret_access_key: str | None = None
+
     # Server Configuration
     server_host: str = "127.0.0.1"
     server_port: int = 8000
@@ -177,7 +183,31 @@ def get_llm() -> BaseChatModel:
             "temperature": temperature,
         }
 
-        # Add API key if provided
+        # Configure AWS credentials for Bedrock (if using Bedrock models)
+        if settings.litellm_model.startswith("bedrock/") or settings.litellm_model.startswith("anthropic."):
+            logger.info("Configuring AWS credentials for Bedrock...")
+
+            # Set AWS region
+            if settings.aws_region_name:
+                os.environ["AWS_REGION_NAME"] = settings.aws_region_name
+                os.environ["AWS_DEFAULT_REGION"] = settings.aws_region_name
+                logger.info(f"AWS Region: {settings.aws_region_name}")
+
+            # Set AWS profile (for SSO - takes precedence over access keys)
+            if settings.aws_profile:
+                os.environ["AWS_PROFILE"] = settings.aws_profile
+                logger.info(f"Using AWS Profile: {settings.aws_profile}")
+                logger.info("Note: Make sure you've run 'aws sso login --profile {settings.aws_profile}' before starting the service")
+
+            # Set AWS access keys (only if profile is not set)
+            elif settings.aws_access_key_id and settings.aws_secret_access_key:
+                os.environ["AWS_ACCESS_KEY_ID"] = settings.aws_access_key_id
+                os.environ["AWS_SECRET_ACCESS_KEY"] = settings.aws_secret_access_key
+                logger.info("Using AWS access keys from environment")
+            else:
+                logger.info("No AWS credentials configured. boto3 will use default credential chain.")
+
+        # Add API key if provided (for non-Bedrock models)
         if settings.litellm_api_key:
             litellm_kwargs["api_key"] = settings.litellm_api_key
 
@@ -250,6 +280,17 @@ def print_config_summary():
         logger.info(f"API Key: {'✓ Set' if settings.litellm_api_key else '✗ Missing'}")
         if settings.litellm_base_url:
             logger.info(f"Base URL: {settings.litellm_base_url}")
+
+        # Show AWS configuration for Bedrock models
+        if settings.litellm_model.startswith("bedrock/") or settings.litellm_model.startswith("anthropic."):
+            logger.info("AWS Bedrock Configuration:")
+            logger.info(f"  Region: {settings.aws_region_name or 'Not set'}")
+            if settings.aws_profile:
+                logger.info(f"  Profile: {settings.aws_profile} (SSO)")
+            elif settings.aws_access_key_id:
+                logger.info(f"  Access Key: ✓ Set")
+            else:
+                logger.info(f"  Credentials: Using default boto3 credential chain")
 
     logger.info(f"Temperature: {settings.llm_temperature}")
     logger.info(f"Max Examples Tokens: {settings.max_examples_tokens}")

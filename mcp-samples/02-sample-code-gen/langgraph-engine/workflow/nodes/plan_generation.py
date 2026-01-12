@@ -61,6 +61,63 @@ logger = logging.getLogger(__name__)
 
 
 # ============================================================================
+# Helper Functions
+# ============================================================================
+
+def extract_token_usage(response, state: Dict) -> Dict[str, int]:
+    """
+    Extract token usage from LLM response and accumulate with existing usage.
+
+    Args:
+        response: The raw response from the LLM (AIMessage object)
+        state: Current workflow state (to get existing token_usage)
+
+    Returns:
+        Dict with input_tokens, output_tokens, and total_tokens
+    """
+    # Get existing token usage from state (handle None case)
+    existing_usage = state.get("token_usage") or {}
+    existing_input = existing_usage.get("input_tokens", 0)
+    existing_output = existing_usage.get("output_tokens", 0)
+    existing_total = existing_usage.get("total_tokens", 0)
+
+    # Try to extract token usage from response
+    # Different providers return usage in different formats
+    new_input = 0
+    new_output = 0
+
+    # Try usage_metadata (newer LangChain format)
+    if hasattr(response, 'usage_metadata') and response.usage_metadata:
+        usage = response.usage_metadata
+        new_input = usage.get('input_tokens', 0)
+        new_output = usage.get('output_tokens', 0)
+    # Try response_metadata (older format)
+    elif hasattr(response, 'response_metadata') and response.response_metadata:
+        metadata = response.response_metadata
+        # OpenAI format
+        if 'token_usage' in metadata:
+            token_usage = metadata['token_usage']
+            new_input = token_usage.get('prompt_tokens', 0)
+            new_output = token_usage.get('completion_tokens', 0)
+        # Anthropic format
+        elif 'usage' in metadata:
+            usage = metadata['usage']
+            new_input = usage.get('input_tokens', 0)
+            new_output = usage.get('output_tokens', 0)
+
+    # If we found token usage, accumulate and return
+    if new_input > 0 or new_output > 0:
+        return {
+            "input_tokens": existing_input + new_input,
+            "output_tokens": existing_output + new_output,
+            "total_tokens": existing_total + new_input + new_output
+        }
+
+    # If no token usage found, return existing or None
+    return existing_usage if existing_usage else None
+
+
+# ============================================================================
 # Pydantic Models for Structured Output
 # ============================================================================
 
@@ -144,7 +201,9 @@ Plan should include:
 - PaymentRepository.cs → use UserRepository.cs as reference
 - Payment.cs → use User.cs as reference
 """),
-    ("human", """Create a generation plan for the following request:
+    ("human", """**CRITICAL: You must return ONLY valid JSON. No explanations before or after. No markdown code blocks. Just raw JSON starting with {{ and ending with }}.**
+
+Create a generation plan for the following request:
 
 **Parsed Intent:**
 Entity Name: {entity_name}
@@ -163,10 +222,10 @@ Generate a plan that specifies:
 2. The complete output path for each file
 3. Which example files are relevant for each output file
 
-**CRITICAL: Return ONLY valid JSON. No explanations, no markdown, no additional text.**
-
-Return your plan as JSON with this structure:
+Return your plan as JSON with this exact structure:
 {format_instructions}
+
+Remember: Return ONLY the JSON object, nothing else.
 """)
 ])
 
@@ -276,37 +335,31 @@ def plan_generation(state: Dict, llm: BaseChatModel) -> Dict:
         # Format examples for the prompt
         examples_list = format_examples_list(selected_examples)
 
-        # Invoke the LLM
+        # Invoke the LLM (get raw response first for token tracking)
+        chain_without_parser = PLAN_GENERATION_PROMPT | llm
+        raw_response = chain_without_parser.invoke({
+            "entity_name": parsed_intent.get("entity_name", "Unknown"),
+            "entity_name_plural": parsed_intent.get("entity_name_plural", "Unknowns"),
+            "operation_type": parsed_intent.get("operation_type", "other"),
+            "additional_context": parsed_intent.get("additional_context", ""),
+            "target_stack": target_stack,
+            "target_path": target_path,
+            "examples_list": examples_list,
+            "format_instructions": parser.get_format_instructions()
+        })
+
+        # Extract token usage
+        token_usage = extract_token_usage(raw_response, state)
+
+        # Parse the response
         try:
-            result = chain.invoke({
-                "entity_name": parsed_intent.get("entity_name", "Unknown"),
-                "entity_name_plural": parsed_intent.get("entity_name_plural", "Unknowns"),
-                "operation_type": parsed_intent.get("operation_type", "other"),
-                "additional_context": parsed_intent.get("additional_context", ""),
-                "target_stack": target_stack,
-                "target_path": target_path,
-                "examples_list": examples_list,
-                "format_instructions": parser.get_format_instructions()
-            })
+            result = parser.parse(raw_response.content)
         except Exception as parse_error:
             # If JSON parsing fails, try to extract JSON from the response manually
             logger.warning(f"JSON parsing failed, attempting manual extraction: {str(parse_error)}")
 
-            # Get the raw response without the parser
-            chain_without_parser = PLAN_GENERATION_PROMPT | llm
-            raw_result = chain_without_parser.invoke({
-                "entity_name": parsed_intent.get("entity_name", "Unknown"),
-                "entity_name_plural": parsed_intent.get("entity_name_plural", "Unknowns"),
-                "operation_type": parsed_intent.get("operation_type", "other"),
-                "additional_context": parsed_intent.get("additional_context", ""),
-                "target_stack": target_stack,
-                "target_path": target_path,
-                "examples_list": examples_list,
-                "format_instructions": parser.get_format_instructions()
-            })
-
             # Extract content from AI message
-            raw_text = raw_result.content if hasattr(raw_result, 'content') else str(raw_result)
+            raw_text = raw_response.content if hasattr(raw_response, 'content') else str(raw_response)
 
             # Try to find JSON in the response (look for { ... })
             import json
@@ -328,12 +381,20 @@ def plan_generation(state: Dict, llm: BaseChatModel) -> Dict:
         for file_plan in files:
             logger.info(f"  - {file_plan['output_path']} ({file_plan['file_type']})")
 
+        # Log token usage
+        if token_usage:
+            logger.info(f"Token Usage: {token_usage['total_tokens']} tokens (input: {token_usage['input_tokens']}, output: {token_usage['output_tokens']})")
+
         logger.info("=" * 60)
 
-        # Return the generation plan to add to state
-        return {
+        # Return the generation plan and token usage to add to state
+        return_dict = {
             "generation_plan": files
         }
+        if token_usage:
+            return_dict["token_usage"] = token_usage
+
+        return return_dict
 
     except Exception as e:
         logger.error(f"Error generating plan: {str(e)}", exc_info=True)

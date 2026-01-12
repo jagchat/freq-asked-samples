@@ -292,18 +292,97 @@ node test-mcp.mjs
   - Startup configuration validation
   - Complete end-to-end pipeline functional
 
+✅ **Phase 7: Token Usage Tracking (Complete)**
+
+- ✅ **Token tracking across all LLM calls**
+  - Tracks input tokens, output tokens, and total tokens
+  - Accumulates tokens across all workflow nodes
+  - Works with OpenAI, Anthropic, Ollama, and LiteLLM providers
+- ✅ **API response includes token usage**
+  - `token_usage` field in `/generate` response
+  - Displays in test script output
+- ✅ **Server logs show token usage**
+  - Logs tokens at each node
+  - Shows total tokens at the end
+- ✅ **All test files updated**
+  - `test_parse_intent.py`, `test_plan_generation.py`, `test_generate_code.py`, `test_workflow.py`
+  - Display token usage for monitoring and optimization
+
 ## 🎉 Core Implementation Complete!
 
 The LangGraph engine is now fully functional with all workflow nodes integrated into the FastAPI server. The system can:
+
 - Parse natural language requests
 - Select relevant code examples
 - Plan file generation
 - Generate production-ready code using LLM
 - Return structured file operations via REST API
+- Track token usage across all LLM calls for cost monitoring
+
+## Token Usage Tracking
+
+The system now tracks token usage across all LLM operations:
+
+### What's Tracked
+
+- **Input tokens** (prompt tokens)
+- **Output tokens** (completion tokens)
+- **Total tokens** (input + output)
+
+### Where You'll See It
+
+1. **API Response** - `/generate` endpoint includes `token_usage`:
+
+   ```json
+   {
+     "success": true,
+     "files": [...],
+     "summary": "Generated 4 files...",
+     "token_usage": {
+       "input_tokens": 3452,
+       "output_tokens": 2148,
+       "total_tokens": 5600
+     }
+   }
+   ```
+
+2. **Test Script Output** - `test_langgraph_http_api.ps1`:
+
+   ```
+   Token Usage:
+     - Input tokens: 3452
+     - Output tokens: 2148
+     - Total tokens: 5600
+   ```
+
+3. **Server Logs** - Each node logs its token usage:
+   ```
+   INFO - Node: parse_intent
+   INFO - Token Usage: 200 tokens (input: 150, output: 50)
+   INFO - Node: plan_generation
+   INFO - Token Usage: 600 tokens (input: 450, output: 150)
+   INFO - Node: generate_code
+   INFO - Token Usage: 5600 tokens (input: 3450, output: 2150)
+   ```
+
+### Cost Estimation
+
+Use token counts to estimate API costs:
+
+**OpenAI GPT-4 (example rates):**
+
+- Input: $0.03 per 1K tokens
+- Output: $0.06 per 1K tokens
+- Example: 5600 tokens = ~$0.23 per generation
+
+**Anthropic Claude 3.5 Sonnet (example rates):**
+
+- Input: $0.003 per 1K tokens
+- Output: $0.015 per 1K tokens
+- Example: 5600 tokens = ~$0.04 per generation
 
 🔄 **Next Steps:**
 
-- 🚧 End-to-end testing with real LLM code generation
 - 🚧 Add more code examples to the library (Python, JavaScript)
 - 🚧 Configure GitHub Copilot to use the MCP server
 - 🚧 Test complete MCP → LangGraph → Copilot flow

@@ -69,6 +69,14 @@ def main():
             print(f"    Entity (plural): {intent['entity_name_plural']}")
             print(f"    Operation Type: {intent['operation_type']}")
             print(f"    Context: {intent['additional_context']}")
+
+            # Display token usage if available
+            if "token_usage" in result:
+                usage = result["token_usage"]
+                print(f"\n  Token Usage:")
+                print(f"    Input tokens:  {usage.get('input_tokens', 0)}")
+                print(f"    Output tokens: {usage.get('output_tokens', 0)}")
+                print(f"    Total tokens:  {usage.get('total_tokens', 0)}")
         elif "errors" in result:
             print("  ✗ Parsing failed!")
             print(f"    Errors: {result['errors']}")

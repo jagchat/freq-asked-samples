@@ -45,6 +45,14 @@ try {
     Write-Host "  Success: $($response.success)" -ForegroundColor Gray
     Write-Host "  Files generated: $($response.files.Count)" -ForegroundColor Gray
     Write-Host "  Summary: $($response.summary)" -ForegroundColor Gray
+
+    # Display token usage if available
+    if ($response.token_usage) {
+        Write-Host "  Token Usage:" -ForegroundColor Cyan
+        Write-Host "    - Input tokens: $($response.token_usage.input_tokens)" -ForegroundColor Gray
+        Write-Host "    - Output tokens: $($response.token_usage.output_tokens)" -ForegroundColor Gray
+        Write-Host "    - Total tokens: $($response.token_usage.total_tokens)" -ForegroundColor Yellow
+    }
     Write-Host ""
 
     # Show errors if any

@@ -102,6 +102,10 @@ class GenerateResponse(BaseModel):
         default=None,
         description="List of errors if generation failed"
     )
+    token_usage: Optional[dict] = Field(
+        default=None,
+        description="Token usage statistics (input_tokens, output_tokens, total_tokens)"
+    )
 
 
 # ============================================================================
@@ -167,9 +171,10 @@ async def generate_code(request: GenerateRequest):
             target_path=request.target_path
         )
 
-        # Extract generated files from workflow result
+        # Extract generated files and token usage from workflow result
         generated_files = workflow_result.get("generated_files", [])
         errors = workflow_result.get("errors", [])
+        token_usage = workflow_result.get("token_usage", None)
 
         # Check if workflow succeeded
         if errors:
@@ -215,10 +220,13 @@ async def generate_code(request: GenerateRequest):
             success=True,
             files=file_operations,
             summary=summary,
-            errors=None
+            errors=None,
+            token_usage=token_usage
         )
 
         logger.info(f"✓ Successfully generated {len(response.files)} files")
+        if token_usage:
+            logger.info(f"✓ Total tokens used: {token_usage.get('total_tokens', 0)}")
         return response
 
     except Exception as e:

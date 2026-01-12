@@ -67,6 +67,15 @@ def main():
                 print(f"  - {error}")
             print()
 
+        # Display token usage
+        if result.get("token_usage"):
+            usage = result["token_usage"]
+            print("Token Usage Summary:")
+            print(f"  Input tokens:  {usage.get('input_tokens', 0)}")
+            print(f"  Output tokens: {usage.get('output_tokens', 0)}")
+            print(f"  Total tokens:  {usage.get('total_tokens', 0)}")
+            print()
+
         # Display generated files
         generated_files = result.get("generated_files", [])
         if generated_files:
