@@ -46,9 +46,11 @@ LangGraph Engine (Python)
     3. Plan generation → Decide which files to create
     4. Generate code → LLM creates code using examples
     ↓ HTTP Response
-MCP Server returns file operations
+MCP Server receives generated files
     ↓
-Copilot shows diffs → User approves → Files created
+Creates files on disk immediately
+    ↓
+Files created in workspace ✅
 ```
 
 ## Project Structure
@@ -223,6 +225,91 @@ Once both servers are running, you can test the HTTP connection:
 # Test the MCP server (simulates GitHub Copilot)
 cd mcp-server
 node test-mcp.mjs
+```
+
+### Test with Github CoPilot with VS Code
+
+#### Prerequisites
+
+- Ensure `langgraph-engine` is running as mentioned above.
+- Ensure `test_langgraph_http_api.ps1` is working as expected.
+- Ensure `npm install` in `mcp-server`
+- Create new folder and open the folder in VS Code
+
+#### Configure MCP Server
+
+Open GitHub CoPilot Chat and configure MCP server as shown below:
+
+```json
+{
+  "servers": {
+    "test-mcp-server": {
+      "type": "stdio",
+      "command": "node",
+      "args": [
+        "C:\\<your-path>\\02-sample-code-gen\\mcp-server\\src\\index.mjs"
+      ]
+    }
+  },
+  "inputs": []
+}
+```
+
+#### Usage
+
+**Basic Usage:**
+
+```
+using test-mcp-server, Create a simple User service with CRUD operations for dotnet
+```
+
+**What happens:**
+- Generates code based on your prompt
+- **Automatically creates files** in your workspace
+- Creates directories if needed
+- Returns confirmation
+
+**Example Response:**
+```
+✅ Successfully created 4 file(s)!
+
+Generated User service with full CRUD operations
+
+Created files:
+1. models/User.cs
+2. repositories/UserRepository.cs
+3. services/UserService.cs
+4. controllers/UserController.cs
+```
+
+#### Tool Parameters
+
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `prompt` | string | Yes | - | What to generate |
+| `stack` | string | No | 'javascript' | 'dotnet', 'python', or 'javascript' |
+| `targetPath` | string | No | '.' | Base path for files (relative to workspace) |
+
+#### More Examples
+
+**Python FastAPI:**
+```
+using test-mcp-server with stack="python", Create a FastAPI endpoint for authentication
+```
+
+**JavaScript/Express:**
+```
+using test-mcp-server with stack="javascript", Create an Express API for orders
+```
+
+**Custom Target Path:**
+```
+using test-mcp-server with targetPath="backend/src", Create a User service for dotnet
+```
+
+**Multiple parameters:**
+```
+using test-mcp-server with stack="python" and targetPath="backend", Create a Payment service with CRUD operations
 ```
 
 ## What We've Built So Far

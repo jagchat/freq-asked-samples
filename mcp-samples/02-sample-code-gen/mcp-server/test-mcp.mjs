@@ -71,7 +71,7 @@ setTimeout(() => {
   // Wait a bit, then send a CallTool request
   setTimeout(() => {
     console.log('');
-    console.log('Sending request to generate code...');
+    console.log('Sending request to generate code (DEFAULT mode - will create files)...');
     console.log('');
 
     const callToolRequest = {
@@ -83,18 +83,20 @@ setTimeout(() => {
         arguments: {
           prompt: 'Create a simple User service with CRUD operations',
           stack: 'dotnet',
-          targetPath: 'src'
+          targetPath: 'test-output'  // Use test-output to avoid polluting src
         }
       }
     };
 
     mcpServer.stdin.write(JSON.stringify(callToolRequest) + '\n');
 
-    // Give it time to complete, then exit
+    // Wait for response
     setTimeout(() => {
       console.log('');
       console.log('=' .repeat(60));
       console.log('Test complete!');
+      console.log('');
+      console.log('Note: Files created in test-output/ directory');
       mcpServer.kill();
       process.exit(0);
     }, 5000);

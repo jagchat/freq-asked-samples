@@ -15,6 +15,8 @@ import {
   ListToolsRequestSchema,
 } from '@modelcontextprotocol/sdk/types.js';
 import axios from 'axios';
+import fs from 'fs/promises';
+import path from 'path';
 
 /**
  * Create the MCP Server instance
@@ -49,7 +51,7 @@ server.setRequestHandler(ListToolsRequestSchema, async () => {
     tools: [
       {
         name: 'generate_project_structure',
-        description: 'Generate project files following established code patterns from real examples. Analyzes your request and creates code matching your existing codebase style.',
+        description: 'Generate and create project files following established code patterns from real examples. Files are created immediately in your workspace.',
         inputSchema: {
           type: 'object',
           properties: {
@@ -65,7 +67,8 @@ server.setRequestHandler(ListToolsRequestSchema, async () => {
             },
             targetPath: { //(optional): Where to put the generated files
               type: 'string',
-              description: 'Optional: base path where files should be generated',
+              description: 'Base path where files should be generated (relative to workspace root)',
+              default: '.',
             },
           },
           required: ['prompt'],
@@ -92,7 +95,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
 
   if (name === 'generate_project_structure') {
     try {
-      const { prompt, stack = 'javascript', targetPath = 'src' } = args;
+      const { prompt, stack = 'javascript', targetPath = '.' } = args;
 
       // Call the LangGraph engine's /generate endpoint
       console.error(`Calling LangGraph API: ${LANGGRAPH_API_URL}/generate`);
@@ -119,21 +122,47 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
         };
       }
 
-      // Format the response for GitHub Copilot
-      // Build a summary of generated files
-      let resultText = `${data.summary}\n\n`;
-      resultText += `Generated ${data.files.length} file(s):\n\n`;
+      // Create the files
+      const createdFiles = [];
+      const errors = [];
 
-      data.files.forEach((file, index) => {
-        resultText += `${index + 1}. ${file.action.toUpperCase()}: ${file.path}\n`;
-      });
+      for (const file of data.files) {
+        try {
+          // Resolve the full file path
+          const fullPath = path.resolve(process.cwd(), file.path);
 
-      resultText += '\n--- File Contents ---\n\n';
+          // Create directory if it doesn't exist
+          const dir = path.dirname(fullPath);
+          await fs.mkdir(dir, { recursive: true });
 
-      data.files.forEach((file) => {
-        resultText += `\n=== ${file.path} ===\n`;
-        resultText += `${file.content}\n`;
-      });
+          // Write the file
+          await fs.writeFile(fullPath, file.content, 'utf-8');
+
+          createdFiles.push(file.path);
+          console.error(`Created: ${file.path}`);
+        } catch (err) {
+          errors.push(`Failed to create ${file.path}: ${err.message}`);
+          console.error(`Error creating ${file.path}:`, err);
+        }
+      }
+
+      // Build success response
+      let resultText = `✅ Successfully created ${createdFiles.length} file(s)!\n\n`;
+      resultText += `${data.summary}\n\n`;
+
+      if (createdFiles.length > 0) {
+        resultText += 'Created files:\n';
+        createdFiles.forEach((filePath, index) => {
+          resultText += `${index + 1}. ${filePath}\n`;
+        });
+      }
+
+      if (errors.length > 0) {
+        resultText += '\n⚠️ Errors:\n';
+        errors.forEach((error, index) => {
+          resultText += `${index + 1}. ${error}\n`;
+        });
+      }
 
       return {
         content: [
@@ -142,6 +171,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
             text: resultText,
           },
         ],
+        isError: errors.length > 0 && createdFiles.length === 0,
       };
     } catch (error) {
       // Handle connection errors and other exceptions
