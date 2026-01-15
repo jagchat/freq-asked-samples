@@ -1,0 +1,1 @@
+docker build -f Dockerfile -t demo-rest-api-ops-db:test .

@@ -1,0 +1,1 @@
+docker-compose -f .\docker-compose.prod.img.test.yml up -d
