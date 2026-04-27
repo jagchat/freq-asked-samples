@@ -1,0 +1,37 @@
+<%- include('partials/header', { title: 'Dashboard', navLabel: tenant ? tenant.name : '', currentUser: user }) %>
+
+<h2>Welcome, <%= user.display_name || user.email %></h2>
+<p class="muted">Tenant: <strong><%= tenant ? tenant.name : '(unknown)' %></strong> · Last login <%= user.last_login %></p>
+
+<section class="grid">
+  <article>
+    <header><strong>Your profile</strong></header>
+    <dl>
+      <dt>Email</dt><dd><%= user.email %></dd>
+      <dt>Display name</dt><dd><%= user.display_name || '—' %></dd>
+      <dt>First name</dt><dd><%= user.first_name || '—' %></dd>
+      <dt>Last name</dt><dd><%= user.last_name || '—' %></dd>
+      <dt>External ID</dt><dd><code><%= user.external_id %></code></dd>
+      <dt>Roles</dt>
+      <dd>
+        <% if (roles.length === 0) { %>—<% } else { %>
+          <% roles.forEach(r => { %><span class="badge badge-ok" style="margin-right:.25rem;"><%= r %></span><% }) %>
+        <% } %>
+      </dd>
+    </dl>
+  </article>
+
+  <article>
+    <header><strong>Raw SAML attributes</strong> <span class="muted">(from the last login)</span></header>
+    <dl>
+      <% Object.entries(rawAttrs).forEach(([k, v]) => { %>
+        <dt><code><%= k %></code></dt>
+        <dd><%= typeof v === 'object' ? JSON.stringify(v) : String(v) %></dd>
+      <% }) %>
+    </dl>
+  </article>
+</section>
+
+<p class="muted"><a href="/api/me">View /api/me as JSON</a> (cookie session authenticates API calls too).</p>
+
+<%- include('partials/footer') %>

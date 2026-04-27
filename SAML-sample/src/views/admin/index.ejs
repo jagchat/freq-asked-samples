@@ -1,0 +1,41 @@
+<%- include('../partials/header', { title: 'Admin · Tenants', navLabel: 'Admin' }) %>
+
+<header style="display:flex; justify-content:space-between; align-items:center;">
+  <h2 style="margin:0;">Tenants</h2>
+  <a href="/admin/tenants/new" role="button">+ New tenant</a>
+</header>
+
+<% if (tenants.length === 0) { %>
+  <article><p class="muted">No tenants yet. Create your first one to get started.</p></article>
+<% } else { %>
+  <table>
+    <thead>
+      <tr>
+        <th>Slug</th>
+        <th>Name</th>
+        <th>Email domain</th>
+        <th>SAML</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% tenants.forEach(t => { %>
+        <tr>
+          <td><code><%= t.slug %></code></td>
+          <td><%= t.name %></td>
+          <td><%= t.email_domain || '—' %></td>
+          <td>
+            <% if (t.saml_configured) { %>
+              <span class="badge badge-ok">Configured</span>
+            <% } else { %>
+              <span class="badge badge-warn">Pending SAML</span>
+            <% } %>
+          </td>
+          <td><a href="/admin/tenants/<%= t.slug %>">View</a></td>
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>
+<% } %>
+
+<%- include('../partials/footer') %>

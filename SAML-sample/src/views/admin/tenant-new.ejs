@@ -1,0 +1,27 @@
+<%- include('../partials/header', { title: 'New tenant', navLabel: 'Admin · New tenant' }) %>
+
+<p><a href="/admin">← All tenants</a></p>
+<h2>New tenant</h2>
+
+<% if (error) { %>
+  <p style="color:#b42318; background:#fee4e2; padding:.75rem; border-radius:.5rem;"><%= error %></p>
+<% } %>
+
+<form method="post" action="/admin/tenants" style="max-width:32rem;">
+  <label>
+    Slug <span class="muted">(used in URLs, e.g. /login/<code>acme</code>)</span>
+    <input type="text" name="slug" pattern="[a-z0-9][a-z0-9-]{1,40}" required value="<%= values.slug || '' %>" placeholder="acme">
+  </label>
+  <label>
+    Name
+    <input type="text" name="name" required value="<%= values.name || '' %>" placeholder="Acme Corp">
+  </label>
+  <label>
+    Email domain <span class="muted">(optional — used for login discovery)</span>
+    <input type="text" name="email_domain" value="<%= values.email_domain || '' %>" placeholder="acme.com">
+  </label>
+  <button type="submit">Create tenant</button>
+  <a href="/admin" role="button" class="secondary outline">Cancel</a>
+</form>
+
+<%- include('../partials/footer') %>

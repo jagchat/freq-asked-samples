@@ -1,0 +1,144 @@
+<%- include('../partials/header', { title: 'Configure SAML · ' + tenant.name, navLabel: 'Admin · ' + tenant.slug + ' · SAML' }) %>
+
+<p><a href="/admin/tenants/<%= tenant.slug %>">← <%= tenant.name %></a></p>
+<h2>Configure SAML for <%= tenant.name %></h2>
+
+<% if (error) { %>
+  <p style="color:#b42318; background:#fee4e2; padding:.75rem; border-radius:.5rem;"><%= error %></p>
+<% } %>
+
+<form method="post" action="/admin/tenants/<%= tenant.slug %>/saml-config" enctype="multipart/form-data">
+
+  <fieldset>
+    <legend>1. IdP connection</legend>
+    <label>
+      <input type="radio" name="mode" value="metadata" checked> Upload metadata XML
+    </label>
+    <label>
+      <input type="radio" name="mode" value="manual" <% if (cfg) { %>checked<% } %>> Enter manually
+    </label>
+
+    <div style="margin-top:1rem;">
+      <label>Metadata XML file <span class="muted">(used only in "Upload metadata" mode)</span>
+        <input type="file" name="metadataFile" accept=".xml,text/xml">
+      </label>
+    </div>
+
+    <div style="margin-top:1rem;">
+      <label>IdP Entity ID <span class="muted">(used only in "Enter manually" mode)</span>
+        <input type="text" name="idp_entity_id" value="<%= cfg ? cfg.idp_entity_id : '' %>" placeholder="urn:example:idp">
+      </label>
+      <label>SSO URL
+        <input type="url" name="sso_url" value="<%= cfg ? cfg.sso_url : '' %>" placeholder="https://idp.example.com/saml/sso">
+      </label>
+      <label>SLO URL <span class="muted">(optional)</span>
+        <input type="url" name="slo_url" value="<%= cfg && cfg.slo_url ? cfg.slo_url : '' %>" placeholder="https://idp.example.com/saml/slo">
+      </label>
+      <label>NameID format
+        <select name="nameid_format">
+          <% const nameidOptions = [
+            ['urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress', 'emailAddress'],
+            ['urn:oasis:names:tc:SAML:2.0:nameid-format:persistent', 'persistent'],
+            ['urn:oasis:names:tc:SAML:2.0:nameid-format:transient', 'transient'],
+            ['urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified', 'unspecified'],
+          ]; %>
+          <% nameidOptions.forEach(([value, label]) => { %>
+            <option value="<%= value %>" <% if (cfg && cfg.nameid_format === value) { %>selected<% } else if (!cfg && label === 'emailAddress') { %>selected<% } %>><%= label %></option>
+          <% }) %>
+        </select>
+      </label>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>2. Signing certificate</legend>
+    <% if (cfg) { %>
+      <p class="muted">A certificate is already on file. Upload a new one to replace it; leave empty to keep the existing cert.</p>
+    <% } else { %>
+      <p class="muted">Required in "Enter manually" mode. In "Upload metadata" mode the cert is extracted from the XML.</p>
+    <% } %>
+    <label>Certificate file <span class="muted">(.pem / .cer / .crt)</span>
+      <input type="file" name="certFile" accept=".pem,.cer,.crt">
+    </label>
+  </fieldset>
+
+  <fieldset>
+    <legend>3. Attribute mapping</legend>
+    <p class="muted">Map your IdP's claim names to canonical field names used by the app.</p>
+
+    <label>Load preset
+      <select id="presetPicker">
+        <option value="">— keep current values —</option>
+        <% Object.entries(presets).forEach(([key, p]) => { %>
+          <option value="<%= key %>"><%= p.label %></option>
+        <% }) %>
+      </select>
+    </label>
+
+    <table class="mapping-table">
+      <thead><tr><th style="width:30%;">Canonical field</th><th>Source claim (from IdP)</th></tr></thead>
+      <tbody id="standardRows">
+        <% canonicalFields.forEach(field => { %>
+          <tr>
+            <td><code><%= field %></code></td>
+            <td>
+              <input
+                type="text"
+                name="mapping[<%= field %>]"
+                data-canonical="<%= field %>"
+                value="<%= existingMap[field] || '' %>"
+              >
+            </td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+
+    <details style="margin-top:.5rem;">
+      <summary class="muted">Add custom attribute</summary>
+      <table class="mapping-table">
+        <thead><tr><th style="width:30%;">Canonical field name</th><th>Source claim</th><th></th></tr></thead>
+        <tbody id="customRows">
+          <% Object.keys(existingMap).filter(k => !canonicalFields.includes(k)).forEach(k => { %>
+            <tr>
+              <td><input type="text" name="custom_field" value="<%= k %>"></td>
+              <td><input type="text" name="custom_claim" value="<%= existingMap[k] %>"></td>
+              <td><button type="button" class="secondary outline" onclick="this.closest('tr').remove()">Remove</button></td>
+            </tr>
+          <% }) %>
+        </tbody>
+      </table>
+      <button type="button" class="secondary outline" onclick="addCustomRow()">+ Add row</button>
+    </details>
+  </fieldset>
+
+  <button type="submit">Save configuration</button>
+  <a href="/admin/tenants/<%= tenant.slug %>" role="button" class="secondary outline">Cancel</a>
+</form>
+
+<script>
+  const PRESETS = <%- JSON.stringify(presets) %>;
+
+  document.getElementById('presetPicker').addEventListener('change', (e) => {
+    const key = e.target.value;
+    if (!key) return;
+    const map = PRESETS[key].map;
+    document.querySelectorAll('#standardRows input[data-canonical]').forEach((input) => {
+      const field = input.dataset.canonical;
+      if (map[field] !== undefined) input.value = map[field];
+    });
+  });
+
+  function addCustomRow() {
+    const tbody = document.getElementById('customRows');
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td><input type="text" name="custom_field" placeholder="department"></td>
+      <td><input type="text" name="custom_claim" placeholder="http://…/department"></td>
+      <td><button type="button" class="secondary outline" onclick="this.closest('tr').remove()">Remove</button></td>
+    `;
+    tbody.appendChild(tr);
+  }
+</script>
+
+<%- include('../partials/footer') %>

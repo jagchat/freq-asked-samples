@@ -1,0 +1,80 @@
+<%- include('../partials/header', { title: tenant.name, navLabel: 'Admin · ' + tenant.name }) %>
+
+<p><a href="/admin">← All tenants</a></p>
+<h2><%= tenant.name %> <span class="muted" style="font-size:1rem;">(<code><%= tenant.slug %></code>)</span></h2>
+
+<section class="grid">
+  <article>
+    <header><strong>Give these to your IdP admin</strong></header>
+    <p class="muted">They'll use these when creating the SAML app on their side (Okta / Azure / etc.).</p>
+
+    <label>SP Entity ID</label>
+    <div class="copy-row">
+      <code><%= urls.spEntityId %></code>
+      <button type="button" class="secondary" onclick="copyText('<%= urls.spEntityId %>', this)">Copy</button>
+    </div>
+
+    <label>ACS URL</label>
+    <div class="copy-row">
+      <code><%= urls.acsUrl %></code>
+      <button type="button" class="secondary" onclick="copyText('<%= urls.acsUrl %>', this)">Copy</button>
+    </div>
+
+    <label>SP Metadata URL</label>
+    <div class="copy-row">
+      <code><%= urls.metadataUrl %></code>
+      <button type="button" class="secondary" onclick="copyText('<%= urls.metadataUrl %>', this)">Copy</button>
+    </div>
+  </article>
+
+  <article>
+    <header>
+      <strong>SAML configuration</strong>
+      <% if (cfg) { %><span class="badge badge-ok" style="margin-left:.5rem;">Configured</span>
+      <% } else { %><span class="badge badge-warn" style="margin-left:.5rem;">Pending</span><% } %>
+    </header>
+
+    <% if (cfg) { %>
+      <dl>
+        <dt>IdP Entity ID</dt><dd><code><%= cfg.idp_entity_id %></code></dd>
+        <dt>SSO URL</dt><dd><code><%= cfg.sso_url %></code></dd>
+        <dt>SLO URL</dt><dd><% if (cfg.slo_url) { %><code><%= cfg.slo_url %></code><% } else { %>—<% } %></dd>
+        <dt>NameID format</dt><dd><code><%= cfg.nameid_format %></code></dd>
+        <% if (certInfo) { %>
+          <dt>Certificate subject</dt><dd><code><%= certInfo.subject %></code></dd>
+          <dt>Cert fingerprint (SHA-256)</dt><dd><code style="font-size:.75rem;"><%= certInfo.fingerprintSha256 %></code></dd>
+          <dt>Cert valid until</dt><dd><%= certInfo.validTo %></dd>
+        <% } %>
+        <dt>Updated</dt><dd><%= cfg.updated_at %></dd>
+      </dl>
+      <a href="/admin/tenants/<%= tenant.slug %>/saml-config" role="button">Update SAML</a>
+      <a href="/login/<%= tenant.slug %>" role="button" class="secondary" target="_blank">Test login</a>
+    <% } else { %>
+      <p class="muted">This tenant has no IdP configured yet.</p>
+      <a href="/admin/tenants/<%= tenant.slug %>/saml-config" role="button">Configure SAML</a>
+    <% } %>
+  </article>
+</section>
+
+<% if (cfg && mappings.length > 0) { %>
+  <article>
+    <header><strong>Attribute mapping</strong></header>
+    <table>
+      <thead><tr><th>Canonical field</th><th>Source claim</th></tr></thead>
+      <tbody>
+        <% mappings.forEach(m => { %>
+          <tr><td><code><%= m.canonical_field %></code></td><td><code><%= m.source_claim %></code></td></tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </article>
+<% } %>
+
+<article style="border-color:#fcb3a8;">
+  <header><strong>Danger zone</strong></header>
+  <form method="post" action="/admin/tenants/<%= tenant.slug %>/delete" onsubmit="return confirm('Delete tenant \'<%= tenant.slug %>\' and all its users?')">
+    <button type="submit" class="secondary outline" style="color:#b42318; border-color:#b42318;">Delete tenant</button>
+  </form>
+</article>
+
+<%- include('../partials/footer') %>

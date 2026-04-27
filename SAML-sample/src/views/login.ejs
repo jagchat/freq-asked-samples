@@ -1,0 +1,35 @@
+<%- include('partials/header', { title: 'Sign in', navLabel: 'Sign in' }) %>
+
+<article style="max-width:32rem; margin:3rem auto;">
+  <h2>Sign in</h2>
+  <p class="muted">Enter your work email — we'll route you to your organization's identity provider.</p>
+
+  <% if (error) { %>
+    <p style="color:#b42318; background:#fee4e2; padding:.75rem; border-radius:.5rem;"><%= error %></p>
+  <% } %>
+
+  <form method="post" action="/login">
+    <label>
+      Work email
+      <input type="email" name="email" placeholder="you@company.com" required autofocus>
+    </label>
+    <button type="submit">Continue</button>
+  </form>
+
+  <% if (allTenants && allTenants.length > 0) { %>
+    <details style="margin-top:1.5rem;">
+      <summary class="muted">Sign in by tenant (dev)</summary>
+      <form method="post" action="/login" style="margin-top:.5rem;">
+        <select name="slug" required>
+          <option value="">Pick a tenant…</option>
+          <% allTenants.forEach(t => { %>
+            <option value="<%= t.slug %>"><%= t.name %> (<%= t.slug %>)</option>
+          <% }) %>
+        </select>
+        <button type="submit" class="secondary">Go</button>
+      </form>
+    </details>
+  <% } %>
+</article>
+
+<%- include('partials/footer') %>
